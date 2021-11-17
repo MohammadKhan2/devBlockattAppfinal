@@ -12,16 +12,15 @@ import com.app.blockaat.category.adapter.CategoryAdapter
 import com.app.blockaat.category.interfaces.OnCategorySelectListener
 import com.app.blockaat.category.model.CategoryResponseDataModel
 import com.app.blockaat.category.model.Subcategory
-import com.app.blockaat.helper.BaseActivity
-import com.app.blockaat.helper.CustomProgressBar
-import com.app.blockaat.helper.Global
+import com.app.blockaat.helper.*
 import com.app.blockaat.helper.Global.hideProgressDialog
 import com.app.blockaat.helper.Global.showProgressDialog
-import com.app.blockaat.helper.NetworkUtil
 import com.app.blockaat.login.LoginActivity
 import com.app.blockaat.productlisting.ProductListActivity
 import com.app.blockaat.search.SearchActivity
 import com.app.blockaat.wishlist.WishlistActivity
+import com.google.android.gms.analytics.HitBuilders
+import com.google.android.gms.analytics.Tracker
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_category_data.*
@@ -43,10 +42,18 @@ class CategoryActivity : BaseActivity(), OnCategorySelectListener {
     private var adapterCategory: CategoryAdapter? = null
     private var strCategoryId = ""
     private var is_featuredID = ""
+    private lateinit var mTracker: Tracker
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_category)
+
+        // Obtain the shared Tracker instance.
+        val application: AppController = application as AppController
+        mTracker = application.getDefaultTracker()!!
+        mTracker.setScreenName("Category Screen")
+        mTracker.send(HitBuilders.ScreenViewBuilder().build())
+
         Global.setLocale(this@CategoryActivity)
         initializeToolbar()
         initializeFields()

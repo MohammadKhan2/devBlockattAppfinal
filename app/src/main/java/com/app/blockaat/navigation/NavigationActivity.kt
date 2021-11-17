@@ -76,6 +76,8 @@ import com.app.blockaat.webview.WebViewActivity
 import com.app.blockaat.wishlist.WishlistActivity
 import com.app.blockaat.wishlist.fragment.WishListFragment
 import com.facebook.login.LoginManager
+import com.google.android.gms.analytics.HitBuilders
+import com.google.android.gms.analytics.Tracker
 import com.google.android.gms.common.api.internal.LifecycleCallback.getFragment
 import com.google.android.material.bottomnavigation.BottomNavigationItemView
 import com.google.android.material.bottomnavigation.BottomNavigationMenuView
@@ -147,6 +149,7 @@ class NavigationActivity : BaseActivity(), NavigationView.OnNavigationItemSelect
     private var isProductListLoadedInCelebrity = false
     private var strCelebrityProductListHeader = ""
     private var productListFragment: Fragment = ProductListFragment()
+    private lateinit var mTracker: Tracker
 
     override fun onNavigationItemSelected(p0: MenuItem): Boolean {
         return false
@@ -197,6 +200,13 @@ class NavigationActivity : BaseActivity(), NavigationView.OnNavigationItemSelect
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        // Obtain the shared Tracker instance.
+        val application: AppController = application as AppController
+        mTracker = application.getDefaultTracker()!!
+        mTracker.setScreenName("Home Screen")
+
+        mTracker.send(HitBuilders.ScreenViewBuilder().build())
         productsDBHelper = DBHelper(this@NavigationActivity)
         bottom_navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         val drawer = findViewById<View>(R.id.drawer_layout) as DrawerLayout

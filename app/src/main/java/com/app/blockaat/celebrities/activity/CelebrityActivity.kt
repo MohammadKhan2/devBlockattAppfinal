@@ -9,16 +9,15 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.app.blockaat.R
 import com.app.blockaat.celebrities.adapter.InfluencerListAdapter
 import com.app.blockaat.celebrities.interfaces.OnInfluencerClickListener
-import com.app.blockaat.helper.BaseActivity
 import com.app.blockaat.celebrities.model.InfluenceResponseModel
 import com.app.blockaat.celebrities.model.InfluencerList
-import com.app.blockaat.helper.CustomProgressBar
-import com.app.blockaat.helper.Global
-import com.app.blockaat.helper.NetworkUtil
+import com.app.blockaat.helper.*
 import com.app.blockaat.login.LoginActivity
 import com.app.blockaat.productlisting.ProductListActivity
 import com.app.blockaat.search.SearchActivity
 import com.app.blockaat.wishlist.WishlistActivity
+import com.google.android.gms.analytics.HitBuilders
+import com.google.android.gms.analytics.Tracker
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_celebrity_data.*
@@ -36,9 +35,17 @@ class CelebrityActivity : BaseActivity() {
     private var isFromRefresh = false
     private var arrListCelebrities: ArrayList<InfluencerList?>? = null
     private var strCategoryID: String = ""
+    private lateinit var mTracker: Tracker
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_celebrity)
+
+        // Obtain the shared Tracker instance.
+        val application: AppController = application as AppController
+        mTracker = application.getDefaultTracker()!!
+        mTracker.setScreenName("Celebrity Screen")
+        mTracker.send(HitBuilders.ScreenViewBuilder().build())
+
         initializeToolbar()
         initializeFields()
         setFonts()

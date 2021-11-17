@@ -12,6 +12,7 @@ import com.app.blockaat.R
 import com.app.blockaat.brands.activity.BrandsActivity
 import com.app.blockaat.category.activity.CategoryActivity
 import com.app.blockaat.category.activity.SubCategoryActivity
+import com.app.blockaat.helper.AppController
 import com.app.blockaat.helper.Global
 import com.app.blockaat.home.fragment.HomeDataFragment
 import com.app.blockaat.home.model.*
@@ -23,6 +24,8 @@ import com.app.blockaat.productlisting.model.HomeTvList
 import com.app.blockaat.productlisting.model.ProductListBannerHome
 import com.app.blockaat.tv.activity.TvProductActivity
 import com.app.blockaat.webview.WebViewActivity
+import com.google.android.gms.analytics.HitBuilders
+import com.google.android.gms.analytics.Tracker
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -33,10 +36,17 @@ class HomeFragment : Fragment() {
     private var homeDataFragment: Fragment = HomeDataFragment()
     private var activeFragment: Fragment? = null
     private var productListFragment: Fragment = ProductListFragment()
+    private lateinit var mTracker: Tracker
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mActivity = activity as NavigationActivity
+
+        // Obtain the shared Tracker instance.
+        val application: AppController = activity as AppController
+        mTracker = application.getDefaultTracker()!!
+        mTracker.setScreenName("Home Fragment Screen")
+        mTracker.send(HitBuilders.ScreenViewBuilder().build())
     }
 
     override fun onCreateView(

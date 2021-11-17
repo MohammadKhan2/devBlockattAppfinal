@@ -37,7 +37,6 @@ class SplashActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
 
         // Obtain the shared Tracker instance.
-        // Obtain the shared Tracker instance.
         val application: AppController = application as AppController
         mTracker = application.getDefaultTracker()!!
 

@@ -25,6 +25,8 @@ import com.app.blockaat.register.RegisterActivity
 import com.facebook.*
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
+import com.google.android.gms.analytics.HitBuilders
+import com.google.android.gms.analytics.Tracker
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -81,9 +83,15 @@ class LoginActivity : BaseActivity() {
     private var emails: String = ""
     private var guestEmail: String? = null
     private lateinit var guestEmailID: String
+    private lateinit var mTracker: Tracker
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val application: AppController = application as AppController
+        mTracker = application.getDefaultTracker()!!
+        mTracker.setScreenName("Login Screen")
+        mTracker.send(HitBuilders.ScreenViewBuilder().build())
         setContentView(R.layout.activity_login)
         FacebookSdk.sdkInitialize(applicationContext)
         callbackManager = CallbackManager.Factory.create()

@@ -256,4 +256,11 @@ object CustomEvents {
         PushwooshInApp.getInstance().postEvent("CartCleared", attributes)
 
     }
+
+    fun screenViewed(activity: Activity, activityName:String){
+        val mFirebaseAnalytics = FirebaseAnalytics.getInstance(activity)
+        val bundle = Bundle()
+        bundle.putString("screen_viewed",activityName)
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.VIEW_ITEM,bundle)
+    }
 }

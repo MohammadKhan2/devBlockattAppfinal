@@ -41,6 +41,8 @@ import com.app.blockaat.login.LoginActivity
 import com.app.blockaat.orders.OrderListingActivity
 import com.app.blockaat.search.SearchActivity
 import com.app.blockaat.wishlist.WishlistActivity
+import com.google.android.gms.analytics.HitBuilders
+import com.google.android.gms.analytics.Tracker
 
 import kotlinx.android.synthetic.main.activity_account.*
 import kotlinx.android.synthetic.main.activity_account.txtSignIn
@@ -65,9 +67,18 @@ class AccountActivity : BaseActivity() {
     private lateinit var productsDBHelper: DBHelper
     private var mToolbar: Toolbar? = null
     private var strPhone = ""
+    private lateinit var mTracker: Tracker
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Obtain the shared Tracker instance.
+        val application: AppController = application as AppController
+        mTracker = application.getDefaultTracker()!!
+
+        mTracker.setScreenName("Account Screen")
+        mTracker.send(HitBuilders.ScreenViewBuilder().build())
+
         FacebookSdk.sdkInitialize(applicationContext)
         setContentView(R.layout.activity_account)
         initializeToolbar()
