@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1095320028880",
+    "project_id": "blockat-8bf8f",
+    "storage_bucket": "blockat-8bf8f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1095320028880:android:067738312afd9f29ef80d5",
+        "android_client_info": {
+          "package_name": "com.app.blockaat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1095320028880-4uofjrqcllfp3f27cq6dako8089av6v1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxABu54yVIJ7Z82l2Syh6FT8NU2azMtCY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1095320028880-4uofjrqcllfp3f27cq6dako8089av6v1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

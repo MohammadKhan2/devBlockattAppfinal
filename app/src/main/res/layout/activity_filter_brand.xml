@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/bg_color"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+                                       xmlns:app="http://schemas.android.com/apk/res-auto"
+                                       android:id="@+id/toolbar"
+                                       style="@style/ToolBarStyle"
+                                       android:layout_width="match_parent"
+                                       android:layout_height="?attr/actionBarSize"
+                                       android:background="@color/white"
+                                       app:contentInsetLeft="0dp"
+                                       app:contentInsetStart="0dp"
+                                       app:contentInsetStartWithNavigation="0dp">
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <TextView
+                    android:id="@+id/txtToolbarHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="?attr/actionBarSize"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:text="@string/brand"
+                    android:visibility="gone"
+                    android:textColor="@color/primary_text_color"
+                    android:textSize="@dimen/ToolbarHeaderTextSize" />
+
+            <TextView
+                    android:id="@+id/txtResetAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/ten_dp"
+                    android:text="@string/reset_all"
+                    android:textColor="@color/primary_text_color"
+                    android:textSize="@dimen/SubTitleTextSize" />
+
+            <RelativeLayout
+                    android:id="@+id/relAll"
+                    android:layout_width="@dimen/sixty_dp"
+                    android:layout_height="@dimen/thirty_dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/screen_margin"
+                    android:background="@color/white"
+                    android:visibility="gone"
+                    android:gravity="center">
+
+
+                <ImageView
+                        android:id="@+id/ivTick"
+                        android:layout_width="@dimen/fifteen_dp"
+                        android:layout_height="@dimen/fifteen_dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/subtitle_desc_margin"
+                        android:layout_toLeftOf="@+id/txtClear"
+                        app:srcCompat="@drawable/ic_tick" />
+
+                <TextView
+                        android:id="@+id/txtClear"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:gravity="center"
+                        android:text="@string/all"
+                        android:textAllCaps="true"
+                        android:textColor="@color/primary_text_color"
+                        android:textSize="@dimen/ElevenTextSize" />
+
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+
+    <View
+            android:id="@+id/viewDivLine"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/divider_line_height"
+            android:background="@color/divider_line_color"
+            android:layout_below="@+id/toolbar" />
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/viewDivLine">
+
+        <LinearLayout
+                android:id="@+id/linNoItems"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+            <TextView
+                    android:id="@+id/txtNoBrand"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/screen_margin"
+                    android:layout_marginLeft="@dimen/twenty_dp"
+                    android:layout_marginRight="@dimen/twenty_dp"
+                    android:layout_marginTop="@dimen/screen_margin"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textColor="@color/primary_text_color"
+                    android:textSize="@dimen/MenuFontSize" />
+
+            <TextView
+                    android:id="@+id/txtBrandEmptyDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/twenty_dp"
+                    android:layout_marginRight="@dimen/twenty_dp"
+                    android:textAlignment="center"
+                    android:textColor="@color/secondary_text_color"
+                    android:textSize="@dimen/SubTitleTextSize" />
+        </LinearLayout>
+
+        <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:fillViewport="true">
+
+            <RelativeLayout
+                    android:id="@+id/relMainHolder"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_above="@+id/relApply"
+                    android:visibility="gone">
+
+                <TextView
+                        android:id="@+id/txtHeader"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:text="@string/brand"
+                    android:inputType="textCapWords"
+
+                    android:layout_marginTop="@dimen/ten_dp"
+                        android:textColor="@color/primary_text_color"
+                        android:textSize="@dimen/ToolbarHeaderTextSize" />
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvFilterBrands"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_toLeftOf="@+id/scrollIndex"
+                        android:clipToPadding="false"
+                        android:layout_below="@+id/txtHeader"
+                        android:layout_marginTop="@dimen/twenty_dp"
+                        android:paddingBottom="@dimen/item_margin"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                <ScrollView
+                        android:id="@+id/scrollIndex"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerInParent="true"
+                        android:paddingBottom="@dimen/item_margin"
+                        android:paddingTop="@dimen/item_margin">
+
+                    <LinearLayout
+                            android:id="@+id/linFilterBrandIndex"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:gravity="center"
+                            android:orientation="vertical" />
+                </ScrollView>
+
+
+            </RelativeLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="@color/bg_color"
+        >
+            <TextView
+                    android:id="@+id/txtShowResult"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/button_size"
+                    android:background="@drawable/rounded_corner_button_bg_blue"
+                    android:gravity="center"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/btnTextSize"
+                    android:text="@string/show_result"
+                    android:layout_margin="@dimen/fifteen_dp"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

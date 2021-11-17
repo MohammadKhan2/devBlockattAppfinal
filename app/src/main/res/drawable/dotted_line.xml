@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:bottom="-8dp"
+        android:left="-8dp"
+        android:top="-8dp">
+        <shape>
+            <stroke
+                android:width="@dimen/divider_line_height"
+                android:color="@color/divider_login"
+                android:dashWidth="@dimen/title_subtitle_margin"
+                android:dashGap="@dimen/title_subtitle_margin" />
+        </shape>
+    </item>
+</layer-list>

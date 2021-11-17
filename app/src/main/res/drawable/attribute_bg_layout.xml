@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<inset xmlns:android="http://schemas.android.com/apk/res/android">
+    <shape android:shape="rectangle">
+        <solid android:color="@color/white" />
+        <corners android:radius="@dimen/_2sdp" />
+        <stroke
+            android:width="@dimen/_1sdp"
+            android:color="@color/view_divider_color" />
+    </shape>
+</inset>

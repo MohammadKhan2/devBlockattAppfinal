@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <dimen name="screen_margin">@dimen/_17sdp</dimen>
+    <dimen name="item_margin">@dimen/_50sdp</dimen>
+    <dimen name="title_subtitle_margin">@dimen/_2sdp</dimen>
+    <dimen name="subtitle_desc_margin">@dimen/_3sdp</dimen>
+    <dimen name="item_image_margin">@dimen/_2sdp</dimen>
+    <dimen name="extra_margin">@dimen/_30sdp</dimen>
+    <dimen name="medium_margin">@dimen/_12sdp</dimen>
+    <dimen name="divider_line_height">@dimen/_1sdp</dimen>
+    <dimen name="three_hundred_dp">@dimen/_300sdp</dimen>
+    <dimen name="hundred_ninety_five_dp">@dimen/_195sdp</dimen>
+    <dimen name="hundred_ninety_dp">@dimen/_190sdp</dimen>
+    <dimen name="hundred_eighty_five_dp">@dimen/_185sdp</dimen>
+    <dimen name="hundred_eighty_dp">@dimen/_180sdp</dimen>
+    <dimen name="hundred_seventy_five_dp">@dimen/_175sdp</dimen>
+    <dimen name="hundred_seventy_dp">@dimen/_170sdp</dimen>
+    <dimen name="hundred_sixty_five_dp">@dimen/_165sdp</dimen>
+    <dimen name="hundred_sixty_dp">@dimen/_160sdp</dimen>
+    <dimen name="hundred_fifty_five_dp">@dimen/_155sdp</dimen>
+    <dimen name="hundred_forty_five_dp">@dimen/_145sdp</dimen>
+    <dimen name="hundred_forty_dp">@dimen/_140sdp</dimen>
+    <dimen name="hundred_thirty_five_dp">@dimen/_135sdp</dimen>
+    <dimen name="hundred_thirty_dp">@dimen/_130sdp</dimen>
+    <dimen name="hundred_twenty_five_dp">@dimen/_125sdp</dimen>
+    <dimen name="hundred_twenty_dp">@dimen/_120sdp</dimen>
+    <dimen name="hundred_fifteen_dp">@dimen/_115sdp</dimen>
+    <dimen name="hundred_ten_dp">@dimen/_110sdp</dimen>
+    <dimen name="hundred_five_dp">@dimen/_105sdp</dimen>
+    <dimen name="hundred_dp">@dimen/_100sdp</dimen>
+    <dimen name="ninety_five_dp">@dimen/_95sdp</dimen>
+    <dimen name="ninety_dp">@dimen/_90sdp</dimen>
+    <dimen name="eighty_five_dp">@dimen/_85sdp</dimen>
+    <dimen name="eighty_dp">@dimen/_80sdp</dimen>
+    <dimen name="seventy_five_dp">@dimen/_75sdp</dimen>
+    <dimen name="seventy_dp">@dimen/_70sdp</dimen>
+    <dimen name="sixty_five_dp">@dimen/_65sdp</dimen>
+    <dimen name="sixty_dp">@dimen/_60sdp</dimen>
+    <dimen name="fifty_five_dp">@dimen/_55sdp</dimen>
+    <dimen name="fifty_dp">@dimen/_50sdp</dimen>
+    <dimen name="forty_five_dp">@dimen/_45sdp</dimen>
+    <dimen name="forty_dp">@dimen/_40sdp</dimen>
+    <dimen name="thirty_five_dp">@dimen/_35sdp</dimen>
+    <dimen name="thirty_dp">@dimen/_30sdp</dimen>
+    <dimen name="twenty_five_dp">@dimen/_25sdp</dimen>
+    <dimen name="twenty_dp">@dimen/_20sdp</dimen>
+    <dimen name="eighteen_dp">@dimen/_18sdp</dimen>
+    <dimen name="fifteen_dp">@dimen/_15sdp</dimen>
+    <dimen name="ten_dp">@dimen/_10sdp</dimen>
+    <dimen name="seven_dp">@dimen/_7sdp</dimen>
+    <dimen name="six_dp">@dimen/_6sdp</dimen>
+    <dimen name="five_dp">@dimen/_5sdp</dimen>
+    <dimen name="minus_five_dp">@dimen/_minus5sdp</dimen>
+    <dimen name="nav_bar_height">@dimen/_50sdp</dimen>
+    <dimen name="nav_bar_logo">@dimen/_30sdp</dimen>
+    <dimen name="tab_bar_height">@dimen/_40sdp</dimen>
+    <dimen name="button_size">@dimen/_37sdp</dimen>
+    <dimen name="corner_radius">@dimen/_1sdp</dimen>
+    <dimen name="thirteen_dp">@dimen/_13sdp</dimen>
+    <dimen name="eleven_dp">@dimen/_11sdp</dimen>
+    <dimen name="two_hundred_ten_dp">@dimen/_210sdp</dimen>
+    <dimen name="two_hundred_twenty_dp">@dimen/_220sdp</dimen>
+    <dimen name="hundred_fifty_dp">@dimen/_150sdp</dimen>
+    <dimen name="two_hundred_thirty_dp">@dimen/_230sdp</dimen>
+    <dimen name="two_hundred_sixty_dp">@dimen/_260sdp</dimen>
+    <dimen name="three_hundred_ten_dp">@dimen/_310sdp</dimen>
+    <dimen name="toolbar_elevation">@dimen/_4sdp</dimen>
+    <dimen name="bottom_tab_height">@dimen/_50sdp</dimen>
+    <dimen name="bottom_tab_icon">@dimen/twenty_five_dp</dimen>
+    <dimen name="TextView">@dimen/_24sdp</dimen>
+    <dimen name="EditBoxHeight">@dimen/_30sdp</dimen>
+    <dimen name="drawer_width">@dimen/_260sdp</dimen>
+    <dimen name="nav_header_height">@dimen/_180sdp</dimen>
+    <dimen name="twelve_dp">@dimen/_12sdp</dimen>
+
+    <!--Use only for TextSize-->
+
+    <dimen name="twenty_five_sp">@dimen/_21ssp</dimen>
+    <dimen name="nineteen_sp">@dimen/_17ssp</dimen>// size increased by 1
+    <dimen name="seventeen_sp">@dimen/_16ssp</dimen>//
+    <dimen name="sixteen_sp">@dimen/_15ssp</dimen>//
+    <dimen name="fifteen_sp">@dimen/_14ssp</dimen>//
+    <dimen name="fourteen_sp">@dimen/_13ssp</dimen>//
+    <dimen name="thirteen_sp">@dimen/_12ssp</dimen>//
+    <dimen name="twelve_sp">@dimen/_11ssp</dimen>//
+    <dimen name="eleven_sp">@dimen/_10ssp</dimen>//
+    <dimen name="ten_sp">@dimen/_9ssp</dimen>//
+    <dimen name="eight_sp">@dimen/_7ssp</dimen>//
+    <dimen name="nine_sp">@dimen/_8ssp</dimen>//
+    <dimen name="HugeFontSize">@dimen/twenty_five_sp</dimen>
+    <dimen name="BigFontSize">@dimen/nineteen_sp</dimen>
+    <dimen name="HeaderTextSize">@dimen/seventeen_sp</dimen>
+    <dimen name="MediumTextSize">@dimen/fifteen_sp</dimen>
+    <dimen name="MenuFontSize">@dimen/fourteen_sp</dimen>
+    <dimen name="TitleTextSize">@dimen/thirteen_sp</dimen>
+    <dimen name="SubTitleTextSize">@dimen/twelve_sp</dimen>
+    <dimen name="ElevenTextSize">@dimen/eleven_sp</dimen>
+    <dimen name="DescriptionTextSize">@dimen/ten_sp</dimen>
+    <dimen name="SmallestTextSize">@dimen/eight_sp</dimen>
+    <dimen name="SmallTextSize">@dimen/nine_sp</dimen>
+    <dimen name="btnTextSize">@dimen/fifteen_sp</dimen>
+    <dimen name="ToolbarHeaderTextSize">@dimen/fifteen_sp</dimen>
+    <dimen name="ToolbarTextSize">@dimen/_16ssp</dimen>
+    <dimen name="borderheight">0.5dp</dimen>
+    <!--use this for toolbar text size-->
+
+    <dimen name="design_bottom_navigation_text_size" tools:override="true">@dimen/SmallestTextSize
+    </dimen>
+    <dimen name="design_bottom_navigation_active_text_size" tools:override="true">
+        @dimen/SmallestTextSize
+    </dimen>
+    <dimen name="fab_margin">16dp</dimen>
+
+</resources>

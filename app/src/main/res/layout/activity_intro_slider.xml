@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <ImageView
+            android:id="@+id/ivIntro"
+            android:layout_width="match_parent"
+            android:scaleType="centerCrop"
+            android:layout_height="match_parent" />
+
+
+    <LinearLayout
+            android:id="@+id/linBottomLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_15sdp"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:weightSum="2">
+
+        <TextView
+                android:id="@+id/txtSkip"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/button_size"
+                android:layout_marginEnd="@dimen/_12sdp"
+                android:layout_weight="0.5"
+                android:background="@drawable/rounded_corner_black_border"
+                android:gravity="center"
+                android:text="@string/skip_btn"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/btnTextSize" />
+
+        <TextView
+                android:id="@+id/txtEnter"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/button_size"
+                android:layout_weight="1.5"
+                android:background="@drawable/rounded_corner_black"
+                android:gravity="center"
+                android:text="@string/enter_btn"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="@dimen/btnTextSize" />
+    </LinearLayout>
+</RelativeLayout>

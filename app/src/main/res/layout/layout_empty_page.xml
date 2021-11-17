@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/relEmpty"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:visibility="gone">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginHorizontal="@dimen/screen_margin"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/ivEmpty"
+            android:layout_width="@dimen/_65sdp"
+            android:layout_height="@dimen/_65sdp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/empty_bag" />
+
+        <TextView
+            android:id="@+id/txtEmptyTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:gravity="start"
+            android:textAlignment="viewStart"
+            android:textColor="@color/primary_text_color"
+            android:textSize="@dimen/TitleTextSize" />
+
+        <TextView
+            android:id="@+id/txtEmptyMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:gravity="center"
+            android:maxLines="2"
+            android:text="@string/empty_wishlist_heading"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/secondary_text_color"
+            android:textSize="@dimen/SubTitleTextSize" />
+
+        <TextView
+            android:id="@+id/txtEmptyBtn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_size"
+            android:layout_marginTop="@dimen/twenty_dp"
+            android:background="@drawable/blue_button_background"
+            android:gravity="center"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/btnTextSize" />
+
+        <TextView
+            android:id="@+id/txtEmptySecond"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_size"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/blue_button_background"
+            android:gravity="center"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/btnTextSize"
+            android:visibility="gone" />
+    </LinearLayout>
+
+</RelativeLayout>

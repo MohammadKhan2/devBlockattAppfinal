@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<inset xmlns:android="http://schemas.android.com/apk/res/android">
+    <shape android:shape="rectangle">
+        <corners android:radius="@dimen/_2sdp" />
+        <solid android:color="@color/white" />
+        <stroke
+                android:color="@color/divider_line_light"
+                android:width="@dimen/divider_line_height" />
+    </shape>
+</inset>

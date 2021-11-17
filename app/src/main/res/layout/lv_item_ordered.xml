@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="">
+
+    <ImageView
+            android:id="@+id/ivProduct"
+            android:layout_width="@dimen/sixty_dp"
+            android:layout_height="@dimen/eighty_dp"
+            android:layout_marginStart="@dimen/seven_dp"
+            android:layout_marginTop="@dimen/screen_margin"
+            android:layout_marginEnd="@dimen/screen_margin"
+            android:layout_marginBottom="@dimen/screen_margin"
+            android:background="@color/white" />
+
+    <TextView
+            android:id="@+id/txtTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_margin"
+            android:layout_marginEnd="@dimen/twenty_dp"
+            android:layout_toEndOf="@+id/ivProduct"
+            android:ellipsize="end"
+            android:gravity="start"
+            android:maxLines="1"
+            android:minLines="1"
+            android:textAllCaps="true"
+            android:textColor="@color/primary_text_color"
+            android:textSize="@dimen/SubTitleTextSize" />
+
+    <RelativeLayout
+            android:id="@+id/relColor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtTitle"
+            android:layout_marginTop="@dimen/item_margin"
+            android:layout_toEndOf="@+id/ivProduct"
+            android:visibility="gone">
+
+        <TextView
+                android:id="@+id/txtLabelColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/color_colon"
+                android:textAllCaps="false"
+                android:textColor="@color/primary_text_color"
+                android:textSize="@dimen/DescriptionTextSize" />
+
+        <TextView
+                android:id="@+id/txtColor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/screen_margin"
+                android:layout_toEndOf="@+id/txtLabelColor"
+                android:textColor="@color/primary_text_color"
+                android:textSize="@dimen/DescriptionTextSize" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+            android:id="@+id/relSize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relColor"
+            android:layout_marginTop="@dimen/item_margin"
+            android:layout_toEndOf="@+id/ivProduct"
+            android:visibility="gone">
+
+        <TextView
+                android:id="@+id/txtLabelSize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/size_colon"
+                android:textAllCaps="false"
+                android:textColor="@color/primary_text_color"
+                android:textSize="@dimen/DescriptionTextSize" />
+
+        <TextView
+                android:id="@+id/txtSize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/fifteen_dp"
+                android:layout_toEndOf="@+id/txtLabelSize"
+                android:text=""
+                android:textColor="@color/primary_text_color"
+                android:textSize="@dimen/DescriptionTextSize" />
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/twenty_dp"
+            android:layout_below="@+id/relSize"
+            android:layout_marginTop="@dimen/seven_dp"
+            android:layout_toEndOf="@+id/ivProduct">
+
+        <TextView
+                android:id="@+id/txtFinalPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="start|center_vertical"
+                android:textAllCaps="true"
+                android:textColor="@color/primary_text_color"
+                android:textSize="@dimen/ElevenTextSize" />
+
+        <TextView
+                android:id="@+id/txtRegularPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/five_dp"
+                android:layout_toEndOf="@+id/txtFinalPrice"
+                android:gravity="start|center_vertical"
+                android:textAllCaps="true"
+                android:textColor="@color/secondary_text_color"
+                android:textSize="@dimen/SmallTextSize"
+                android:visibility="gone" />
+
+        <TextView
+                android:id="@+id/txtProductDiscount"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/five_dp"
+                android:layout_toEndOf="@+id/txtRegularPrice"
+                android:gravity="start|center_vertical"
+                android:textAllCaps="true"
+                android:textColor="@color/secondary_text_color"
+                android:textSize="@dimen/SmallestTextSize"
+                android:visibility="gone" />
+
+        <TextView
+                android:id="@+id/txtQty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/subtitle_desc_margin"
+                android:layout_marginEnd="@dimen/screen_margin"
+                android:layout_toEndOf="@+id/txtProductDiscount"
+                android:gravity="end"
+                android:paddingEnd="@dimen/seven_dp"
+                android:textColor="@color/primary_text_color"
+                android:textSize="@dimen/DescriptionTextSize" />
+
+    </RelativeLayout>
+
+    <View
+            android:id="@+id/viewItemDivLine"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/divider_line_height"
+            android:layout_below="@+id/ivProduct"
+            android:layout_marginLeft="@dimen/ten_dp"
+            android:layout_marginRight="@dimen/ten_dp"
+            android:background="@color/divider_line_color" />
+
+</RelativeLayout>

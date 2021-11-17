@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        android:id="@+id/linImageHolder"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/ten_dp"
+        android:background="@drawable/divider_line_bg">
+
+    <ImageView
+            android:id="@+id/ivOrderImage"
+            android:layout_width="@dimen/ninety_dp"
+            android:layout_height="@dimen/ninety_dp"
+            android:layout_margin="@dimen/ten_dp"/>
+
+</LinearLayout>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/_18sdp"
+    android:background="@color/transparent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_alert_dialog"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/_17sdp">
+
+        <RelativeLayout
+            android:id="@+id/relToolbarHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/txtHead"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:ellipsize="end"
+                android:gravity="center_horizontal"
+                android:maxLines="1"
+                android:textAllCaps="true"
+                android:singleLine="true"
+                android:text="@string/forgot_pass"
+                android:textAlignment="center"
+                android:layout_marginTop="@dimen/_18sdp"
+                android:textColor="@color/primary_text_color"
+                android:textSize="@dimen/_13ssp"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/ivClose"
+                android:layout_width="@dimen/_15sdp"
+                android:layout_height="@dimen/_18sdp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:scaleType="fitXY"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:src="@drawable/ic_close_black_24dp" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/txtNote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_20sdp"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:lineSpacingExtra="@dimen/corner_radius"
+            android:text="@string/forgot_password_note"
+            android:textAlignment="center"
+            android:textColor="@color/primary_color"
+            android:textSize="@dimen/TitleTextSize" />
+
+
+        <EditText
+            android:id="@+id/edtEmails"
+            style="@style/edtTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_33sdp"
+            android:layout_marginHorizontal="@dimen/_17sdp"
+            android:layout_marginTop="@dimen/_17sdp"
+            android:background="@drawable/rounded_border_edt"
+            android:hint="@string/email_address"
+            android:inputType="textEmailAddress" />
+
+
+        <TextView
+            android:id="@+id/txtResetPass"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_size"
+            android:layout_marginHorizontal="@dimen/_17sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:background="@drawable/rounded_corner_button_bg_blue"
+            android:gravity="center"
+            android:text="@string/submit"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/btnTextSize" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

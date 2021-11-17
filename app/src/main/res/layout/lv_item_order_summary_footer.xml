@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/relMainHolderItems"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:visibility="visible"
+                android:foreground="?attr/selectableItemBackground">
+
+    <RelativeLayout
+            android:id="@+id/rltDeliveryAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+        <LinearLayout
+                android:id="@+id/divLine1"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/divider_line_color"
+                android:orientation="horizontal"/>
+
+        <TextView
+                android:id="@+id/txtShippingAddress"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/thirty_five_dp"
+                android:layout_alignParentLeft="true"
+                android:text="@string/delivery_to"
+                android:gravity="bottom"
+                android:paddingLeft="@dimen/five_dp"
+                android:background="@color/bg_color"
+                android:paddingBottom="@dimen/subtitle_desc_margin"
+                android:textAllCaps="true"
+                android:layout_below="@+id/divLine1"
+                android:textColor="@color/primary_text_color"
+                android:textSize="@dimen/TitleTextSize" />
+
+        <LinearLayout
+                android:id="@+id/divLine"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/divider_line_color"
+                android:layout_below="@+id/txtShippingAddress"
+                android:orientation="horizontal"/>
+
+        <LinearLayout
+                android:id="@+id/linAddressInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="@dimen/ten_dp"
+                android:layout_below="@+id/divLine"
+        >
+
+            <LinearLayout
+                    android:id="@+id/linFirstName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+            android:layout_marginTop="@dimen/ten_dp">
+
+                <TextView
+                        android:id="@+id/txtLabelFirstName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/first_name_colon"
+                        android:textColor="@color/secondary_text_color"
+                        android:textSize="@dimen/SubTitleTextSize"/>
+
+                <TextView
+                        android:id="@+id/txtFirstName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/ten_dp"
+                        android:text="@string/first_name"
+                        android:maxLines="1"
+                        android:ellipsize="end"
+                        android:textColor="@color/primary_text_color"
+                        android:textSize="@dimen/SubTitleTextSize"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:id="@+id/linLastName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/seven_dp">
+
+                <TextView
+                        android:id="@+id/txtLabelLastName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/last_name_colon"
+                        android:textColor="@color/secondary_text_color"
+                        android:textSize="@dimen/SubTitleTextSize"/>
+
+                <TextView
+                        android:id="@+id/txtLastName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/ten_dp"
+                        android:text="@string/last_name"
+                        android:maxLines="1"
+                        android:ellipsize="end"
+                        android:textColor="@color/primary_text_color"
+                        android:textSize="@dimen/SubTitleTextSize"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:id="@+id/linArea"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/seven_dp">
+
+                <TextView
+                        android:id="@+id/txtLabelArea"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/area_colon"
+                        android:textColor="@color/secondary_text_color"
+                        android:textSize="@dimen/SubTitleTextSize"/>
+
+                <TextView
+                        android:id="@+id/txtArea"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/ten_dp"
+                        android:text="@string/block"
+                        android:maxLines="1"
+                        android:ellipsize="end"
+                        android:textColor="@color/primary_text_color"
+                        android:textSize="@dimen/SubTitleTextSize"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:id="@+id/linBlock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/seven_dp">
+
+                <TextView
+                        android:id="@+id/txtLabelBlock"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/block_colon"
+                        android:textColor="@color/secondary_text_color"
+                        android:textSize="@dimen/SubTitleTextSize"/>
+
+                <TextView
+                        android:id="@+id/txtBlock"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/ten_dp"
+                        android:text="@string/block"
+                        android:maxLines="1"
+                        android:ellipsize="end"
+                        android:textColor="@color/primary_text_color"
+                        android:textSize="@dimen/SubTitleTextSize"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:id="@+id/linStreet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/seven_dp">
+
+                <TextView
+                        android:id="@+id/txtLabelStreet"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/street_colon"
+                        android:textColor="@color/secondary_text_color"
+                        android:textSize="@dimen/SubTitleTextSize"/>
+
+                <TextView
+                        android:id="@+id/txtStreet"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/ten_dp"
+                        android:text="@string/first_name"
+                        android:maxLines="1"
+                        android:ellipsize="end"
+                        android:textColor="@color/primary_text_color"
+                        android:textSize="@dimen/SubTitleTextSize"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:id="@+id/linCountry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/seven_dp">
+
+                <TextView
+                        android:id="@+id/txtLabelCountry"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/country_colon"
+                        android:textColor="@color/secondary_text_color"
+                        android:textSize="@dimen/SubTitleTextSize"/>
+
+                <TextView
+                        android:id="@+id/txtCountry"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/ten_dp"
+                        android:text="@string/first_name"
+                        android:maxLines="1"
+                        android:ellipsize="end"
+                        android:textColor="@color/primary_text_color"
+                        android:textSize="@dimen/SubTitleTextSize"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:id="@+id/linNotes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/seven_dp">
+
+                <TextView
+                        android:id="@+id/txtLabelNotes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/notes_colon"
+                        android:textColor="@color/secondary_text_color"
+                        android:textSize="@dimen/SubTitleTextSize"/>
+
+                <TextView
+                        android:id="@+id/txtNotes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/ten_dp"
+                        android:text="@string/first_name"
+                        android:maxLines="1"
+                        android:ellipsize="end"
+                        android:textColor="@color/primary_text_color"
+                        android:textSize="@dimen/SubTitleTextSize"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:id="@+id/linPhoneNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:layout_marginBottom="@dimen/fifteen_dp"
+                    android:layout_marginTop="@dimen/seven_dp">
+
+                <TextView
+                        android:id="@+id/txtLabelPhoneNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/phone_number_colon"
+                        android:textColor="@color/secondary_text_color"
+                        android:textSize="@dimen/SubTitleTextSize"/>
+
+                <TextView
+                        android:id="@+id/txtPhoneNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/ten_dp"
+                        android:text="@string/first_name"
+                        android:textColor="@color/primary_text_color"
+                        android:textSize="@dimen/SubTitleTextSize"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/divLine2"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/divider_line_color"
+                android:layout_below="@+id/linAddressInfo"
+                android:orientation="horizontal"/>
+
+        <TextView
+                android:id="@+id/txtContactUs"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/thirty_five_dp"
+                android:layout_alignParentLeft="true"
+                android:text="@string/contact_us"
+                android:gravity="bottom"
+                android:paddingLeft="@dimen/five_dp"
+                android:background="@color/bg_color"
+                android:paddingBottom="@dimen/subtitle_desc_margin"
+                android:textAllCaps="true"
+                android:layout_below="@+id/divLine2"
+                android:textColor="@color/primary_text_color"
+                android:textSize="@dimen/TitleTextSize" />
+
+        <LinearLayout
+                android:id="@+id/divLine3"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/divider_line_color"
+                android:layout_below="@+id/txtContactUs"
+                android:orientation="horizontal"/>
+
+        <LinearLayout
+                android:id="@+id/linContactUsInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="@dimen/ten_dp"
+                android:layout_below="@+id/divLine3">
+
+        <LinearLayout
+                android:id="@+id/linEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/ten_dp">
+
+            <TextView
+                    android:id="@+id/txtLabelEmail"
+                    android:layout_width="@dimen/eighty_dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/email"
+                    android:textColor="@color/secondary_text_color"
+                    android:textSize="@dimen/SubTitleTextSize"/>
+
+            <TextView
+                    android:id="@+id/txtEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/fifteen_dp"
+                    android:text="socialmedia@blockatapp.com"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:textColor="@color/primary_text_color"
+                    android:textSize="@dimen/SubTitleTextSize"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/linPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/seven_dp"
+                android:layout_marginBottom="@dimen/ten_dp">
+
+            <TextView
+                    android:id="@+id/txtLabelPhone"
+                    android:layout_width="@dimen/eighty_dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/phone"
+                    android:textColor="@color/secondary_text_color"
+                    android:textSize="@dimen/SubTitleTextSize"/>
+
+            <TextView
+                    android:id="@+id/txtPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/fifteen_dp"
+                    android:text="+96599998888"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:textColor="@color/primary_text_color"
+                    android:textSize="@dimen/SubTitleTextSize"/>
+
+        </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/divLine4"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/divider_line_color"
+                android:layout_below="@+id/linContactUsInfo"
+                android:orientation="horizontal"/>
+
+    </RelativeLayout>
+</RelativeLayout>

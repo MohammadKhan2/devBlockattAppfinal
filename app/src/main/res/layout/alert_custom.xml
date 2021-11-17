@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/ten_dp"
+            android:orientation="vertical">
+
+        <TextView
+                android:id="@+id/txtAlert"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/BigFontSize"
+                android:textColor="@color/black"
+                android:gravity="center"
+               />
+
+        <TextView
+                android:id="@+id/txtAlertMsg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/TitleTextSize"
+                android:textColor="@color/secondary_text"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/fifteen_dp"
+              />
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/twenty_dp">
+
+
+            <Button
+                    android:id="@+id/btnNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/button_size"
+                    android:layout_weight="1"
+                    android:textAllCaps="true"
+                    android:layout_marginEnd="@dimen/five_dp"
+                    android:textSize="@dimen/SubTitleTextSize"
+                    android:background="@drawable/btn_negative"
+                    android:textColor="@color/white"
+                    />
+
+            <Button
+                    android:id="@+id/btnYes"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/button_size"
+                    android:textSize="@dimen/SubTitleTextSize"
+                    android:layout_marginStart="@dimen/five_dp"
+                    android:layout_weight="1"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:background="@drawable/btn_positive"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

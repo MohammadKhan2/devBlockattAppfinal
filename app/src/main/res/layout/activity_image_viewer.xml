@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/relTopImages"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+    <com.github.demono.AutoScrollViewPager xmlns:android="http://schemas.android.com/apk/res/android"
+                                           android:id="@+id/autoPager"
+                                           android:layout_width="match_parent"
+                                           android:layout_height="wrap_content"
+                                           android:layout_centerHorizontal="true"
+                                           android:background="@color/white"
+                                           android:visibility="visible"/>
+
+    <RelativeLayout
+            android:id="@+id/relTopView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible">
+
+        <ImageView
+                android:id="@+id/imgClose"
+                android:layout_width="@dimen/thirty_dp"
+                android:layout_height="@dimen/thirty_dp"
+                android:layout_alignParentRight="true"
+                android:layout_margin="@dimen/screen_margin"
+                android:padding="@dimen/subtitle_desc_margin"
+                app:srcCompat="@drawable/ic_cross" />
+    </RelativeLayout>
+</RelativeLayout>

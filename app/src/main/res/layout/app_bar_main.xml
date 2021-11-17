@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+    android:layout_height="@dimen/abc_action_bar_default_height_material"
+    android:background="@color/white"
+    android:fitsSystemWindows="true">
+
+    <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+        style="@style/ToolBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_actionbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/abc_action_bar_default_height_material">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/abc_action_bar_default_height_material">
+
+                <ImageView
+                    android:id="@+id/imgBack"
+                    android:layout_width="@dimen/TextView"
+                    android:layout_height="@dimen/TextView"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="left"
+                    android:layout_marginRight="@dimen/subtitle_desc_margin"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/imgMenu"
+                    android:layout_width="@dimen/TextView"
+                    android:layout_height="@dimen/TextView"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="left"
+                    android:layout_toRightOf="@+id/imgBack"
+                    android:visibility="visible" />
+
+                <ImageView
+                    android:id="@+id/imgLogo"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/EditBoxHeight"
+                    android:layout_centerInParent="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center|center_horizontal|center_vertical"
+                    android:gravity="center_vertical|center|center_horizontal"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/txtHead"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center|center_horizontal|center_vertical"
+                    android:gravity="center_vertical|center|center_horizontal"
+                    android:text="Home"
+                    android:inputType="textCapWords"
+
+                    android:textColor="@color/tab_color"
+                    android:textSize="@dimen/fifteen_dp"
+                    android:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/txtApply"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center|center_horizontal|center_vertical"
+                    android:layout_marginRight="@dimen/five_dp"
+                    android:gravity="center_vertical|center|center_horizontal"
+                    android:text="Apply"
+                    android:textColor="@color/secondary_color"
+                    android:visibility="gone" />
+
+
+
+                    <ImageView
+
+                        android:id="@+id/imgSearch"
+                        android:layout_width="@dimen/twenty_five_dp"
+                        android:layout_height="@dimen/twenty_five_dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/ten_dp"
+                        android:padding="@dimen/five_dp"
+                        android:scaleType="fitXY"
+                        app:srcCompat="@drawable/ic_search" />
+
+
+                <RelativeLayout
+                    android:id="@+id/relCartImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginRight="@dimen/five_dp"
+                    android:layout_toLeftOf="@+id/relSearch"
+                    android:gravity="center_vertical|right|center_horizontal">
+
+                    <ImageView
+                        android:id="@+id/imgCart"
+                        android:layout_width="@dimen/TextView"
+                        android:layout_height="@dimen/TextView"
+                        android:layout_centerHorizontal="true"
+                        android:gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/txtCartCount"
+                        android:layout_width="@dimen/_13ssp"
+                        android:layout_height="@dimen/_13ssp"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginLeft="@dimen/BigFontSize"
+                        android:gravity="center"
+                        android:text="1"
+                        android:textColor="@color/white"
+                        android:textSize="8dp"
+                        android:visibility="invisible" />
+                </RelativeLayout>
+            </RelativeLayout>
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+<!--
+    <View
+            android:id="@+id/viewDivider"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/divider_line_height"
+            android:background="@color/div_line_colr"
+            android:below="@+id/appBarLayout"/>
+-->
+
+    <include layout="@layout/content_home"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

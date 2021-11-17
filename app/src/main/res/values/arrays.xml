@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="topic_array">
+        <item>@string/request_product</item>
+        <item>@string/something_not_working</item>
+        <item>@string/adv_requiring</item>
+        <item>@string/private_boutikey</item>
+        <item>@string/billing_sales</item>
+        <item>@string/general</item>
+    </string-array>
+</resources>

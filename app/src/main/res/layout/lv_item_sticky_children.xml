@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/relMainHolder"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/app_bg_color">
+
+    <RelativeLayout
+        android:id="@+id/relBrands"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginVertical="@dimen/_3sdp"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/imgBrand"
+            android:layout_width="@dimen/_70sdp"
+            android:layout_height="@dimen/_34sdp"
+            android:layout_centerVertical="true"
+            android:scaleType="centerInside" />
+
+        <TextView
+            android:id="@+id/txtTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_toEndOf="@+id/imgBrand"
+            android:ellipsize="end"
+            android:gravity="center_vertical|start"
+            android:maxLines="1"
+            android:textAlignment="viewStart"
+            android:textColor="@color/primary_text_color"
+            android:textSize="@dimen/sixteen_sp" />
+
+        <ImageView
+            android:id="@+id/ivCheck"
+            android:layout_width="@dimen/_11sdp"
+            android:layout_height="@dimen/_11sdp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_next_arrow"
+            android:tint="@color/arrow_tint"
+            android:visibility="visible" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/viewBottomLine"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:layout_below="@id/relBrands"
+        android:background="@color/divider_line_color" />
+
+    <!--  <TextView
+          android:id="@+id/txtTitle"
+          android:layout_width="match_parent"
+          android:layout_height="@dimen/_40sdp"
+          android:layout_marginHorizontal="@dimen/_10sdp"
+          android:layout_toStartOf="@+id/ivCheck"
+          android:ellipsize="end"
+          android:gravity="center_vertical|start"
+          android:maxLines="1"
+          android:textAlignment="viewStart"
+          android:textColor="@color/primary_text_color"
+          android:textSize="@dimen/TitleTextSize" />-->
+
+    <!--    <ImageView
+            android:id="@+id/ivCheck"
+            android:layout_width="@dimen/_11sdp"
+            android:layout_height="@dimen/_11sdp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:src="@drawable/ic_next_arrow"
+            android:tint="@color/arrow_tint"
+            android:visibility="visible" />-->
+
+</RelativeLayout>

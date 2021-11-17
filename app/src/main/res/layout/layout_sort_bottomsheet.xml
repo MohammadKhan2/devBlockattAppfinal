@@ -1,0 +1,248 @@
+<LinearLayout android:id="@+id/lnrSortSimpleViewAnimator"
+        android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.card.MaterialCardView
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            app:cardCornerRadius="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_minus15sdp"
+            android:layout_marginHorizontal="@dimen/ten_dp"
+            app:cardElevation="0dp">
+
+        <LinearLayout
+                android:background="@color/white"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:background="@color/golden_color"
+                    android:layout_height="@dimen/thirty_five_dp"
+                    android:layout_width="match_parent">
+
+                <ImageView
+                        android:id="@+id/imgSort"
+                        android:layout_height="@dimen/_15sdp"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:layout_width="@dimen/_15sdp"
+                        android:src="@drawable/ic_sort"
+                        android:tint="@color/white"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/txtSortOptionTitle"
+                        app:layout_constraintHorizontal_chainStyle="packed"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                        android:gravity="center"
+                        android:id="@+id/txtSortOptionTitle"
+                        android:layout_height="match_parent"
+                        android:layout_width="wrap_content"
+                        android:text="@string/sort_by"
+                        android:textAllCaps="true"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/SubTitleTextSize"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/imgSort"
+                        app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                    android:background="@color/white"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="@dimen/_2sdp"
+                    android:layout_width="match_parent"
+                    android:orientation="vertical">
+
+                <View
+                        android:background="@color/divider_line_color"
+                        android:layout_height="@dimen/divider_line_height"
+                        android:layout_width="match_parent" />
+
+                <RelativeLayout
+                        android:id="@+id/relSortLatest"
+                        android:layout_height="@dimen/forty_five_dp"
+                        android:layout_marginTop="@dimen/ten_dp"
+                        android:layout_width="match_parent">
+
+                    <RadioButton
+                            android:background="@drawable/bg_radio_selection"
+                            android:backgroundTint="@color/black"
+                            android:button="@android:color/transparent"
+                            android:gravity="center"
+                            android:id="@+id/ivSortRecommendedTick"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:layout_height="@dimen/_17sdp"
+                            android:clickable="false"
+                            android:layout_marginEnd="@dimen/_12sdp"
+                            android:layout_marginStart="@dimen/_15sdp"
+                            android:layout_width="@dimen/_17sdp" />
+
+                    <TextView
+                            android:gravity="start|center_vertical"
+                            android:id="@+id/txtRecommended"
+                            android:layout_centerVertical="true"
+                            android:layout_height="@dimen/twenty_dp"
+                            android:layout_toEndOf="@+id/ivSortRecommendedTick"
+                            android:layout_width="wrap_content"
+                            android:text="@string/recommended"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/primary_text_color"
+                            android:textSize="@dimen/eleven_sp" />
+
+
+                    <View
+                            android:background="@color/divider_line_color"
+                            android:layout_alignParentBottom="true"
+                            android:layout_height="@dimen/divider_line_height"
+                            android:layout_marginStart="@dimen/_15sdp"
+                            android:layout_width="match_parent"
+
+                            />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                        android:id="@+id/relSortNewIn"
+                        android:layout_height="@dimen/forty_five_dp"
+                        android:layout_width="match_parent">
+
+                    <TextView
+                            android:gravity="start|center_vertical"
+                            android:id="@+id/txtSortNewIn"
+                            android:layout_centerVertical="true"
+                            android:layout_height="@dimen/twenty_dp"
+                            android:layout_toEndOf="@+id/ivSortNewInTick"
+                            android:layout_width="match_parent"
+                            android:text="@string/latest"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/primary_text_color"
+                            android:textSize="@dimen/eleven_sp" />
+
+                    <RadioButton
+                            android:background="@drawable/bg_radio_selection"
+                            android:backgroundTint="@color/black"
+                            android:button="@android:color/transparent"
+                            android:gravity="center"
+                            android:id="@+id/ivSortNewInTick"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:clickable="false"
+                            android:layout_height="@dimen/_17sdp"
+                            android:layout_marginEnd="@dimen/_12sdp"
+                            android:layout_marginStart="@dimen/_15sdp"
+                            android:layout_width="@dimen/_17sdp" />
+
+                    <View
+                            android:background="@color/divider_line_color"
+                            android:layout_alignParentBottom="true"
+                            android:layout_height="@dimen/divider_line_height"
+                            android:layout_marginStart="@dimen/_15sdp"
+                            android:layout_width="match_parent" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                        android:id="@+id/relSortHighToLow"
+                        android:layout_height="@dimen/forty_five_dp"
+                        android:layout_width="match_parent">
+
+                    <RadioButton
+                            android:background="@drawable/bg_radio_selection"
+                            android:backgroundTint="@color/black"
+                            android:button="@android:color/transparent"
+                            android:gravity="center"
+                            android:id="@+id/ivSortHighToLowTick"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:layout_height="@dimen/_17sdp"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:clickable="false"
+                            android:layout_marginStart="@dimen/_15sdp"
+                            android:layout_width="@dimen/_17sdp" />
+
+                    <TextView
+                            android:gravity="start|center_vertical"
+                            android:id="@+id/txtSortHighToLow"
+                            android:layout_centerVertical="true"
+                            android:layout_height="@dimen/twenty_dp"
+                            android:layout_toEndOf="@+id/ivSortHighToLowTick"
+                            android:layout_width="wrap_content"
+                            android:text="@string/price_high_to_low"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/primary_text_color"
+                            android:textSize="@dimen/twelve_sp" />
+
+
+                    <View
+                            android:background="@color/divider_line_color"
+                            android:id="@+id/viewDivLineSortHighToLow"
+                            android:layout_alignParentBottom="true"
+                            android:layout_height="@dimen/divider_line_height"
+                            android:layout_marginStart="@dimen/_15sdp"
+                            android:layout_width="match_parent" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                        android:id="@+id/relSortLowToHigh"
+                        android:layout_height="@dimen/forty_five_dp"
+                        android:layout_width="match_parent">
+
+                    <RadioButton
+                            android:background="@drawable/bg_radio_selection"
+                            android:backgroundTint="@color/black"
+                            android:button="@android:color/transparent"
+                            android:gravity="center"
+                            android:id="@+id/ivSortLowToHighTick"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:layout_height="@dimen/_17sdp"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:clickable="false"
+                            android:layout_marginStart="@dimen/_15sdp"
+                            android:layout_width="@dimen/_17sdp" />
+
+                    <TextView
+                            android:gravity="start|center_vertical"
+                            android:id="@+id/txtSortLowToHigh"
+                            android:layout_centerVertical="true"
+                            android:layout_height="@dimen/twenty_dp"
+                            android:layout_toEndOf="@+id/ivSortLowToHighTick"
+                            android:layout_width="wrap_content"
+                            android:text="@string/price_low_to_high"
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/primary_text_color"
+                            android:textSize="@dimen/twelve_sp" />
+
+
+                    <View
+                            android:background="@color/divider_line_color"
+                            android:id="@+id/viewDivLineSort"
+                            android:layout_alignParentBottom="true"
+                            android:layout_height="@dimen/divider_line_height"
+                            android:layout_marginStart="@dimen/_15sdp"
+                            android:layout_width="match_parent" />
+                </RelativeLayout>
+                <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/forty_five_dp">
+
+
+                    <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/divider_line_height"
+                            android:layout_alignParentBottom="true"
+                            android:layout_marginStart="@dimen/twenty_dp"
+                            android:background="@color/divider_line_color" />
+                </RelativeLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</LinearLayout>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:id="@+id/relScrollHolder"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="visible">
+
+                <RelativeLayout
+                    android:id="@+id/relItems"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/twenty_five_dp">
+
+                    <TextView
+                        android:id="@+id/txtItems"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:textColor="@color/primary_text_color"
+                        android:textSize="@dimen/TitleTextSize" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/linDivItems"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/divider_line_height"
+                    android:layout_below="@id/relItems"
+                    android:background="@color/divider_line_color"
+                    android:orientation="horizontal" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/linDivItems">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvWishList"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/seven_dp"
+                        android:background="@color/white" />
+                </RelativeLayout>
+
+            </RelativeLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <LinearLayout
+        android:id="@+id/linNoItems"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/txtNoItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/fifty_dp"
+            android:layout_marginRight="@dimen/fifty_dp"
+            android:layout_marginTop="@dimen/seventy_dp"
+            android:textAlignment="center"
+            android:lineSpacingExtra="@dimen/five_dp"
+            android:textColor="@color/primary_text_color"
+            android:textSize="@dimen/BigFontSize" />
+
+        <TextView
+            android:id="@+id/txtWishListEmptyDetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/twenty_dp"
+            android:layout_marginRight="@dimen/twenty_dp"
+            android:layout_marginTop="@dimen/twenty_five_dp"
+            android:text="@string/shop_new_collection"
+            android:textAlignment="center"
+            android:textColor="@color/primary_text_color"
+            android:textSize="@dimen/MenuFontSize" />
+
+    </LinearLayout>
+
+</RelativeLayout>

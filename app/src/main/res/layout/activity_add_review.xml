@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+    <include layout="@layout/toolbar_default" />
+
+    <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="@dimen/_10sdp"
+                android:paddingEnd="@dimen/_10sdp">
+
+            <TextView
+                    android:id="@+id/txtNote"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:text="@string/add_review_note"
+                    android:textColor="@color/primary_text_color"
+                    android:textSize="@dimen/TitleTextSize" />
+
+            <com.willy.ratingbar.ScaleRatingBar
+                    android:id="@+id/simpleRatingBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    app:srb_clearRatingEnabled="false"
+                    app:srb_clickable="true"
+                    app:srb_drawableEmpty="@drawable/ic_star_empty"
+                    app:srb_drawableFilled="@drawable/ic_star_filled_black"
+                    app:srb_isIndicator="false"
+                    app:srb_numStars="5"
+                    app:srb_scrollable="false"
+                    android:animationCache="false"
+                    app:srb_starHeight="@dimen/_22sdp"
+                    app:srb_starPadding="@dimen/_5sdp"
+                    app:srb_starWidth="@dimen/_22sdp"
+                    app:srb_stepSize="1" />
+
+
+            <EditText
+                    android:id="@+id/edtTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:background="@drawable/rounded_border_edt"
+                    android:gravity="start"
+                    android:hint="@string/title_star"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:padding="@dimen/_10sdp"
+                    android:singleLine="true"
+                    android:textAlignment="viewStart"
+                    android:textSize="@dimen/SubTitleTextSize" />
+
+            <EditText
+                    android:id="@+id/edtComments"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:background="@drawable/rounded_border_edt"
+                    android:gravity="start"
+                    android:hint="@string/comments_star"
+                    android:lines="7"
+                    android:textAlignment="viewStart"
+                    android:padding="@dimen/_10sdp"
+                    android:textSize="@dimen/SubTitleTextSize" />
+
+            <TextView
+                    android:id="@+id/txtSubmit"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/button_size"
+                    android:layout_marginTop="@dimen/_25sdp"
+                    android:background="@drawable/rounded_corner_black"
+                    android:gravity="center"
+                    android:letterSpacing="0.075"
+                    android:text="@string/submit"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/btnTextSize" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

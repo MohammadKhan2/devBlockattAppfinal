@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="colorPrimary">#000000</color>
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+    <color name="hint_login">#828282</color>
+    <color name="switch_color">#33333333</color>
+    <color name="backcolor">#F7F5F7</color>
+    <color name="hint_color">#AAAAAA</color>
+    <color name="transparent">#00000000</color>
+    <color name="trans_black">#66000000</color>
+    <color name="bg_color">#E4E4E4</color>
+    <color name="trans_white">#99ffffff</color>
+    <color name="primary_color">#000000</color>
+    <color name="trans_grey">#CC8c8c8c</color>
+    <color name="view_all">#c72627</color>
+    <color name="secondary_color">#4B4B4B</color>
+    <color name="tertiary_color">#3c3c3c</color>
+    <color name="trans_black99">#cc000000</color>
+    <color name="stroke_color">#c2c2c2</color>
+    <color name="brand_border_color">#aaaaaa</color>
+    <color name="div_line_colr">#ccd8d8d8</color>
+    <color name="view_divider_color">#ccd8d8d8</color>
+    <color name="grey_text_color">#646464</color>
+    <color name="inactive_icon_color">#7b979797</color>
+    <color name="tint_color">#e6d8d8d8</color>
+    <color name="clear_btn_bg">#A3A1A1</color>
+    <color name="yellow">#F5BA00</color>
+    <color name="white_shade">#FAFAFA</color>
+
+    <!--<color name="colorAccent">#999999</color>-->
+    <color name="red_color">#ff0000</color>
+    <!--<color name="trans_bg">#d7d7d7</color>
+    <color name="tertiary_text">#575656</color>-->
+    <!-- For settings framework -->
+    <!-- A light Holo shade of blue -->
+    <!-- A dark Holo shade of blue -->
+    <!-- A really bright Holo shade of blue -->
+
+
+    <color name="unselect_color">#5A5A5A</color>
+    <!--    <color name="primary_text_color">#1e1e1e</color>-->
+
+    <!-- text colors-->
+    <color name="primary_text_color">#333333</color>
+    <color name="secondary_text_color">#444444</color>
+    <color name="tertiary_text_color">#3c3c3c</color>
+    <color name="radio_color">#30303026</color>
+    <color name="header_text_color">#2C3B57</color>
+    <!--text color-->
+    <color name="cmstextcolor">#33333380</color>
+    <color name="primary_bg_color">#EBEBEB</color>
+    <color name="primary_divline_color">#ccd8d8d8</color>
+    <color name="trans_bg_color">#80f5f2f2</color>
+    <color name="product">#808080</color>
+    <color name="zero">#00000000</color>
+    <color name="ten">#1A000000</color>
+    <color name="twenty">#33000000</color>
+    <color name="thirty">#4D000000</color>
+    <color name="fourty">#66000000</color>
+    <color name="fifty">#e8e8e8</color>
+    <color name="sixty">#99000000</color>
+    <color name="seventy">#B3000000</color>
+    <color name="eighty">#CC000000</color>
+
+
+    <color name="zero_white">#00ffffff</color>
+    <color name="ten_white">#1Affffff</color>
+    <color name="twenty_white">#33ffffff</color>
+    <color name="thirty_white">#4Dffffff</color>
+    <color name="fourty_white">#66ffffff</color>
+    <color name="fifty_white">#8ffffff0</color>
+    <color name="sixty_white">#99ffffff</color>
+    <color name="seventy_white">#B3ffffff</color>
+    <color name="eighty_white">#CCffffff</color>
+
+
+    <color name="float_transparent">#00000000</color>
+    <color name="sweet_dialog_bg_color">#FFFFFF</color>
+    <color name="button_text_color">#FFFFFF</color>
+    <color name="gray_btn_bg_color">#D0D0D0</color>
+    <color name="gray_btn_bg_pressed_color">#B6B6B6</color>
+    <color name="error_stroke_color">#F27474</color>
+    <color name="success_stroke_color">#A5DC86</color>
+    <color name="trans_success_stroke_color">#33A5DC86</color>
+    <color name="warning_stroke_color">#F8BB86</color>
+    <color name="instabug_annotation_color_yellow">#efca4c</color>
+
+    ////////////////////////ios color code/////////////
+
+    <color name="page_bgcolr">#F3F3F3</color>
+    <color name="discount_bg">#C41230</color>
+    <color name="final_price">#ff0000</color>
+    <color name="regular_price">#282828</color>
+    <color name="primary_text">#282828</color>
+    <color name="secondary_text">#646464</color>
+    <color name="cat_bg">#F3F3F3</color>
+    <color name="cat_text">#9E9E9E</color>
+    <color name="cat_product_text">#4B4B4B</color>
+    <color name="order_text">#1D7CA8</color>
+    <color name="product_tab_text">#4F4F4F</color>
+    <color name="strike_color">#7F7F7F</color>
+    <color name="account_text_color">#878787</color>
+
+    <color name="search_bg">#f2f2f2</color>
+    <color name="search_cancle">#AD1E3C</color>
+    <color name="primary_div_line">#E8E8E8</color>
+    <color name="back_arrow">#1e1d1d</color>
+    <color name="account_text">#373737</color>
+    <color name="fb_color">#3b5999</color>
+    <color name="faqfonts">#505050</color>
+
+    <color name="dialog_btn">#3677DC</color>
+    <color name="tab_color">#191919</color>
+    <color name="border_color">#f0f0f0</color>
+    <color name="left_menu_divline">#f8f8f8</color>
+    <color name="toolbar_divline">#E0E1E0</color>
+
+    ///////////////////////Flash Deals //////////////////
+
+    <color name="tab_unselect">#AAAAAA</color>
+<!--
+    <color name="tab_select">#2C3B57</color>
+-->
+    <color name="tab_select">#f9005b</color>
+    <color name="flash_discount_bg">#ccc41230</color>
+    <color name="unselect__text_color">#D4D4D4</color>
+    <color name="sold_color">#ffb3b3</color>
+    <color name="primary_button_color">#9141AE</color>
+    <color name="secondary_button_color">#1A9AFC</color>
+
+    <color name="blue">#2C3B57</color>
+    <color name="transparent_color">#00000000</color>
+
+    <color name="trans_bg">#f5f5f5</color>
+    <color name="light_gray_color">#f4f4f4</color>
+
+    <color name="debit_color">#E55000</color>
+    <color name="credit_color">#0077BE</color>
+
+    <color name="register_border">#fe3739</color>
+
+    <color name="transparent1">#79b39980</color>
+    <color name="account_icon">#333333</color>
+    <color name="lang_color">#666666</color>
+    <color name="badge_bg">#72464646</color>
+    <color name="store_bg">#A3464646</color>
+    <color name="left_menu_bg">#E62D2D2D</color>
+    <color name="left_menu_top_bar">#E8E8E8</color>
+    <color name="left_menu_text">#A3464646</color>
+    <color name="disable_btn_bg">#E8E8E8</color>
+    <color name="edt_tint_color">#E8E8E8</color>
+    <color name="transparent_myaccnt">#0b000000</color>
+    <color name="description">#D9303030</color>
+    <color name="app_bg_color">#F8F8F8</color>
+    <color name="gray_button_color">#cccccc</color>
+    <color name="green_button_color">#39b548</color>
+    <color name="red_text_color">#ff0000</color>
+    <color name="product_text_color">#1e1e1e</color>
+    <color name="price_black_color">#000000</color>
+    <color name="final_price_text_color">#1e1e1e</color>
+    <color name="strike_out_text_color">#646464</color>
+    <color name="discount_color">#fe7b52</color>
+    <color name="golden_color">#978E6E</color>
+    <color name="circular_unslected">#F4DD95</color>
+    <color name="circular_neutral">#2C3B57</color>
+
+    <color name="forgot_pass_color">#2C3B57</color>
+    <color name="search_text_color">#1e1e1e</color>
+
+    <color name="title_text_color">#1e1e1e</color>
+    <color name="editbox_border_color">#bebebe</color>
+
+    <color name="icon_color">#9A9A9A</color>
+    <color name="icon_arrow_down_reg">#5A5A5A</color>
+    <color name="icon_arrow">#5A5A5A</color>
+    <color name="info_icon">#5A5A5A</color>
+
+    <color name="phonecode_bg_color">#e5e5e5</color>
+    <color name="order_list_bg">#9A9A9A</color>
+
+    <color name="arrow_icon_color">#646464</color>
+    <color name="item_brder_color">#dcdcdc</color>
+    <color name="checkout_background">#E4E4E4</color>
+    <color name="box_border">#e6e6e6</color>
+
+    <color name="pending_status">#0d7f0d</color>
+    <color name="scheduled_status">#4a86e8</color>
+    <color name="delivered_status">#434343</color>
+    <color name="cancelled_status">#ff0000</color>
+    <color name="on_hold_status">#9900FF</color>
+    <color name="red_rext">#f44340</color>
+    <color name="shipped_status">#bea376</color>
+    <color name="product_txt_color">#1e1e1e</color>
+    <color name="sku_text_color">#1e1e1e</color>
+    <color name="out_of_stock_bg">#787878</color>
+    <color name="viewpager_page_color">#969696</color>
+    <color name="create_accnt_btn_bg">#4adc95</color>
+    <color name="icon_bg_color">#f0f0f0</color>
+    <color name="icon_color_dark">#3A3A3A</color>
+    <color name="tick_color">#2ABC59</color>
+    <color name="edit_text_color">#969696</color>
+    <color name="wishlist_icon_color">#a0a0a0</color>
+    <color name="white_transparent">#B3ffffff</color>
+    <color name="active">#24bfdc</color>
+    <color name="inactive">#646464</color>
+    <color name="all_btn_bg">#f9f9f9</color>
+    <color name="arrow_color">#949494</color>
+    <color name="sale_bg">#0CF8B6</color>
+    <color name="pink_bg">#fbebeb</color>
+    <color name="pink_text_color">#b28082</color>
+    <color name="my_pics_bg">#F7F7F7</color>
+    <color name="category_bg">#f2f2f2</color>
+    <color name="attribute_disable">#F9F9F9</color>
+    <color name="attribute_unsel_color">#989898</color>
+    <color name="popular_text_bg">#F9F9F9</color>
+
+    <color name="navigation_divider">#ccd8d8d8</color>
+    <color name="snack_bar_bg_color">#000000</color>
+    <color name="btn_text_color">#ffffff</color>
+    <color name="btn_bg_color">#000000</color>
+    <color name="divide_color">#1e1e1e</color>
+    <color name="divider_login">#A8A086</color>
+    <color name="fb_button_color">#3C5094</color>
+
+    <color name="btn_cart_bg">#000000</color>
+    <color name="btn_golden_bg">#bea376</color>
+    <color name="secondary_text_color_dark">#5A5A5A</color>
+
+
+    <color name="default_address_color">#005eb8</color>
+    <color name="divider_line_light">#9A9A9A</color>
+
+    <color name="divider_line_color">#ededed</color>
+    <color name="divider_line_color_dark">#707070</color>
+    <color name="add_address_bg">#f0f0f0</color>
+    <color name="checkout_payment_bg_color">#e1e0e0</color>
+    <color name="checkout_bg_color">#eeeeee</color>
+    <color name="wishlist_icon_bg">#DCDCDC</color>
+    <color name="logo_bg">#211E1F</color>
+    <color name="tab_selected_color">#AA8C00</color>
+    <color name="text_blue">#3264C5</color>
+    <color name="terms_co">#2C3B57</color>
+    <color name="order_list_item_transparent">#4C4D4EA7</color>
+    <color name="account_border_color">#AE9433</color>
+    <color name="account_bg_color">#F7F7F7</color>
+    <color name="divider_line_medium_black">#9A9A9A</color>
+    <color name="review_color">#3264C5</color>
+    <color name="app_bg_color_white">#FFFFFF</color>
+    <color name="product_code_bg">#676767</color>
+    <color name="fully_transparent">#00000000</color>
+    <color name="close_icon_color">#41283D</color>
+    <color name="social_icon_shadow">#00000029</color>
+    <color name="edt_box_border_color">#80978E6E</color>
+    <color name="conditions">#2C3B57B8</color>
+    <color name="arrow_tint">#303030</color>
+    <color name="filter_icon">#DCDCDC</color>
+    <color name="grey_dark_color">#808080</color>
+    <color name="checkout_check_color">#208D7E</color>
+    <color name="wishlist_cart">#2C3B57</color>
+    <color name="remove_cart">#C70000</color>
+    <color name="cart_qty_bg">#1AAAAAAA</color>
+    <color name="switch_button_color">#33333333</color>
+    <color name="discount_text_color">#0A5800</color>
+    <color name="product_name_color">#D9303030</color>
+    <color name="primary_icon_color">#2C3B57</color>
+    <color name="or_color">#FA115B</color>
+    <color name="red_pink_color">#f9005b</color>
+    <color name="edt_txt_border_color">#9141AF</color>
+</resources>

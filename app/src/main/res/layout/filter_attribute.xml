@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/button_text_color"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/relFilterAttribute"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginHorizontal="@dimen/_10sdp">
+
+
+            <ImageView
+                android:id="@+id/ivfilter"
+                android:layout_width="@dimen/_12sdp"
+                android:layout_height="@dimen/_12sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/five_dp"
+                android:src="@drawable/select"
+                android:tint="@color/arrow_tint" />
+
+            <TextView
+                android:id="@+id/txtNameFilter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/five_dp"
+                android:layout_toStartOf="@+id/ivfilter"
+                android:text="@string/our_picks"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="@color/arrow_tint"
+                android:textSize="@dimen/SubTitleTextSize" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:background="@color/divider_line_color_dark" />
+
+
+        <RelativeLayout
+            android:id="@+id/relFilterItem"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginHorizontal="@dimen/_10sdp">
+
+
+            <ImageView
+                android:id="@+id/ivfilterItems"
+                android:layout_width="@dimen/_12sdp"
+                android:layout_height="@dimen/_12sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/five_dp"
+                android:src="@drawable/border_radio_payment" />
+
+            <TextView
+                android:id="@+id/txtNameItems"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/five_dp"
+                android:layout_toStartOf="@+id/ivfilterItems"
+                android:text="@string/new_items"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="@color/arrow_tint"
+                android:textSize="@dimen/SubTitleTextSize" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:background="@color/divider_line_color_dark" />
+
+        <RelativeLayout
+            android:id="@+id/relPriceHighToLow"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginHorizontal="@dimen/_10sdp">
+
+
+            <ImageView
+                android:id="@+id/ivfilterPricehigh"
+                android:layout_width="@dimen/_12sdp"
+                android:layout_height="@dimen/_12sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/five_dp"
+                android:src="@drawable/border_radio_payment" />
+
+            <TextView
+                android:id="@+id/txtPriceHighToLow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/five_dp"
+                android:layout_toStartOf="@+id/ivfilterPricehigh"
+                android:text="@string/price_high_to_low"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="@color/arrow_tint"
+                android:textSize="@dimen/_13ssp" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:background="@color/divider_line_color_dark" />
+
+        <RelativeLayout
+            android:id="@+id/relPriceLowToHigh"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginHorizontal="@dimen/_10sdp">
+
+
+            <ImageView
+                android:id="@+id/ivfilterPrice"
+                android:layout_width="@dimen/_12sdp"
+                android:layout_height="@dimen/_12sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/five_dp"
+                android:src="@drawable/border_radio_payment" />
+
+            <TextView
+                android:id="@+id/txtPriceLowToHigh"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/five_dp"
+                android:layout_toStartOf="@+id/ivfilterPrice"
+                android:text="@string/price_low_to_high"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="@color/arrow_tint"
+                android:textSize="@dimen/_13ssp" />
+        </RelativeLayout>
+
+
+    </LinearLayout>
+</LinearLayout>

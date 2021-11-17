@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+        android:oneshot="false">
+    <item
+            android:drawable="@drawable/gif_progress_0"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_1"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_2"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_3"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_4"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_5"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_6"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_7"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_8"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_9"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_10"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_11"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_12"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_13"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_14"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_15"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_16"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_17"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_18"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_19"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_20"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_21"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_22"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_23"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_24"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_25"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_26"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_27"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_28"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_29"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_30"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_31"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_32"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_33"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_34"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_35"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_36"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_37"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_38"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_39"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_40"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_41"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_42"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_43"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_44"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_45"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_46"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_47"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_48"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_49"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_50"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_51"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_52"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_53"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_54"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_55"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_56"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_57"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_58"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_59"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_60"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_61"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_62"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_63"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_64"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_65"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_66"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_67"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_68"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_69"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_70"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_71"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_72"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_73"
+            android:duration="40" />
+    <item
+            android:drawable="@drawable/gif_progress_74"
+            android:duration="40" />
+</animation-list>

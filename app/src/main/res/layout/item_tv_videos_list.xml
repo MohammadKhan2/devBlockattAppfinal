@@ -1,0 +1,101 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linMain"
+        android:visibility="gone"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/linTvVideos"
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:layout_height="wrap_content">
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/ten_dp"
+                android:paddingHorizontal="@dimen/_10sdp">
+
+            <TextView
+                    android:id="@+id/txtTvVideoTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical|start"
+                    android:textAlignment="viewStart"
+                    android:textAllCaps="true"
+                    android:textColor="@color/primary_text_color"
+                    android:textSize="@dimen/sixteen_sp" />
+
+            <TextView
+                    android:id="@+id/txtTvVideosView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:gravity="center_vertical|start"
+                    android:text="@string/view_all"
+                    android:textAlignment="viewStart"
+                    android:textAllCaps="false"
+                    android:textColor="@color/golden_color"
+                    android:textSize="@dimen/SubTitleTextSize" />
+
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/corner_radius"
+                    android:layout_alignBottom="@+id/txtTvVideoTitle"
+                    android:layout_toEndOf="@+id/txtTvVideoTitle"
+                    android:background="@color/navigation_divider" />
+
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvTvList"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:paddingEnd="@dimen/_10sdp"
+                android:clipToPadding="false"
+                android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+            android:id="@+id/linAllProducts"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/divider_line_height"
+                android:background="@color/divider_line_color" />
+
+        <TextView
+                android:id="@+id/txtAllProducts"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:letterSpacing="0.04"
+                android:text="@string/all_products"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/primary_text_color"
+                android:textSize="@dimen/fourteen_sp" />
+
+
+    </LinearLayout>
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/divider_line_height"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:id="@+id/viewBottom"
+            android:visibility="gone"
+            android:background="@color/divider_line_color" />
+</LinearLayout>

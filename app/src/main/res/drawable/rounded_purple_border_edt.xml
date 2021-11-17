@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<inset xmlns:android="http://schemas.android.com/apk/res/android">
+    <shape android:shape="rectangle">
+        <corners android:radius="@dimen/_2sdp" />
+        <solid android:color="@color/white" />
+        <stroke
+            android:width="0.1dp"
+            android:color="@color/edt_txt_border_color" />
+        <!--    <stroke
+                android:width="0.2dp"
+                android:color="@color/edt_box_border_color" />-->
+    </shape>
+</inset>

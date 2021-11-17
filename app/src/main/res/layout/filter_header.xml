@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/button_text_color"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:id="@+id/relcategories"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp">
+
+
+            <ImageView
+                android:id="@+id/ivcategories"
+                android:layout_width="@dimen/_12sdp"
+                android:layout_height="@dimen/_12sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:rotation="180"
+                android:src="@drawable/ic_left_arrow" />
+
+            <TextView
+                android:id="@+id/txtcategories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/five_dp"
+                android:layout_toStartOf="@+id/ivcategories"
+                android:text="@string/categories"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="@color/arrow_tint"
+                android:textSize="@dimen/SubTitleTextSize" />
+        </RelativeLayout>
+
+        <View
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_below="@+id/ivfilter"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_alignParentEnd="true"
+            android:background="@color/divider_line_color_dark" />
+
+
+        <RelativeLayout
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:id="@+id/relColors"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp">
+
+
+            <ImageView
+                android:id="@+id/ivColors"
+                android:layout_width="@dimen/_12sdp"
+                android:layout_height="@dimen/_12sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:rotation="180"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:src="@drawable/ic_left_arrow" />
+
+            <TextView
+                android:id="@+id/txtColors"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/five_dp"
+                android:layout_toStartOf="@+id/ivColors"
+                android:text="@string/colors"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="@color/arrow_tint"
+                android:textSize="@dimen/SubTitleTextSize" />
+        </RelativeLayout>
+
+        <View
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_below="@+id/ivfilter"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_alignParentEnd="true"
+            android:background="@color/divider_line_color_dark" />
+        <RelativeLayout
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:id="@+id/relPriceHighToLow"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp">
+
+
+            <ImageView
+                android:id="@+id/ivBrands"
+                android:layout_width="@dimen/_12sdp"
+                android:layout_height="@dimen/_12sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:rotation="180"
+                android:src="@drawable/ic_left_arrow" />
+
+            <TextView
+                android:id="@+id/txtBrands"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/five_dp"
+                android:layout_toStartOf="@+id/ivBrands"
+                android:text="@string/brands"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="@color/arrow_tint"
+                android:textSize="@dimen/SubTitleTextSize" />
+        </RelativeLayout>
+
+        <View
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_below="@+id/ivfilter"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_alignParentEnd="true"
+            android:background="@color/divider_line_color_dark" />
+
+        <RelativeLayout
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:id="@+id/relPriceLowToHigh"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp">
+
+
+            <ImageView
+                android:id="@+id/ivPriceRange"
+                android:layout_width="@dimen/_12sdp"
+                android:layout_height="@dimen/_12sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:rotation="180"
+                android:src="@drawable/ic_left_arrow" />
+
+            <TextView
+                android:id="@+id/txtPriceRange"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/five_dp"
+                android:layout_toStartOf="@+id/ivPriceRange"
+                android:text="@string/price_range"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="@color/arrow_tint"
+                android:textSize="@dimen/SubTitleTextSize"/>
+        </RelativeLayout>
+
+        <View
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:layout_below="@+id/ivfilter"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_alignParentEnd="true"
+            android:background="@color/divider_line_color_dark" />
+    </LinearLayout>
+
+
+</LinearLayout>

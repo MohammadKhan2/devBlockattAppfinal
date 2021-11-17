@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:id="@+id/linMainHolder"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/sweet_dialog_bg_color"
+    android:orientation="vertical"
+
+    android:paddingHorizontal="@dimen/_5sdp"
+    android:paddingBottom="@dimen/_10sdp">
+
+    <ImageView
+        android:id="@+id/ivDelete"
+        android:layout_width="@dimen/_17sdp"
+        android:layout_height="@dimen/_17sdp"
+        android:layout_gravity="end"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:src="@drawable/ic_cross"
+        android:tint="@color/black" />
+
+    <ImageView
+        android:id="@+id/ivProduct"
+        android:layout_width="@dimen/_150sdp"
+        android:layout_height="@dimen/_150sdp"
+        android:scaleType="centerInside" />
+
+
+    <TextView
+        android:id="@+id/txtSoldOut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_18sdp"
+        android:background="@color/btn_bg_color"
+        android:gravity="start"
+        android:text="@string/sold_out"
+        android:textAllCaps="true"
+        android:textColor="@color/btn_text_color"
+        android:textSize="@dimen/_10ssp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/txtBrandName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layoutDirection="ltr"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:maxLines="1"
+        android:textAllCaps="true"
+        android:textColor="@color/account_icon"
+        android:textSize="@dimen/TitleTextSize" />
+<!--
+
+    <TextView
+        android:id="@+id/txtFinalPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/five_dp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:text="0.55 KD "
+        android:gravity="start"
+        android:layout_marginEnd="@dimen/five_dp"
+        android:textAllCaps="true"
+        android:textColor="@color/price_black_color"
+        android:textSize="@dimen/MenuFontSize" />
+-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:gravity="start"
+        android:layout_marginEnd="@dimen/_30sdp"
+        android:id="@+id/rlPrice"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/txtFinalPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:gravity="start"
+            android:text=""
+            android:textAlignment="viewStart"
+            android:textAllCaps="true"
+            android:textColor="@color/primary_text_color"
+            android:textSize="@dimen/thirteen_sp" />
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:id="@+id/txtName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:lines="2"
+        android:maxLines="2"
+        android:textColor="@color/secondary_text_color"
+        android:textSize="@dimen/SubTitleTextSize" />
+
+
+    <TextView
+        android:id="@+id/txtAddCart"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:background="@color/btn_bg_color"
+        android:gravity="center"
+        android:text="@string/add_to_cart"
+        android:textAllCaps="true"
+        android:textColor="@color/btn_text_color"
+        android:textSize="@dimen/thirteen_sp"
+        android:visibility="gone" />
+
+
+</LinearLayout>
+
+

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linMainHolder"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/relMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <CheckBox
+            android:id="@+id/checkFilter"
+            android:layout_width="@dimen/_16sdp"
+            android:layout_height="@dimen/_16sdp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:background="@drawable/ic_checkbox_unchecked"
+            android:backgroundTint="@color/filter_icon"
+            android:button="@null"
+            android:clickable="false"
+            android:focusable="false"
+            android:gravity="center_vertical"
+            android:src="@drawable/ic_tick"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/txtTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/_12sdp"
+            android:layout_toEndOf="@+id/checkFilter"
+            android:gravity="center_vertical|start"
+            android:textAlignment="viewStart"
+            android:textAllCaps="false"
+            android:textColor="@color/primary_text_color"
+            android:textSize="@dimen/SubTitleTextSize" />
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/viewDivLine"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_line_height"
+        android:background="@color/divider_line_color" />
+
+</LinearLayout>

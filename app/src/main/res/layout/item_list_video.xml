@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/ten_dp">
+
+    <LinearLayout
+        android:id="@+id/lnrMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+
+            android:id="@+id/relVideo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imgVideo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/linData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/five_dp"
+            android:paddingBottom="@dimen/five_dp">
+
+            <ImageView
+                android:id="@+id/imgPlay"
+                android:layout_width="@dimen/twenty_five_dp"
+                android:layout_height="@dimen/twenty_five_dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_play_icon" />
+
+            <TextView
+                android:id="@+id/txtName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/five_dp"
+                android:ellipsize="end"
+                android:gravity="start|center_vertical"
+                android:letterSpacing="0.012"
+                android:lines="2"
+                android:maxLines="2"
+                android:textAlignment="viewStart"
+                android:textColor="@color/primary_text_color"
+                android:textSize="@dimen/SubTitleTextSize" />
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>

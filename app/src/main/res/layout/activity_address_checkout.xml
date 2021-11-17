@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/app_bg_color"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/toolbar_actionbar"
+        layout="@layout/toolbar_default" />
+
+    <LinearLayout
+        android:id="@+id/linData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/linBottom"
+        android:layout_below="@+id/toolbar_actionbar"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <TextView
+            android:id="@+id/txtSelectedAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_15sdp"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="@string/selected_address"
+            android:textAllCaps="true"
+            android:textColor="@color/primary_text_color"
+            android:textSize="@dimen/TitleTextSize" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            app:cardCornerRadius="@dimen/_3sdp"
+            app:cardElevation="@dimen/_2sdp">
+
+            <LinearLayout
+                android:id="@+id/linAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/_10sdp">
+
+                <TextView
+                    android:id="@+id/txtName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:gravity="start"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/primary_text_color"
+                    android:textSize="@dimen/SubTitleTextSize" />
+
+                <TextView
+                    android:id="@+id/txtAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:gravity="start"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/primary_text_color"
+                    android:textSize="@dimen/SubTitleTextSize" />
+
+                <TextView
+                    android:id="@+id/txtMobile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:ellipsize="end"
+                    android:gravity="start"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/primary_text_color"
+                    android:textSize="@dimen/SubTitleTextSize" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/txtEdit"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_size"
+            android:layout_marginHorizontal="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_13sdp"
+            android:background="@drawable/blue_border_button_background"
+            android:gravity="center"
+            android:text="@string/edit_address"
+            android:textAllCaps="true"
+            android:textColor="@color/primary_text_color"
+            android:textSize="@dimen/btnTextSize" />
+
+        <TextView
+            android:id="@+id/txtAddAddress"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_size"
+            android:layout_marginHorizontal="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:background="@drawable/rounded_corner_button_bg"
+            android:gravity="center"
+            android:text="@string/add_new_addres"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/btnTextSize" />
+    </LinearLayout>
+
+    <include
+        layout="@layout/layout_empty_page"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar_actionbar" />
+
+    <LinearLayout
+        android:id="@+id/linBottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/_10sdp"
+        android:paddingTop="@dimen/_10sdp"
+        android:paddingEnd="@dimen/_10sdp"
+        android:paddingBottom="@dimen/fifteen_dp"
+        android:visibility="visible">
+
+        <RelativeLayout
+            android:id="@+id/relSubTotal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/txtSubTotalLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:gravity="start"
+                android:text="@string/sub_total"
+                android:textAlignment="viewStart"
+                android:textColor="@color/primary_text_color"
+                android:textSize="@dimen/SubTitleTextSize" />
+
+            <TextView
+                android:id="@+id/txtSubtotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:gravity="end"
+                android:textColor="@color/primary_text_color"
+                android:textSize="@dimen/SubTitleTextSize" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/relDiscount"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/txtDiscountLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:gravity="start"
+                android:text="@string/discount"
+                android:textAlignment="viewStart"
+                android:textColor="@color/primary_text_color"
+                android:textSize="@dimen/SubTitleTextSize" />
+
+            <TextView
+                android:id="@+id/txtDiscount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:gravity="end"
+                android:textColor="@color/primary_text_color"
+                android:textSize="@dimen/SubTitleTextSize" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/relDeliveryCharge"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/txtDeliveryChargeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:gravity="start"
+                android:text="@string/delivery_charges"
+                android:textAlignment="viewStart"
+                android:textColor="@color/primary_text_color"
+                android:textSize="@dimen/SubTitleTextSize" />
+
+            <TextView
+                android:id="@+id/txtDeliveryCharge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:gravity="end"
+                android:textColor="@color/primary_text_color"
+                android:textSize="@dimen/SubTitleTextSize" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/relVat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/txtVatLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:gravity="start"
+                android:text="@string/total"
+                android:textAlignment="viewStart"
+                android:textColor="@color/primary_text_color"
+                android:textSize="@dimen/SubTitleTextSize" />
+
+            <TextView
+                android:id="@+id/txtVatCharges"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:gravity="end"
+                android:textColor="@color/primary_text_color"
+                android:textSize="@dimen/SubTitleTextSize" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relTotal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/txtTotalLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:gravity="start"
+                android:text="@string/total"
+                android:textAlignment="viewStart"
+                android:textColor="@color/primary_text_color"
+                android:textSize="@dimen/SubTitleTextSize" />
+
+            <TextView
+                android:id="@+id/txtTotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:gravity="end"
+                android:textColor="@color/primary_text_color"
+                android:textSize="@dimen/SubTitleTextSize" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/txtProceedToCheckout"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_size"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:background="@drawable/rounded_corner_button_bg_blue"
+            android:gravity="center"
+            android:text="@string/continue_payment"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/btnTextSize" />
+    </LinearLayout>
+</RelativeLayout>

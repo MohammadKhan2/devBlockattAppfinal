@@ -1,0 +1,588 @@
+<resources>
+    <string name="app_name">Blockat</string>
+    <string name="facebook_app_id" translatable="false">2387782768031868</string>
+    <string name="fb_login_protocol_scheme" translatable="false">fb2387782768031868</string>
+
+    //pushwoosh
+   <!-- <string name="pushwoosh_app_id_live" translatable="false">E653B-EBD46</string>
+    <string name="pushwoosh_app_id_test" translatable="false">16EB6-187D5</string>
+      <string name="pushwoosh_sender_id_live" translatable="false">224772251709</string>-->
+
+ <!--   <string name="pushwoosh_app_id_live" translatable="false">AA582-8A763</string>
+    <string name="pushwoosh_app_id_test" translatable="false">0C78A-3746B</string>
+    <string name="pushwoosh_sender_id_live" translatable="false">1095320028880</string>
+    <string name="pushwoosh_app_scanner_id_live" translatable="false"></string>
+    <string name="pushwoosh_app_scanner_id_test" translatable="false"></string>-->
+
+    <string name="pushwoosh_app_id_live" translatable="false">0C78A-3746B</string>
+    <string name="pushwoosh_app_id_test" translatable="false">AA582-8A763</string>
+    <string name="pushwoosh_sender_id_live" translatable="false">1095320028880</string>
+    <string name="pushwoosh_app_scanner_id_live" translatable="false"></string>
+    <string name="pushwoosh_app_scanner_id_test" translatable="false"></string>
+
+    //branch io
+    <string name="branch_io_test_key" translatable="false">key_test_ko1iYhisq73el7gf0Fb6nakfyrgEeVAC</string>
+    <string name="branch_io_test_host" translatable="false">dl.blockatapp.com</string>
+    <string name="branch_io_test_alternate_host" translatable="false">fu7wv-alternate.test-app.link</string>
+    <string name="branch_io_live_key" translatable="false">key_live_hbXkZlbtD5Xbp0lc1sa4eibgvrdyaHvo</string>
+    <string name="branch_io_live_host" translatable="false">dl.blockatapp.com</string>
+    <string name="branch_io_live_alternate_host" translatable="false">fu7wv-alternate.app.link</string>
+
+
+    //////Left Menu
+    <string name="menu_profile">My profile</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_music">Musicians</string>
+    <string name="menu_celebrities">Celebrities</string>
+    <string name="menu_brand">Brands</string>
+    <string name="menu_categories">DISCOVER</string>
+    <string name="menu_cart">My Bag</string>
+    <string name="menu_contact">Contact Us</string>
+    <string name="menu_lang">عربى</string>
+    <string name="menu_country">Change Country</string>
+    <string name="menu_tv_products">TV Products</string>
+    <string name="account">Account</string>
+
+    //bottom menu
+    <string name="bottom_menu_home">Home</string>
+    <string name="bottom_menu_avenue">Blocks</string>
+    <string name="bottom_menu_stars">Talents</string>
+    <string name="bottom_menu_brand">Brands</string>
+    <string name="bottom_menu_cart">My Bag</string>
+
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    <string name="KWD">KWD</string>
+    <string name="QAR">QR</string>
+    <string name="SAR">SAR</string>
+    <string name="USD">$</string>
+    <string name="BHD">BHD</string>
+    <string name="OMR">OMR</string>
+    <string name="AED">AED</string>
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    <string name="press_back_once_again_to_close_app">Press back once again to close app</string>.
+    <string name="size">Size :</string>
+    <string name="faqs_title">FAQS</string>
+    <string name="payment_options">Payment options</string>
+    <string name="placed_on">Placed on</string>
+    <string name="payment_method">Payment method</string>
+    <string name="add_new_addres">Add New Address</string>
+    <string name="select_governorate">Select Governorate</string>
+    <string name="select_governorate_star">Select Governorate*</string>
+    <string name="select_country_star">Select Country*</string>
+    <string name="last_name">Last Name</string>
+    <string name="empty_email">Please enter email address</string>
+    <string name="save_address">SAVE ADDRESS</string>
+    <string name="add_address">Add Address</string>
+    <string name="incorrect_street_add">Please enter your street</string>
+    <string name="incorrect_jadah_add">Please enter jadaah</string>
+    <string name="incorrect_block">Please select Block</string>
+    <string name="incoorect_governorate">Please select your governorate</string>
+    <string name="incorrect_country">Please select your country</string>
+    <string name="please_enter_valid_email_id">Please enter a valid email address</string>
+    <string name="passwword_must_have_six_letters">Password should be atleast 6 characters</string>
+    <string name="empty_bag">Your shopping bag is currently empty.</string>
+    <string name="bag_total">Bag total</string>
+    <string name="size_guide">Size guide</string>
+    <string name="recent_search">Your recent searches</string>
+    <string name="clear">Clear</string>
+    <string name="move_to_wishlist">Move to wishlist</string>
+    <string name="sub_total">Sub Total</string>
+    <string name="total">Total</string>
+    <string name="checkout">Checkout</string>
+    <string name="login">Login</string>
+    <string name="sign_in_register">SIGN IN / REGISTER</string>
+    <string name="my_orders">My Orders</string>
+    <string name="account_details">My account details</string>
+    <string name="user_already_registered">User with same email already exists.</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="call">Call Us</string>
+    <string name="sort_by">Sort by</string>
+    <string name="recommended">Recommended</string>
+    <string name="price_low_to_high">Price (Low To High)</string>
+    <string name="price_high_to_low">Price (High To Low)</string>
+    <string name="brand">Brands</string>
+    <string name="apply">APPLY</string>
+    <string name="apply_small">Apply</string>
+    <string name="change_store">Change store</string>
+    <string name="all">ALL</string>
+    <string name="email_address">Enter your email id</string>
+    <string name="email_address_star">Email Address*</string>
+
+    <string name="signup_with_facebook">Signup with Facebook</string>
+    <string name="please_enter_your_name">Please enter your name</string>
+    <string name="please_enter_characters">Please enter more than 2 characters</string>
+    <string name="forgot_password"><u>Forgot password?</u></string>
+    <string name="forgot_password_note">Please enter your registered email address\nand we\'ll help you reset your password.</string>
+    <string name="submit">Submit</string>
+    <string name="first_name">First Name</string>
+    <string name="password">Enter your password</string>
+    <string name="please_enter_a_valid_email_id">Please enter a valid email address</string>
+    <string name="current_password">Current Password</string>
+    <string name="register">Register</string>
+    <string name="enter_phone_number">Please enter your phone number</string>
+    <string name="items_summary">ITEMS SUMMARY</string>
+    <string name="cash_on_delivery">Cash On Delivery</string>
+    <string name="mastercard_visa">VISA/MASTERCARD</string>
+    <string name="free">FREE</string>
+    <string name="cod_charges">COD Charges</string>
+    <string name="details">Details</string>
+    <string name="invalid_password">Invalid password</string>
+    <string name="error">There was an error while communicating with the server. Please try again</string>
+    <string name="select_area">Select Area</string>
+    <string name="select_area_start">Select Area*</string>
+    <string name="select_block">Select Block</string>
+    <string name="select_block_star">Select Block</string>
+    <string name="Please_enter_email_address">Please enter your email address</string>
+    <string name="phone_number">Enter your phone number</string>
+    <string name="phone_number_star">Enter your phone number*</string>
+    <string name="area">Area</string>
+    <string name="block">Block*</string>
+    <string name="enter_block">Enter Block</string>
+    <string name="street">Street</string>
+    <string name="jaddah">Jaddah</string>
+    <string name="bag">Bag</string>
+    <string name="why_not_check_out_whats_s_new">why not check out what\'s new?</string>
+    <string name="move_to_wishlist_desc">Are you sure you want to move this item to wishlist?</string>
+    <string name="delete_item_desc">Do you wish to remove this item from bag?</string>
+    <string name="ok">OK</string>
+    <string name="remove">Remove</string>
+    <string name="filter">Filter</string>
+    <string name="done">Done</string>
+    <string name="reset_all">Reset all</string>
+    <string name="sort">Sort</string>
+    <string name="Password_successfully_reset">Your password has been sent to the registered email id</string>
+    <string name="description">DESCRIPTION</string>
+    <string name="proceed_to_purchase">proceed to purchase</string>
+    <string name="forgot_pass">forgot password</string>
+    <string name="cancel">Cancel</string>
+    <string name="search_hint">Search</string>
+    <string name="logout">Logout</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="yes_lang" translatable="false">نعم</string>
+    <string name="no_lang">لا</string>
+    <string name="order_details">Order Details</string>
+    <string name="color_colon">Color:</string>
+    <string name="size_colon">Size:</string>
+    <string name="please_select_attribute">Please select color/size</string>
+    <string name="please_add_address">Please add address.</string>
+    <string name="please_select_payment">Please select payment method to proceed.</string>
+    <string name="items_total">Items (%1$s)</string>
+    <string name="item_total">Item (%1$s)</string>
+    <string name="vat_charges">VAT</string>
+    <string name="payment_gateway">Payment Gateway</string>
+    <string name="order_summary">Order Summary</string>
+    <string name="add_new_address">Add New Address</string>
+    <string name="default_address">Default Address</string>
+    <string name="my_address">My Address</string>
+    <string name="incorrect_area">Please select your area</string>
+    <string name="add_successfully_added">Your address has been saved successfully.</string>
+    <string name="edit_address">Edit Address</string>
+    <string name="address_successfully_updated">Your address has been updated successfully.</string>
+    <string name="select_country">Select Country</string>
+    <string name="save">Save</string>
+    <string name="change_currency_alert_logged_out">Changing country will remove all items in your cart?</string>
+    <string name="delete_item_wishlist_alert">Do you wish to remove this item from wishlist?</string>
+    <string name="items_ordered">%1$s ITEM(S) ORDERED</string>
+    <string name="empty_address_list_heading">Your address book is\ncurrently empty!</string>
+    <string name="empty_address_list_"><u>Add a new address</u></string>
+    <string name="empty_order_list_heading">Your order list is empty!</string>
+    <string name="empty_product_list_heading">No products found!</string>
+    <string name="empty_order_heading">No orders found</string>
+    <string name="empty_wishlist">Your wishlist is empty!</string>
+
+    <string name="email_not_found">Email id not found!</string>
+    <string name="login_cancelled">Login cancelled by user!</string>
+    <string name="login_unsuccessfull">Login unsuccessful!</string>
+    <string name="qty_label">Qty</string>
+    <string name="empty_items_list_heading">No items ordered</string>
+    <string name="user_doesn_t_exists">User doesn\'t exist</string>
+    <string name="loading">LOADING</string>
+    <string name="share_text">Install Blockat now to enjoy the best offers!</string>
+    <string name="share_product">Share product</string>
+    <string name="sold_out">Sold Out</string>
+    <string name="set_location_alert">You want to set your store location to %1$s</string>
+    <string name="SKU">sku - %1$s</string>
+    <string name="about_us">About Blockat</string>
+    <string name="shipping_cost">Shipping Cost</string>
+    <string name="connection_error">Please check your internet connection</string>
+    <string name="featured_products">Featured Products</string>
+    <string name="old_password_incorrect">Current password is incorrect</string>
+    <string name="featured_brands">Featured Brands</string>
+    <string name="shop_new_collection"><u>SHOP NEW COLLECTION</u></string>
+    <string name="are_you_sure">هل أنت متأكد ؟</string>
+    <string name="alert_language">تريد تغيير لغتك إلى اللغة العربية؟</string>
+    <string name="add_to_cart">Add to Bag</string>
+    <string name="dont_have_accnt">Don\'t have account yet? Sign Up</string>
+    <string name="facebook_note">Email permission is mandatory for login to Stylee Sport with Facebook</string>
+    <string name="email_error">Email id not found</string>
+    <string name="acc_shipping_add">shipping addresses</string>
+    <string name="acc_my_wishlist">My Wishlist</string>
+    <string name="acc_about_us">About Us</string>
+    <string name="acc_contact">Contact Us</string>
+    <string name="acc_call">Call Us</string>
+    <string name="acc_rate_us">Rate us</string>
+    <string name="acc_share">Share App</string>
+    <string name="btn_edit">Edit Profile</string>
+    <string name="login_create_account">Login/Create Account</string>
+    <string name="greetings">Hi,</string>
+    <string name="or_login">Or</string>
+    <string name="or_signp">Or</string>
+    <string name="already_have_account">Already a member?</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="brand_note">Brands</string>
+    <string name="details_wishlist">WISHLIST</string>
+    <string name="details_bag">ADD TO BAG</string>
+    <string name="first_name_colon">First Name:</string>
+    <string name="last_name_colon">Last Name:</string>
+    <string name="block_colon">Block:</string>
+    <string name="jaddah_colon">Jaddah:</string>
+    <string name="street_colon">Street:</string>
+    <string name="notes_colon">Notes:</string>
+    <string name="phone_number_colon">Phone Number:</string>
+    <string name="country_colon">Country:</string>
+    <string name="area_colon">Area:</string>
+    <string name="full_name_colon">Full Name:</string>
+    <string name="edit">Edit</string>
+    <string name="payment">Payment</string>
+    <string name="step_1">Step 1/3</string>
+    <string name="select_address">Select Address</string>
+    <string name="step_2">Step 2/3</string>
+    <string name="step_3">Step 3/3</string>
+    <string name="shipping_address">Shipping Address</string>
+    <string name="order_successful">Order Successful</string>
+    <string name="thank_you_msg">Thank you for shopping at Blockat.</string>
+    <string name="order_no">Order No:</string>
+    <string name="transaction_cancelled">Your transaction has been cancelled.</string>
+    <string name="transaction_failed_msg">We were not able to process your payment please try again</string>
+    <string name="transaction_failed">Payment Failed</string>
+    <string name="delivery_to">Deliver To</string>
+    <string name="email">Email</string>
+    <string name="phone">Phone</string>
+    <string name="tip">Tip</string>
+    <string name="manage_order_tip">Manage your order from "Account >> Order History" Section</string>
+    <string name="view_order">View Order</string>
+    <string name="add_a_new_address">Add a new address</string>
+    <string name="set_as_default">Set as Default</string>
+    <string name="follow_us">Follow us</string>
+    <string name="get_in_touch">Get in touch</string>
+    <string name="comments">Comments</string>
+    <string name="error_phone">Please enter your mobile number</string>
+    <string name="error_comment">Please enter comments</string>
+    <string name="contact_us_thank_you">Your feedback has been received.Thank you.</string>
+    <string name="instagram">Instagram</string>
+    <string name="facebook">Facebook</string>
+    <string name="twitter">Twitter</string>
+    <string name="youtube">Youtube</string>
+    <string name="google_plus">Google Plus</string>
+    <string name="snapchat">Snapchat</string>
+    <string name="call_permission_note">Please provide permission to perform the call</string>
+    <string name="latest">Latest</string>
+    <string name="share_app_msg">Install Blockat Now to enjoy the best offers! </string>
+    <string name="select_gender">Please select your gender</string>
+    <string name="rate_remember">Rate Blockat</string>
+    <string name="rate_remember_text">If you enjoy using Blockat, would you mind taking a moment to rate it? It won\'t take more than a minute. Thanks for your support!</string>
+    <string name="no_thanks">No,Thanks</string>
+    <string name="remind_me_later">Remind Me Later</string>
+    <string name="view_all">View All</string>
+    <string name="specifications">Specifications</string>
+    <string name="you_may_also_like">Recommended for you</string>
+    <string name="show">Show</string>
+    <string name="show_result">Show Result</string>
+    <string name="add_more_from_wishlist">Add more from wishlist</string>
+    <string name="price_details">Price Details</string>
+    <string name="price_detail">Price Details:</string>
+    <string name="change_address">Change Address</string>
+    <string name="mobile_colon">Mobile:</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="change_password">Change Password</string>
+    <string name="invalid_current_pass">Please enter a current password</string>
+    <string name="password_change_success">Password update successfully.</string>
+    <string name="please_enter_first_name">Please enter your name</string>
+    <string name="alert">Alert!</string>
+    <string name="awesome_choice">Awesome choice!</string>
+    <string name="logout_alert">Are you sure you want to logout?</string>
+    <string name="error_phone_length">Please enter a valid mobile number</string>
+    <string name="view_more">View More</string>
+    <string name="email_address_hint">Email Address*</string>
+    <string name="password_hint">Password*</string>
+    <string name="logout_success_msg">User logged out successfully</string>
+    <string name="live_chat">Live Chat</string>
+    <string name="chat">Chat</string>
+    <string name="user_success_msg">User logged in successfully!</string>
+    <string name="close">Close</string>
+    <string name="celebrities_of_week">Celebrities of the week</string>
+    <string name="top_sellers">Top Sellers</string>
+    <string name="my_picks">MY PICKS</string>
+    <string name="filter_by">Filter by</string>
+    <string name="clear_all">Clear all</string>
+    <string name="reviews">%1$s reviews</string>
+    <string name="women">Women</string>
+    <string name="men">Men</string>
+    <string name="category">Category</string>
+    <string name="boutikey_ty">Blockat TV</string>
+    <string name="chat_with_us">Chat With Us</string>
+    <string name="address_list">Address List</string>
+    <string name="address_info">Please provide a name for the new address for later use...</string>
+    <string name="address_name">Address Name</string>
+    <string name="state">State</string>
+    <string name="building">Building</string>
+    <string name="zone">Zone</string>
+    <string name="extra_direction">Extra Directions</string>
+    <string name="enter_building">Please enter your building</string>
+    <string name="enter_flore">Please enter your Floor No.</string>
+    <string name="enter_zone">Please enter your Flat No.</string>
+    <string name="enter_name">Please enter your name</string>
+    <string name="grand_total">Grand Total</string>
+    <string name="pay_now">Secure checkout</string>
+    <string name="payment_successful">Payment Successful</string>
+    <string name="items_in_this_order">Items in this order:</string>
+    <string name="shopping_successful">We have received your order and a confirmation \n email would be sent to your registered email shortly.</string>
+    <string name="q_pay">Q Pay</string>
+    <string name="confirmed">Confirmed</string>
+    <string name="preparing">Preparing</string>
+    <string name="shipped">Shipped</string>
+    <string name="delivered">Delivered</string>
+    <string name="order_status">Order Status:</string>
+    <string name="cancelled">Canceled</string>
+    <string name="what_s_this_about">What\'s This About?</string>
+    <string name="empty_password">Please enter a password</string>
+    <string name="phone_number_hint">Phone Number*</string>
+    <string name="forgot_pass_alert_msg">Your password has been sent to the registered email id</string>
+    <string name="watch">Watch</string>
+    <string name="confirm_address">Confirm Address</string>
+    <string name="state_colon">State:</string>
+    <string name="building_colon">Building No.:</string>
+    <string name="zone_colon">Zone:</string>
+    <string name="edit_change_address">Edit/Change Address</string>
+    <string name="continue_payment">Continue to Payment</string>
+    <string name="address_saved">%1$s Saved</string>
+    <string name="note">Note</string>
+    <string name="all_products">All Products</string>
+    <string name="enter_btn">Enter</string>
+    <string name="skip_btn">Skip</string>
+    <string name="notify_me">Notify Me</string>
+    <string name="notify_me_success_msg">We have received your request and will notify you once the product is back in stock</string>
+    <string name="cart_success_msg">Item has been added to your Bag.\nContinue Shopping?</string>
+    <string name="order_num_hash">ORDER #%1$s</string>
+    <string name="placed_on_colon">Placed On:</string>
+    <string name="first_review">Be the first to review</string>
+    <string name="add_review_note">Please send us your valuable review.</string>
+    <string name="title_star">Title*</string>
+    <string name="add_review">Add Review</string>
+    <string name="please_enter_title">Please enter a title for your review</string>
+    <string name="please_give_rating">Please give rating</string>
+    <string name="add_review_success_msg">Thank you for your review</string>
+    <string name="all_reviews">Reviews</string>
+    <string name="comments_star">Comment*</string>
+
+    <!--   new strings-->
+    <string name="phone_code_hint">+965</string>
+    <string name="full_name">Full Name</string>
+    <string name="full_name_star">Full Name*</string>
+    <string name="mobile_number_star">Mobile Number*</string>
+
+    <string name="delivery">Delivery</string>
+    <string name="update">Update</string>
+    <!--  <string name="account">My Account</string>-->
+    <string name="boutikey">Blockat</string>
+    <string name="hide">Hide</string>
+    <string name="item">Item</string>
+    <string name="more">More</string>
+    <string name="tnc">Terms &amp; Conditions</string>
+    <string name="delivery_policy">Delivery Policy</string>
+    <string name="refund_note">Return &amp; Exchange Policy</string>
+    <string name="about_orders">About the Orders</string>
+    <string name="my_account">Account</string>
+    <string name="new_password_hint">New password*</string>
+    <string name="empty_new_password">Please enter a password</string>
+    <string name="select_topic">Select the topic</string>
+
+    <!--    new strings-->
+    <string name="request_product">Request a Products</string>
+    <string name="something_not_working">Something not working</string>
+    <string name="adv_requiring">Advertising Requiring </string>
+    <string name="private_boutikey">Private Blockat Requiring </string>
+    <string name="billing_sales">Billing and Sales</string>
+    <string name="general">General Information</string>
+    <string name="please_select_topic">Please select topic</string>
+    <string name="i_agree">I agree to</string>
+    <string name="tnc_error">Please accept terms &amp; conditions to proceed</string>
+    <string name="exclusive_brand">Exclusive Brands</string>
+    <string name="sing_in_up">SIGN IN / SIGN UP</string>
+    <string name="name_hint">Enter your full name</string>
+    <string name="name_hint_star">Enter your full name*</string>
+    <string name="shipping_address_colon">Shipping Address:</string>
+    <string name="shipping_charges">Shipping charges</string>
+    <string name="payment_method_colon">Payment Method:</string>
+    <string name="delivery_charges">Delivery Charges</string>
+    <string name="delete_address_msg">Do you wish to delete this address?</string>
+    <string name="language">العربية</string>
+    <string name="bld_no">Bldg No.</string>
+    <string name="password_caps">Password</string>
+    <string name="current_password_caps">Current Password</string>
+    <string name="code_hint">Code</string>
+    <string name="profile_update_msg">Your profile has been updated successfully!</string>
+    <string name="shipping_addresses">Shipping Addresses</string>
+    <string name="full_name_caps">FULL NAME</string>
+    <string name="email_address_caps">EMAIL ADDRESS</string>
+    <string name="phone_number_caps">PHONE NUMBER</string>
+    <string name="tnc_caps">Terms &amp; Conditions</string>
+    <string name="comment">Comment</string>
+    <string name="follow_us_on">Follow us on</string>
+    <string name="empty_order_msg">You haven\'t placed any order yet</string>
+    <string name="go_back">Go back</string>
+    <string name="start_shopping">Start shopping</string>
+    <string name="empty_address_msg">Please add address to easily shop with us.</string>
+    <string name="continue_shopping">Continue Shopping</string>
+    <string name="add_from_wishlist">Add from wishlist</string>
+    <string name="filter_search_hint">Search %1$s</string>
+    <string name="men_ar">رجالي</string>
+    <string name="women_ar">نسائي</string>
+    <string name="featured_categories">Featured block</string>
+    <string name="secure_checkout">Secure checkout</string>
+    <string name="no_address_linked">There is no address linked to your account.</string>
+    <string name="promo_code">PROMO CODE</string>
+    <string name="enter_promo_code">Please enter promo code</string>
+    <string name="enter_promo_code_success">Promo applied successfully</string>
+    <string name="enter_promo_code_remove">Promo removed successfully</string>
+    <string name="enter_promo_code_not_exist">Coupon code does not exist</string>
+    <string name="discount">Discount</string>
+    <string name="coupon">Coupon</string>
+    <string name="my_blockaat">My Blockat</string>
+    <string name="my_tv">My TV</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="size_guide_error">Size guide is not available</string>
+    <string name="tv_list_title">%1$s TV</string>
+    <string name="phone_code">+%1$s</string>
+    <string name="create_account">Create account</string>
+    <string name="are_you_a_new_user">Are you a new user?</string>
+    <string name="our_picks">Our Picks</string>
+    <string name="new_items">New Items</string>
+    <string name="colors">Colors</string>
+    <string name="categories">Categories</string>
+    <string name="brands">Brands</string>
+    <string name="price_range">Price Range</string>
+    <string name="enter_street">Street</string>
+    <string name="building_number">Building</string>
+    <string name="floor_no">Floor</string>
+    <string name="flat_no">Flat</string>
+    <string name="set_as_default_shipping_address">Set as Default Shipping Address</string>
+    <string name="refine">Refine</string>
+    <string name="items">Items</string>
+    <string name="show_all_results">Show All Results</string>
+    <string name="select_size">Select your size</string>
+    <string name="composition"><![CDATA[COMPOSITION & CARE]]></string>
+    <string name="shipping_free_returns"><![CDATA[Shipping & free returns]]></string>
+    <string name="about_this_designer">About this designer</string>
+    <string name="contact">Contact Us</string>
+
+    //FILTER DETAILS
+    <string name="min_price_error">Please enter minimum price</string>
+    <string name="max_price_error">Please enter maximum price</string>
+    <string name="max_price_less_error">Maximum price should be less than</string>
+    <string name="max_less_then_min">Please enter a valid min and max value</string>
+    <string name="min_price_hint">Min</string>
+    <string name="max_price_hint">Max</string>
+    <string name="payment_info">Payment Info</string>
+    <string name="items_s_info">Item(s) Info</string>
+    <string name="place_order">Place Order</string>
+    <string name="item_sub_total">Item Subtotal</string>
+    <string name="estimated_shipping">Estimated Shipping</string>
+    <string name="price_info">Price Info</string>
+    <string name="payment_summary">Payment Summary</string>
+    <string name="order_number">Order Number</string>
+    <string name="payment_date">Payment Date</string>
+    <string name="order_date">Order Date</string>
+    <string name="transaction_id">Transaction Id</string>
+    <string name="ref_id">Reference Id</string>
+    <string name="pay_mode">Payment Mode</string>
+    <string name="track_id">Track Id</string>
+    <string name="status">Status</string>
+    <string name="glitter_detailing_nyellow_ncotton">\u25A0 Glitter Detailing</string>
+    <string name="glitter_detailing_nyellow_">\u25A0 Yellow</string>
+    <string name="glitter_detailingncotton">\u25A0 Cotton</string>
+    <string name="call_alert_msg">Are you sure you want to call %1$s</string>
+    <string name="send_email">Send Email</string>
+    <string name="email_subject" translatable="false">Blockat\'s Mobile App Support</string>
+    <string name="yes_btn">yes</string>
+    <string name="no_btn">no</string>
+    <string name="select_attribute">Select your %1$s</string>
+    <string name="enter_governorate">Enter Governorate*</string>
+    <string name="enter_area">Enter Area*</string>
+    <string name="details_password"><![CDATA[Details & Password]]></string>
+    <string name="address_book">Address Book</string>
+    <string name="push_notifications">Push Notifications</string>
+    <string name="support">Support</string>
+    <string name="change_country">Change Country</string>
+    <string name="about_blockaat">About Blockat</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="call_us">Call Us</string>
+    <string name="email_us">Email Us</string>
+    <string name="user_information">User Information</string>
+    <string name="view_your_order_history">View your order history</string>
+    <string name="change_language">Change Language</string>
+    <string name="empty_bag_title">You bag is empty</string>
+    <string name="pending">Pending</string>
+    <string name="in_progress">In Progress</string>
+    <string name="out_for_delivery">Out For Delivery</string>
+    <string name="accepted">Accepted</string>
+    <string name="checkout_2_of_3">Checkout(2/3)</string>
+    <string name="checkout_3_of_3">Checkout(3/3)</string>
+    <string name="selected_address">selected address</string>
+    <string name="total_items_in_cart">You have %1$s items in your shopping bag</string>
+    <string name="empty_wishlist_heading">Once you add a product to wishlist, you\'ll see it here.</string>
+    <string name="shop_now">Shop now</string>
+    <string name="composition_amp_care"><![CDATA[Composition & care]]></string>
+    <string name="plz_select_country">Please select country</string>
+    <string name="plz_select_state">Please select governorate</string>
+    <string name="plz_select_area">Please select area</string>
+    <string name="plz_enter_block">Please enter block</string>
+    <string name="plz_enter_area">Please enter area</string>
+    <string name="empty_phone_number">Please enter your mobile number</string>
+    <string name="home">Home</string>
+    <string name="office">office</string>
+    <string name="empty_address_title">You haven\'t added any address yet</string>
+
+    <string name="flat_label">Flat:\u0020</string>
+    <string name="block_label">Block:\u0020</string>
+    <string name="street_label">Street:\u0020</string>
+    <string name="jaddah_label">Jaddah:\u0020</string>
+    <string name="avenue_label">Avenue:\u0020</string>
+    <string name="area_label">Area:\u0020</string>
+    <string name="building_label">Building:\u0020</string>
+    <string name="floor_label">Floor:\u0020</string>
+
+    <string name="change_country_alert">Are you sure you want to change country to %1$s?</string>
+    <string name="version_name">Version %1$s</string>
+    <string name="current_lang" translatable="false">العربية</string>
+    <string name="enter_promo_code_hint">Enter promo code</string>
+    <string name="tv">TV</string>
+    <string name="empty_products_msg">Please select other category or criteria for more products.</string>
+    <string name="empty_products_heading">No products found!</string>
+    <string name="plz_select_aaddress">Please select address</string>
+    <string name="stars_of_week">Stars of the week</string>
+
+    <string name="video">%1$s Video</string>
+    <string name="videos">%1$s Videos</string>
+
+
+    <string name="guest_login">Continue as Guest</string>
+    <string name="guest_login_msg"> If you dont have account,Sign in with your email address</string>
+    <string name="buy_now">Buy Now</string>
+    <string name="k_net">K-Net</string>
+    <string name="oops_something_went_wrong">OOPS SOMETHING WENT WRONG.</string>
+    <string name="try_again">Try Again</string>
+    <string name="payment_cancel_msg">We were not able to process your payment please try again</string>
+    <string name="payment_error">Payment Error</string>
+    <string name="plus">+</string>
+    <string name="copyright">Copyright @</string>
+
+</resources>

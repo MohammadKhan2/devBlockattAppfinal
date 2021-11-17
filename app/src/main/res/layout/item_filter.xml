@@ -1,0 +1,55 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/relMain"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_40sdp"
+    android:background="@color/white"
+    android:paddingHorizontal="@dimen/_10sdp">
+
+    <TextView
+        android:id="@+id/txtTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_toStartOf="@+id/txtSubTitle"
+        android:ellipsize="end"
+        android:gravity="start"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textColor="@color/primary_text_color"
+        android:textSize="@dimen/TitleTextSize" />
+
+    <TextView
+        android:id="@+id/txtSubTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_toStartOf="@+id/ivFilterArrow"
+        android:ellipsize="end"
+        android:gravity="end"
+        android:maxWidth="@dimen/_150sdp"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:textAlignment="viewEnd"
+        android:textColor="@color/secondary_text_color"
+        android:textSize="@dimen/SubTitleTextSize" />
+
+    <ImageView
+        android:id="@+id/ivFilterArrow"
+        android:layout_width="@dimen/_12sdp"
+        android:layout_height="@dimen/_12sdp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_next_arrow"
+        android:tint="@color/black" />
+
+    <View
+        android:id="@+id/view_filter"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_line_height"
+        android:layout_alignParentBottom="true"
+        android:background="@color/divider_line_color" />
+</RelativeLayout>

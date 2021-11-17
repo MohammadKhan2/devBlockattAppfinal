@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/relMainHolderItems"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:visibility="visible"
+                android:padding="@dimen/ten_dp"
+                android:foreground="?attr/selectableItemBackground">
+
+    <TextView
+            android:id="@+id/txtLabelTip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+    android:text="@string/tip"
+            android:textAllCaps="true"
+            android:textSize="@dimen/TitleTextSize"
+    android:textColor="@color/golden_color"/>
+
+    <TextView
+            android:id="@+id/txtTip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/manage_order_tip"
+            android:layout_marginLeft="@dimen/ten_dp"
+            android:layout_toRightOf="@+id/txtLabelTip"
+            android:textSize="@dimen/TitleTextSize"
+            android:textColor="@color/primary_text_color"/>
+
+    <Button
+            android:id="@+id/btnViewOrders"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_size"
+            android:layout_below="@+id/txtTip"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/ten_dp"
+            android:background="@drawable/rounded_corner_button_bg_blue"
+            android:text="@string/view_order"
+            android:textColor="@color/white"
+            style="?android:attr/borderlessButtonStyle"
+            android:textSize="@dimen/btnTextSize"/>
+
+
+</RelativeLayout>

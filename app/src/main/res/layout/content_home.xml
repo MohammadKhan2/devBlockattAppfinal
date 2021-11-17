@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/app_bar_main">
+
+    <FrameLayout
+        android:id="@+id/content_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="@dimen/title_subtitle_margin"/>
+
+    <RelativeLayout
+        android:background="@color/search_bg"
+        android:id="@+id/relSearch1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/forty_dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="@dimen/five_dp"
+            android:layout_marginTop="@dimen/five_dp"
+            android:layout_marginRight="@dimen/fifty_dp"
+            android:layout_marginLeft="@dimen/five_dp">
+
+            <ImageView
+                android:layout_alignParentLeft="true"
+                android:visibility="visible"
+                android:id="@+id/img_search"
+                android:padding="@dimen/seven_dp"
+                android:layout_width="@dimen/thirty_dp"
+                android:layout_height="@dimen/thirty_dp"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical|right"
+                android:gravity="center_vertical|left"
+                app:srcCompat="@android:drawable/ic_menu_search" />
+
+            <EditText
+                android:layout_alignParentLeft="true"
+                android:id="@+id/edtSearch"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/forty_dp"
+                android:ems="10"
+                android:maxLines="1"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/seven_dp"
+                android:layout_marginLeft="@dimen/forty_dp"
+                android:backgroundTint="@null"
+                android:background="@null"
+                android:hint="What are you looking for?"
+                android:gravity="left|center"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHint="@color/tertiary_color"
+                android:textSize="@dimen/fifteen_dp" >
+                <requestFocus />
+
+            </EditText>
+
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/imgClose1"
+                android:layout_width="@dimen/forty_dp"
+                android:layout_height="@dimen/forty_dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:padding="@dimen/seven_dp"
+                app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
+                />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/imgClose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancel"
+            android:textColor="@color/search_cancle"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:textSize="@dimen/TitleTextSize"
+            android:padding="@dimen/five_dp"/>
+
+    </RelativeLayout>
+
+    <ListView
+        android:layout_below="@+id/relSearch1"
+        android:id="@+id/listSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/nav_header_height"
+        android:background="@color/white"
+        android:visibility="gone" >
+    </ListView>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="#E0E1E0"
+        android:orientation="horizontal" />
+       <!-- android:background="@color/unselect_color"--> old color
+
+
+</RelativeLayout>
