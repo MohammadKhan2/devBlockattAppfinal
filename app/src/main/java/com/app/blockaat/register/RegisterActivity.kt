@@ -447,6 +447,8 @@ class RegisterActivity : BaseActivity(), TextWatcher/*, View.OnFocusChangeListen
                          //   println("RESPONSE - Register Ws :   " + Gson().toJson(result))
                             if (result.status == 200) {
                                 handleRegisterResponse(result.data)
+                                CustomEvents.registrationComplete(this,result.data?.id?.toInt(),firstName,
+                                        edtEmail!!.text.toString(),"")
 
                             } else if (result.status == 406) {
                                 hideProgressDialog()

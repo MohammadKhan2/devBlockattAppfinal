@@ -466,6 +466,7 @@ class LoginActivity : BaseActivity() {
                             if (result.status == 200) {
                                 //successfully logged in
                                 handleLoginResponse(result.data)
+                                CustomEvents.userLogin(this,result.data?.id?.toInt(),result.data?.first_name,result.data?.email)
                             } else if (result.status == 201) {
                                 //invalid password
                                 dialog?.hideDialog()

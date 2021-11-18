@@ -118,6 +118,40 @@ object CustomEvents {
         mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SIGN_UP, bundle)
     }
 
+    fun registrationComplete(
+        activity: Activity,
+        userID: Int?,
+        name: String?,
+        email: String?,
+        userType: String?
+    ) {
+
+        //firebase
+        val mFirebaseAnalytics = FirebaseAnalytics.getInstance(activity)
+        val bundle = Bundle()
+        bundle.putString(FirebaseAnalytics.Param.SIGN_UP_METHOD, userType)
+        bundle.putString("id", userID?.toString())
+        bundle.putString("name", name)
+        bundle.putString("email", email)
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SIGN_UP, bundle)
+    }
+
+    fun userLogin(
+        activity: Activity,
+        userID: Int?,
+        name: String?,
+        email: String?,
+    ) {
+
+        //firebase
+        val mFirebaseAnalytics = FirebaseAnalytics.getInstance(activity)
+        val bundle = Bundle()
+        bundle.putString("id", userID?.toString())
+        bundle.putString("name", name)
+        bundle.putString("email", email)
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.LOGIN, bundle)
+    }
+
     fun eventContentViewed(
         activity: Activity,
         productID: String?,
