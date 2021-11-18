@@ -584,5 +584,19 @@
     <string name="payment_error">Payment Error</string>
     <string name="plus">+</string>
     <string name="copyright">Copyright @</string>
+    <string name="splash" translatable="false">Splash</string>
+    <string name="category_screen" translatable="false">Category screen</string>
+    <string name="celebrity_screen">Celebrity screen</string>
+    <string name="tv_screen">TV screen</string>
+    <string name="talent_screen">Talent screen</string>
+    <string name="blocks_screen">Blocks screen</string>
+    <string name="home_screen">Home screen</string>
+    <string name="login_screen">Login screen</string>
+    <string name="register_screen">Register screen</string>
+    <string name="wish_list_screen">Wish list screen</string>
+    <string name="account_screen">Account screen</string>
+    <string name="search_screen">Search screen</string>
+    <string name="my_bag_screen">My Bag screen</string>
+    <string name="forgot_password_screen">Forgot Password screen</string>
 
 </resources>

@@ -77,6 +77,8 @@ class AccountFragment : Fragment() {
         super.onCreate(savedInstanceState)
         mActivity = activity as NavigationActivity
 
+        AppController.instance.trackScreenView(getString(R.string.account_screen))
+
     }
 
     override fun onCreateView(

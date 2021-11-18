@@ -31,14 +31,11 @@ class SplashActivity : BaseActivity() {
     private var arrListCategory: ArrayList<RootCategoriesData?>? = null
     private var dialog: CustomProgressBar? = null
     private var disposable: Disposable? = null
-    private lateinit var mTracker:Tracker
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Obtain the shared Tracker instance.
-        val application: AppController = application as AppController
-        mTracker = application.getDefaultTracker()!!
+        AppController.instance.trackScreenView(getString(R.string.splash))
 
         window.setFormat(PixelFormat.TRANSLUCENT)
 
@@ -68,11 +65,6 @@ class SplashActivity : BaseActivity() {
         init()
         Constants.DEVICE_TOKEN = Pushwoosh.getInstance().pushToken ?: ""
         println("T : " + Constants.DEVICE_TOKEN)
-
-
-        mTracker.setScreenName("Splash Screen")
-        mTracker.send(ScreenViewBuilder().build())
-
     }
 
 

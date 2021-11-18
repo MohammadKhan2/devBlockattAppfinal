@@ -40,11 +40,7 @@ class CelebrityActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_celebrity)
 
-        // Obtain the shared Tracker instance.
-        val application: AppController = application as AppController
-        mTracker = application.getDefaultTracker()!!
-        mTracker.setScreenName("Celebrity Screen")
-        mTracker.send(HitBuilders.ScreenViewBuilder().build())
+       AppController.instance.trackScreenView(getString(R.string.celebrity_screen))
 
         initializeToolbar()
         initializeFields()

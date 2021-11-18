@@ -87,12 +87,9 @@ class LoginActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        val application: AppController = application as AppController
-        mTracker = application.getDefaultTracker()!!
-        mTracker.setScreenName("Login Screen")
-        mTracker.send(HitBuilders.ScreenViewBuilder().build())
         setContentView(R.layout.activity_login)
+
+        AppController.instance.trackScreenView(getString(R.string.login_screen))
         FacebookSdk.sdkInitialize(applicationContext)
         callbackManager = CallbackManager.Factory.create()
         initializeToolbar()

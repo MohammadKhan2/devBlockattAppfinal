@@ -42,17 +42,12 @@ class CategoryActivity : BaseActivity(), OnCategorySelectListener {
     private var adapterCategory: CategoryAdapter? = null
     private var strCategoryId = ""
     private var is_featuredID = ""
-    private lateinit var mTracker: Tracker
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_category)
 
-        // Obtain the shared Tracker instance.
-        val application: AppController = application as AppController
-        mTracker = application.getDefaultTracker()!!
-        mTracker.setScreenName("Category Screen")
-        mTracker.send(HitBuilders.ScreenViewBuilder().build())
+        AppController.instance.trackScreenView(getString(R.string.category_screen))
 
         Global.setLocale(this@CategoryActivity)
         initializeToolbar()

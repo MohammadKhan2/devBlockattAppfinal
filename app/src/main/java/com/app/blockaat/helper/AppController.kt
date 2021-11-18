@@ -1,11 +1,12 @@
 package com.app.blockaat.helper
 
-import android.R
+
+import com.app.blockaat.R
 import android.app.Application
-import android.content.res.Resources
 import android.util.Log
 import com.facebook.FacebookSdk
 import com.google.android.gms.analytics.GoogleAnalytics
+import com.google.android.gms.analytics.HitBuilders
 import com.google.android.gms.analytics.Tracker
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.iid.FirebaseInstanceId
@@ -169,8 +170,15 @@ class AppController : Application() {
     fun getDefaultTracker(): Tracker? {
         // To enable debug logging use: adb shell setprop log.tag.GAv4 DEBUG
         if (sTracker == null) {
-            sTracker = sAnalytics?.newTracker("")
+            sTracker = sAnalytics?.newTracker(R.xml.app_tracker)
         }
         return sTracker
+    }
+
+    fun trackScreenView(screenName:String){
+        val tracker:Tracker = getDefaultTracker()!!
+        tracker.setScreenName(screenName)
+        tracker.send(HitBuilders.ScreenViewBuilder().build())
+        sAnalytics?.dispatchLocalHits()
     }
 }

@@ -19,6 +19,8 @@ class ForgotPassActivity : BaseActivity()/*, View.OnFocusChangeListener*/ {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_frgtpass)
+
+        AppController.instance.trackScreenView(getString(R.string.forgot_password_screen))
         /* initializeToolbar()*/
         initializeFields()
         setFonts()

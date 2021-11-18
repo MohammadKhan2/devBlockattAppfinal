@@ -36,17 +36,11 @@ class HomeFragment : Fragment() {
     private var homeDataFragment: Fragment = HomeDataFragment()
     private var activeFragment: Fragment? = null
     private var productListFragment: Fragment = ProductListFragment()
-    private lateinit var mTracker: Tracker
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mActivity = activity as NavigationActivity
-
-        // Obtain the shared Tracker instance.
-        val application: AppController = activity as AppController
-        mTracker = application.getDefaultTracker()!!
-        mTracker.setScreenName("Home Fragment Screen")
-        mTracker.send(HitBuilders.ScreenViewBuilder().build())
+        AppController.instance.trackScreenView(getString(R.string.home_screen))
     }
 
     override fun onCreateView(

@@ -39,6 +39,8 @@ class SearchActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
 
+        AppController.instance.trackScreenView(getString(R.string.search_screen))
+
         Global.setLocale(this@SearchActivity )
         init()
         Setfont()
