@@ -45,6 +45,8 @@ import com.app.blockaat.navigation.NavigationActivity
 import com.app.blockaat.productdetails.model.NotifyMeRequestModel
 import com.app.blockaat.productlisting.model.ProductListingFilterModel
 import com.app.blockaat.productlisting.model.ProductListingFilterValueModel
+import com.app.blockaat.wishlist.modelclass.WishListDataModel
+import com.google.firebase.analytics.FirebaseAnalytics
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.custom_alert.*
@@ -107,6 +109,7 @@ object Global {
     var strDeliveryAddressId = ""
     var arrListStore: ArrayList<StoreDataModel> = ArrayList()
     private val REQUEST_CALL_PHONE = 3
+    private var firebaseAnalytics:FirebaseAnalytics? = null
 
     @JvmField
     var arrListFilter: ArrayList<ProductListingFilterModel>? = null
@@ -1794,6 +1797,81 @@ object Global {
         )
         showAlertNotify(activity, requestModel, productId)
 
+    }
+
+    // updated by azim
+    @SuppressLint("CheckResult")
+    fun addOrRemoveWishList(
+        activity: Context,
+        position: Int,
+        strProductID: String,
+        productsDBHelper: DBHelper,
+        flagWishlist: Boolean,
+        addWishListInterface: AddWishListInterface
+    ) {
+        if (NetworkUtil.getConnectivityStatus(activity) != 0) {
+            showProgressDialog(activity)
+            val url =
+                if (flagWishlist) com.app.blockaat.apimanager.WebServices.AddToWishlistWs else com.app.blockaat.apimanager.WebServices.DeleteWishlistItemWs
+            Global.apiService.deleteWishlist(
+                getUserId(activity),
+                strProductID,
+                url + getLanguage(activity)
+                        + "&store=" + getStoreCode(activity)
+            )
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                    { result ->
+                        hideProgressDialog()
+                        if (result != null) {
+                            if (result.status == 200) {
+                                if (result.data != null) {
+                                    // start azim
+                                    val wishListData: WishListDataModel = result.data[position]
+                                    val productId: String? = wishListData.id
+                                    val productName:String? = wishListData.name
+                                    val brandName:String? = wishListData.brand_name
+                                    val price:String? = wishListData.final_price
+                                    firebaseAnalytics = AppController.instance.fAnalytics
+                                    CustomEvents.addToWishList(firebaseAnalytics!!,productId,productName,brandName,price)
+                                    if (!flagWishlist) {
+                                        if (productsDBHelper.isProductPresentInWishlist(strProductID)) {
+                                            productsDBHelper.deleteProductFromWishlist(strProductID)
+                                        }
+                                        if (activity is NavigationActivity)
+                                            (activity as NavigationActivity).updateCounts()
+                                        addWishListInterface.onRemove(result)
+                                    } else {
+                                        if (!productsDBHelper.isProductPresentInWishlist(
+                                                strProductID
+                                            )
+                                        ) {
+                                            productsDBHelper.addProductToWishlist(
+                                                ProductsDataModel(
+                                                    strProductID
+                                                )
+                                            )
+                                        }
+                                        if (activity is NavigationActivity)
+                                            (activity as NavigationActivity).updateCounts()
+                                        addWishListInterface.onAdd(result)
+                                    }
+                                }
+                            } else {
+                                //Global.showSnackbar(activity, result.message)
+                            }
+                        } else {
+                            //if ws not working
+                            //Global.showSnackbar(activity, activity.resources.getString(R.string.error))
+                        }
+                    },
+                    { error ->
+                        hideProgressDialog()
+                        //Global.showSnackbar(activity, activity.resources.getString(R.string.error))
+                    }
+                )
+        }
     }
 
     @SuppressLint("CheckResult")

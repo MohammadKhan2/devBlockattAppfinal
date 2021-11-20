@@ -40,7 +40,7 @@ class WishlistActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_wishlist)
 
-        AppController.instance.trackScreenView(getString(R.string.wish_list_screen))
+        CustomEvents.screenViewed(this,getString(R.string.wish_list_screen))
 
         initializeToolbar()
         initializeFields()

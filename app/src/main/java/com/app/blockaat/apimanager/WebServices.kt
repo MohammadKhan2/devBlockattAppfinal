@@ -10,6 +10,9 @@ object WebServices {
     var DOMAIN = "https://admin-cp.blockatapp.com/api/ver1bloc/"
     var IMAGE_DOMAIN = "https://admin-cp.blockatapp.com/"
 
+//    var DOMAIN1 = "http://v2api.blockatapp.com/api/ver1bloc/"
+//    var IMAGE_DOMAIN1 = "http://v2api.blockatapp.com/"
+
     val HomeWs = "home?lang="
     const val CategoryWs = "child-categories?lang="
     const val BrandsWs = "all-brands?lang="

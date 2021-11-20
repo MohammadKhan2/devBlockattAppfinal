@@ -77,7 +77,7 @@ class AccountFragment : Fragment() {
         super.onCreate(savedInstanceState)
         mActivity = activity as NavigationActivity
 
-        AppController.instance.trackScreenView(getString(R.string.account_screen))
+        CustomEvents.screenViewed(activity as NavigationActivity,getString(R.string.account_screen))
 
     }
 

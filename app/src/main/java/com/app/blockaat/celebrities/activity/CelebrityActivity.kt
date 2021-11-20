@@ -40,7 +40,7 @@ class CelebrityActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_celebrity)
 
-       AppController.instance.trackScreenView(getString(R.string.celebrity_screen))
+        CustomEvents.screenViewed(this,getString(R.string.celebrity_screen))
 
         initializeToolbar()
         initializeFields()

@@ -428,5 +428,6 @@ interface RestClient {
                     .baseUrl(WebServices.DOMAIN).client(httpClient).build()
             return retrofit.create(RestClient::class.java)
         }
+
     }
 }

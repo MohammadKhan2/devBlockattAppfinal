@@ -92,6 +92,73 @@ object CustomEvents {
 
     }
 
+    fun addToWishList(
+        activity: Activity,
+        entityID: String?,
+        productName: String?,
+        brandName: String?,
+        finalPrice: String?
+    ) {
+        //firebase
+        val mFirebaseAnalytics = FirebaseAnalytics.getInstance(activity)
+        val bundle = Bundle()
+        bundle.putString(FirebaseAnalytics.Param.CURRENCY, Global.getIso3(activity, ""))
+        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, entityID)
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, productName)
+        bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, brandName)
+        bundle.putString(FirebaseAnalytics.Param.PRICE, finalPrice)
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.ADD_TO_WISHLIST, bundle)
+
+    }
+
+    fun addToWishList(
+        mFirebaseAnalytics: FirebaseAnalytics,
+        entityID: String?,
+        productName: String?,
+        brandName: String?,
+        finalPrice: String?
+    ) {
+        //firebase
+        val bundle = Bundle()
+        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, entityID)
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, productName)
+        bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, brandName)
+        bundle.putString(FirebaseAnalytics.Param.PRICE, finalPrice)
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.ADD_TO_WISHLIST, bundle)
+
+    }
+
+    fun itemViewed(
+        activity: Activity,
+        productID: String?,
+        productName: String?,
+        finalPrice: String?,
+        productBrand: String?
+    ) {
+        //fb
+        val parameters = Bundle()
+        val logger = AppEventsLogger.newLogger(activity)
+//        parameters.putString("currency", Global.getIso3(activity, ""))
+        parameters.putString(AppEventsConstants.EVENT_PARAM_CURRENCY, Global.getIso3(activity, ""))
+        parameters.putString(AppEventsConstants.EVENT_PARAM_CONTENT_TYPE, productBrand)
+        parameters.putString(AppEventsConstants.EVENT_PARAM_CONTENT_ID, productID)
+        parameters.putString("product_name", productName)
+        logger.logEvent(
+            AppEventsConstants.EVENT_NAME_VIEWED_CONTENT, finalPrice?.toDouble()
+                ?: 0.0, parameters
+        )
+
+        //firebase
+        val mFirebaseAnalytics = FirebaseAnalytics.getInstance(activity)
+        val bundle = Bundle()
+        bundle.putString(FirebaseAnalytics.Param.CURRENCY, Global.getIso3(activity, ""))
+        bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, productBrand)
+        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, productID)
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, productName)
+        bundle.putString(FirebaseAnalytics.Param.PRICE, finalPrice)
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.VIEW_ITEM, bundle)
+    }
+
     fun eventCompletedRegistration(
         activity: Activity,
         userID: Int?,
@@ -243,6 +310,23 @@ object CustomEvents {
         mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.BEGIN_CHECKOUT, bundle)
     }
 
+    fun initiatedCheckout(
+        activity: Activity,
+        userId:String?,
+        orderID: String?,
+        grandTotal: String?
+    ) {
+        //firebase
+        val mFirebaseAnalytics = FirebaseAnalytics.getInstance(activity)
+        val bundle = Bundle()
+        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, orderID?.toString())
+        bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "Checkout")
+        bundle.putString(FirebaseAnalytics.Param.CURRENCY, Global.getIso3(activity, ""))
+        bundle.putString(FirebaseAnalytics.Param.PRICE, grandTotal)
+        bundle.putString("User_id", userId)
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.BEGIN_CHECKOUT, bundle)
+    }
+
     fun eventPurchased(
         activity: Activity,
         order_date: String?,
@@ -281,6 +365,27 @@ object CustomEvents {
 //        //pushwoosh event
         val attributes = TagsBundle.Builder().build()
         PushwooshInApp.getInstance().postEvent("CheckoutSuccess", attributes)
+
+    }
+
+    fun itemPurchased(
+        activity: Activity,
+        order_date: String?,
+        order_id: String?,
+        paymentMethod: String?,
+        grandTotal: String?,
+        email: String?,
+        userId: String?
+    ) {
+        //firebase
+        val mFirebaseAnalytics = FirebaseAnalytics.getInstance(activity)
+        val bundle = Bundle()
+        bundle.putString("order_date", order_date)
+        bundle.putString("order_id", order_id)
+        bundle.putString("payment_method", paymentMethod)
+        bundle.putString(FirebaseAnalytics.Param.CURRENCY, Global.getIso3(activity, ""))
+        bundle.putString(FirebaseAnalytics.Param.PRICE, grandTotal)
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.ECOMMERCE_PURCHASE, bundle)
 
     }
 

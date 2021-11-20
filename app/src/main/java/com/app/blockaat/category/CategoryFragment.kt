@@ -9,6 +9,7 @@ import com.app.blockaat.R
 import com.app.blockaat.category.fragment.CategoryDataFragment
 import com.app.blockaat.category.model.Subcategory
 import com.app.blockaat.helper.AppController
+import com.app.blockaat.helper.CustomEvents
 import com.app.blockaat.helper.Global
 import com.app.blockaat.navigation.NavigationActivity
 import com.app.blockaat.productlisting.fragment.ProductListFragment
@@ -34,7 +35,7 @@ class CategoryFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mActivity = activity as NavigationActivity
-        AppController.instance.trackScreenView(getString(R.string.blocks_screen))
+        CustomEvents.screenViewed(activity as NavigationActivity, getString(R.string.blocks_screen))
     }
 
     override fun onCreateView(

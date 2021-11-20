@@ -54,7 +54,7 @@ class TvFragment : Fragment() {
 
         mActivity = activity as NavigationActivity
 
-        AppController.instance.trackScreenView(getString(R.string.tv_screen))
+        CustomEvents.screenViewed(activity as NavigationActivity, getString(R.string.tv_screen))
         Global.setLocale(mActivity)
     }
 

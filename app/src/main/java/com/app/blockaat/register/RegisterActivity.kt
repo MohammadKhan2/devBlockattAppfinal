@@ -87,7 +87,7 @@ class RegisterActivity : BaseActivity(), TextWatcher/*, View.OnFocusChangeListen
         callbackManager = CallbackManager.Factory.create()
         setContentView(R.layout.activity_register)
 
-        AppController.instance.trackScreenView(getString(R.string.register_screen))
+        CustomEvents.screenViewed(this,getString(R.string.register_screen))
 
         Global.setLocale(this)
         initializeToolbar()

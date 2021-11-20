@@ -47,7 +47,7 @@ class CategoryActivity : BaseActivity(), OnCategorySelectListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_category)
 
-        AppController.instance.trackScreenView(getString(R.string.category_screen))
+        CustomEvents.screenViewed(this,getString(R.string.category_screen))
 
         Global.setLocale(this@CategoryActivity)
         initializeToolbar()

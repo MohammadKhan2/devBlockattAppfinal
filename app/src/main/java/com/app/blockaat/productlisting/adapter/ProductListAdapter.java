@@ -23,6 +23,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.app.blockaat.cart.model.AddCartRequestModel;
 import com.app.blockaat.helper.AddWishListInterface;
 import com.app.blockaat.helper.Constants;
+import com.app.blockaat.helper.CustomEvents;
 import com.app.blockaat.helper.DBHelper;
 import com.app.blockaat.helper.Global;
 import com.app.blockaat.helper.StickHeaderItemDecoration;
@@ -475,7 +476,8 @@ public class ProductListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                 ivWishlist.setOnClickListener(view -> {
                     if (Global.INSTANCE.isUserLoggedIn(activity)) {
                         Boolean flag = arrListProductListing.get(position).getItem_in_wishlist() == 0;
-                        Global.INSTANCE.addOrRemoveWishList(activity, arrListProductListing.get(position).getId(), productsDBHelper, flag, new AddWishListInterface() {
+                        // updated by azim
+                        Global.INSTANCE.addOrRemoveWishList(activity, position,arrListProductListing.get(position).getId(), productsDBHelper, flag, new AddWishListInterface() {
                             @Override
                             public void onRemove(@NotNull WishListResponseModel result) {
                                 onProductListListener.onProductClicked(arrListProductListing.get(position), "wishlist");

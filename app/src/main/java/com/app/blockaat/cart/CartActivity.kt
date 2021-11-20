@@ -519,7 +519,12 @@ class CartActivity : BaseActivity() {
                         hideProgressDialog()
                         if (result != null) {
                             if (result.status == 200) {
-
+                                if (Global.isUserLoggedIn(this)){
+                                    val userId = Global.getUserId(this)
+                                    val total:String? = result.data?.total
+                                    val orderId:String? = result.data?.cart?.id
+                                    CustomEvents.initiatedCheckout(this,orderId,total,userId)
+                                }
                                 val i =
                                     Intent(this@CartActivity, AddressCheckoutActivity::class.java)
                                 i.putExtra("checkoutData", result.data)

@@ -27,6 +27,7 @@ import java.util.*
 class AppController : Application() {
     private lateinit var markerUpdatesReceiver: CustomPushReceiver
     private var sAnalytics: GoogleAnalytics? = null
+    var fAnalytics:FirebaseAnalytics? = null
     private var sTracker: Tracker? = null
     private lateinit var referrerClient: InstallReferrerClient
 
@@ -41,6 +42,8 @@ class AppController : Application() {
 
         // get analytics instance
         sAnalytics = GoogleAnalytics.getInstance(this);
+        //updated by azim
+        fAnalytics = FirebaseAnalytics.getInstance(this)
 
 //      FacebookSdk.sdkInitialize(applicationContext)
         FacebookSdk.sdkInitialize(this)

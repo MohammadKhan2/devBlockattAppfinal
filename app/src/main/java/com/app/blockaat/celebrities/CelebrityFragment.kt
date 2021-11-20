@@ -10,6 +10,7 @@ import com.app.blockaat.R
 import com.app.blockaat.celebrities.fragment.CelebrityDataFragment
 import com.app.blockaat.celebrities.model.InfluencerList
 import com.app.blockaat.helper.AppController
+import com.app.blockaat.helper.CustomEvents
 import com.app.blockaat.helper.Global
 import com.app.blockaat.navigation.NavigationActivity
 import com.app.blockaat.productdetails.ProductDetailsActivity
@@ -34,7 +35,7 @@ class CelebrityFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mActivity = activity as NavigationActivity
-        AppController.instance.trackScreenView(getString(R.string.talent_screen))
+        CustomEvents.screenViewed(activity as NavigationActivity, getString(R.string.talent_screen))
     }
 
     override fun onCreateView(

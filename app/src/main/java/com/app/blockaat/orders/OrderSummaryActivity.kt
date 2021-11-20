@@ -15,10 +15,7 @@ import com.app.blockaat.R
 import com.app.blockaat.cart.CartActivity
 import com.app.blockaat.checkout.activity.CheckoutActivity
 import com.app.blockaat.checkout.adapter.CheckoutItemAdapter
-import com.app.blockaat.helper.BaseActivity
-import com.app.blockaat.helper.Constants
-import com.app.blockaat.helper.DBHelper
-import com.app.blockaat.helper.Global
+import com.app.blockaat.helper.*
 import com.app.blockaat.navigation.NavigationActivity
 import com.app.blockaat.orders.model.CheckoutDataModel
 import com.app.blockaat.orders.model.CheckoutItemItemModel
@@ -92,6 +89,11 @@ class OrderSummaryActivity : BaseActivity() {
     private var subtotal: Double? = 0.0
     private var delivery: Double? = 0.0
     private var discount: Double? = 0.0
+    private var userId:String? = null
+    private var orderId:String? = null
+    private var orderDate:String? = null
+    private var paymentMethod:String? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_order_summary)
@@ -101,6 +103,14 @@ class OrderSummaryActivity : BaseActivity() {
         initializeFields()
         setFonts()
         onClickListeners()
+    }
+
+    private fun setEventData(){
+        orderId = orderSummaryData.order_details?.order_id.toString()
+        orderDate = orderSummaryData.order_details?.order_date
+        paymentMethod = orderSummaryData.payment_mode
+        grandTotal = orderSummaryData.total?.toDouble()!!
+        userId = Global.getUserId(this)
     }
 
     private fun initializeToolbar() {
@@ -214,6 +224,8 @@ class OrderSummaryActivity : BaseActivity() {
                         txtPaymentMsgHeader.text = resources.getString(R.string.payment_successful)
                         txtPaymentMsg.text = resources.getString(R.string.shopping_successful)
                         imgPayment.setBackgroundResource(R.drawable.ic_tick_green);
+                        setEventData()
+                        CustomEvents.itemPurchased(this,orderDate,orderId,paymentMethod,grandTotal.toString(),"",userId)
                     }
                 } else {
 

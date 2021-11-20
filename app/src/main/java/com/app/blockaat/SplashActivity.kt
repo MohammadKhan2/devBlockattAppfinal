@@ -35,7 +35,7 @@ class SplashActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        AppController.instance.trackScreenView(getString(R.string.splash))
+        CustomEvents.screenViewed(this,getString(R.string.splash))
 
         window.setFormat(PixelFormat.TRANSLUCENT)
 

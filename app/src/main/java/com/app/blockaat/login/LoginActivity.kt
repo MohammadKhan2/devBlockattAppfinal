@@ -89,7 +89,7 @@ class LoginActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        AppController.instance.trackScreenView(getString(R.string.login_screen))
+        CustomEvents.screenViewed(this,getString(R.string.login_screen))
         FacebookSdk.sdkInitialize(applicationContext)
         callbackManager = CallbackManager.Factory.create()
         initializeToolbar()
