@@ -250,6 +250,20 @@ object CustomEvents {
         mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.VIEW_ITEM, bundle)
     }
 
+    fun contentViewed(
+        activity: Activity,
+        userId: String?,
+        contentName:String?
+    ) {
+
+        //firebase
+        val mFirebaseAnalytics = FirebaseAnalytics.getInstance(activity)
+        val bundle = Bundle()
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, contentName)
+        bundle.putString("user_id", userId)
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.VIEW_ITEM, bundle)
+    }
+
     fun eventSearch(
         activity: Activity,
         strProductID: String?,

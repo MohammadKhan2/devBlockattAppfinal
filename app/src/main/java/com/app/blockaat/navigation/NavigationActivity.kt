@@ -883,6 +883,7 @@ class NavigationActivity : BaseActivity(), NavigationView.OnNavigationItemSelect
         val fragmentManager = supportFragmentManager
         val ft = fragmentManager.beginTransaction()
         var i: Intent? = null
+        val userId:String? = Global.getUserId(this)
 
         txtHead.typeface = Global.fontNavBar
 
@@ -894,6 +895,9 @@ class NavigationActivity : BaseActivity(), NavigationView.OnNavigationItemSelect
                         fm.beginTransaction().add(R.id.content_frame, homeFragment, "0")
                             .show(homeFragment).commit()
                         isHomeLoaded = true
+                        if (Global.isUserLoggedIn(this)){
+                            CustomEvents.contentViewed(this,userId,"Home tab")
+                        }
                     } else {
                         fm.beginTransaction().hide(activeFragment).show(homeFragment).commit()
                     }
@@ -983,6 +987,9 @@ class NavigationActivity : BaseActivity(), NavigationView.OnNavigationItemSelect
                             .show(celebrityFragment)
                             .commit()
                         isMusicianLoaded = true
+                        if (Global.isUserLoggedIn(this)){
+                            CustomEvents.contentViewed(this,userId,"Talents tab")
+                        }
                     } else {
                         fm.beginTransaction().hide(activeFragment).show(celebrityFragment).commit()
 
@@ -1026,6 +1033,9 @@ class NavigationActivity : BaseActivity(), NavigationView.OnNavigationItemSelect
                             .show(categoriesFragment)
                             .commit()
                         isCatLoaded = true
+                        if (Global.isUserLoggedIn(this)){
+                            CustomEvents.contentViewed(this,userId,"Blocks tab")
+                        }
                     } else {
                         fm.beginTransaction().hide(activeFragment).show(categoriesFragment).commit()
                     }
@@ -1080,6 +1090,9 @@ class NavigationActivity : BaseActivity(), NavigationView.OnNavigationItemSelect
                         fm.beginTransaction().add(R.id.content_frame, cartFragment, "4")
                             .show(cartFragment).commit()
                         isCartLoaded = true
+                        if (Global.isUserLoggedIn(this)){
+                            CustomEvents.contentViewed(this,userId,"My Bag tab")
+                        }
                     } else {
                         fm.beginTransaction().hide(activeFragment).show(cartFragment).commit()
                     }
@@ -1116,6 +1129,9 @@ class NavigationActivity : BaseActivity(), NavigationView.OnNavigationItemSelect
                             .show(tvFragment)
                             .commit()
                         isTvLoaded = true
+                        if (Global.isUserLoggedIn(this)){
+                            CustomEvents.contentViewed(this,userId,"Tv tab")
+                        }
                     } else {
                         fm.beginTransaction().hide(activeFragment).show(tvFragment).commit()
                     }
