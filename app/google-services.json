@@ -29,6 +29,13 @@
             {
               "client_id": "1095320028880-4uofjrqcllfp3f27cq6dako8089av6v1.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "1095320028880-3i8pqu54rudlnadoifdaqk3l6hekha18.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.app.Blockat"
+              }
             }
           ]
         }

@@ -1,12 +1,18 @@
 package com.app.blockaat.helper
 
 
-import com.app.blockaat.R
+import android.app.Activity
 import android.app.Application
+import android.os.Bundle
 import android.util.Log
+import com.adjust.sdk.Adjust
+import com.adjust.sdk.AdjustConfig
+import com.adjust.sdk.AdjustEvent
+import com.adjust.sdk.LogLevel
 import com.android.installreferrer.api.InstallReferrerClient
 import com.android.installreferrer.api.InstallReferrerStateListener
 import com.android.installreferrer.api.ReferrerDetails
+import com.app.blockaat.R
 import com.facebook.FacebookSdk
 import com.google.android.gms.analytics.GoogleAnalytics
 import com.google.android.gms.analytics.HitBuilders
@@ -51,6 +57,17 @@ class AppController : Application() {
 //        Branch.enableTestMode() // Branch logging for debugging
         Branch.disableDebugMode()
         Branch.disableLogging()
+
+        // Adjust config
+        val appToken = "{YourAppToken}"
+        val environment = AdjustConfig.ENVIRONMENT_SANDBOX
+        val config = AdjustConfig(this, appToken, environment)
+        config.setLogLevel(LogLevel.VERBOSE);
+        Adjust.onCreate(config)
+
+
+        registerActivityLifecycleCallbacks(AdjustLifecycleCallbacks())
+
         //it means -if no language set then it will check device language and set device language as default
         if (Global.getStringFromSharedPref(this, Constants.PREFS_LANGUAGE).isNullOrEmpty()) {
             if (Locale.getDefault().displayLanguage.equals("English", true)) {
@@ -184,7 +201,7 @@ class AppController : Application() {
         return sTracker
     }
 
-    fun trackScreenView(screenName:String){
+    fun trackScreenView(screenName: String){
         val tracker:Tracker = getDefaultTracker()!!
         tracker.setScreenName(screenName)
         tracker.send(HitBuilders.ScreenViewBuilder().build())
@@ -228,5 +245,30 @@ class AppController : Application() {
         Log.d("appInstallTime - ", appInstallTime.toString())
         val instantExperienceLaunched: Boolean = response.googlePlayInstantParam
         Log.d("instantExperienceLaunch", instantExperienceLaunched.toString())
+    }
+
+    private class AdjustLifecycleCallbacks : ActivityLifecycleCallbacks {
+        override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
+        }
+
+        override fun onActivityStarted(activity: Activity) {
+        }
+
+        override fun onActivityResumed(activity: Activity) {
+            Adjust.onResume()
+        }
+
+        override fun onActivityPaused(activity: Activity) {
+            Adjust.onPause()
+        } //...
+
+        override fun onActivityStopped(activity: Activity) {
+        }
+
+        override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {
+        }
+
+        override fun onActivityDestroyed(activity: Activity) {
+        }
     }
 }

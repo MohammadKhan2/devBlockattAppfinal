@@ -380,7 +380,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                 }
 
                 Glide.with(activity)
-                        .load(a.getImage())
+                        .load(a.getImage().replace("https","http"))
                         .override((int) width, (int) height)
                         .listener(new RequestListener<Drawable>() {
                             @Override

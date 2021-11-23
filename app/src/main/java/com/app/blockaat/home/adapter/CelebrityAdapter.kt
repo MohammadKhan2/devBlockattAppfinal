@@ -16,8 +16,10 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.app.blockaat.R
+import com.app.blockaat.helper.CustomEvents
 import com.app.blockaat.helper.Global
 import com.app.blockaat.home.model.Influencer
+import com.app.blockaat.navigation.NavigationActivity
 import kotlinx.android.synthetic.main.item_home_influencer.view.*
 import org.greenrobot.eventbus.EventBus
 import java.util.ArrayList
@@ -93,7 +95,11 @@ class CelebrityAdapter(
         holder.itemView.lnrMain.setOnClickListener {
             dataList[position]?.categoryId = categoryId
             EventBus.getDefault().post(dataList[position])
-
+            if (Global.isUserLoggedIn(context)){
+                CustomEvents.contentViewed(context as Activity,Global.getUserId(context),dataList[position]?.id,
+                    dataList[position]?.title
+                )
+            }
         }
     }
 

@@ -1,5 +1,6 @@
 package com.app.blockaat.home.adapter
 
+import android.app.Activity
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.util.Log
@@ -15,6 +16,8 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.app.blockaat.R
+import com.app.blockaat.helper.CustomEvents
+import com.app.blockaat.helper.Global
 import com.app.blockaat.home.interfaces.HomeItemClickInterface
 import com.app.blockaat.home.model.Brands
 import kotlinx.android.synthetic.main.item_home_brands.view.*

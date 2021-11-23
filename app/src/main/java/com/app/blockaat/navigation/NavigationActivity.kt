@@ -988,7 +988,7 @@ class NavigationActivity : BaseActivity(), NavigationView.OnNavigationItemSelect
                             .commit()
                         isMusicianLoaded = true
                         if (Global.isUserLoggedIn(this)){
-                            CustomEvents.contentViewed(this,userId,"Talents tab")
+                            CustomEvents.contentViewed(this,userId, "Talents tab")
                         }
                     } else {
                         fm.beginTransaction().hide(activeFragment).show(celebrityFragment).commit()

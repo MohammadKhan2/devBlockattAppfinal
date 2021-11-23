@@ -119,6 +119,10 @@ object Global {
         RestClient.create()
     }
 
+    val apiService1 by lazy {
+        RestClient.create1()
+    }
+
     //CALLED IN hOMEfRAGMENT
     // call this method when language is applied , so it will set the fonts
 
@@ -560,7 +564,7 @@ object Global {
     }
 
     fun loadImagesUsingGlide(context: Context, strUrl: String?, imageView: ImageView) {
-        Glide.with(context).load(strUrl).fitCenter().into(imageView)
+        Glide.with(context).load(strUrl?.replace("https","http")).fitCenter().into(imageView)
     }
 
     fun getDeviceWidth(activity: Activity): Int {

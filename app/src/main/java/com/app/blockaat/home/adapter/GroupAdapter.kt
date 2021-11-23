@@ -1,6 +1,7 @@
 package com.app.blockaat.home.adapter
 
 import android.app.Activity
+import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.app.blockaat.R
+import com.app.blockaat.helper.CustomEvents
 import com.app.blockaat.helper.Global
 import com.app.blockaat.home.interfaces.GroupItemClickListener
 import com.app.blockaat.home.interfaces.HomeItemClickInterface
@@ -20,7 +22,7 @@ class GroupAdapter(
     private val activity: Activity,
     private val homeItemClickInterface: HomeItemClickInterface,
     private val groupItemClickInterface: GroupItemClickListener,
-    private val categoryType: String
+    private val categoryType: String,
 ) : RecyclerView.Adapter<GroupAdapter.GroupViewHolder>() {
 
     private var deviceMultiplier = 0.0

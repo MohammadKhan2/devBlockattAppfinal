@@ -1,6 +1,7 @@
 package com.app.blockaat.home.fragment
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -377,6 +378,12 @@ class HomeDataFragment : Fragment(), HomeItemClickInterface {
                         linViewPagerIndicator1?.getChildAt(m)
                             ?.findViewById<ImageView>(R.id.imgBtnIndicator)?.isSelected =
                             position == m
+                    }
+
+                    // Analytics event
+                    if (Global.isUserLoggedIn(activity as NavigationActivity)){
+                        CustomEvents.contentViewed(activity as NavigationActivity,
+                            Global.getUserId(activity as NavigationActivity),model.data.banners[position].id,model.data.banners[position].name)
                     }
                 }
             })

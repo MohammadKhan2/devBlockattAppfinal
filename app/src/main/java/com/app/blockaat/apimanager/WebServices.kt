@@ -8,6 +8,7 @@ object WebServices {
 
     /*Live  */
     var DOMAIN = "https://admin-cp.blockatapp.com/api/ver1bloc/"
+    var DOMAIN1 = "http://v2api.blockatapp.com/api/ver1bloc/"
     var IMAGE_DOMAIN = "https://admin-cp.blockatapp.com/"
 
 //    var DOMAIN1 = "http://v2api.blockatapp.com/api/ver1bloc/"

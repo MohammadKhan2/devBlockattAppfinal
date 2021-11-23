@@ -11,10 +11,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.app.blockaat.R
 import com.app.blockaat.cart.model.AddCartRequestModel
-import com.app.blockaat.helper.AddWishListInterface
-import com.app.blockaat.helper.Constants
-import com.app.blockaat.helper.DBHelper
-import com.app.blockaat.helper.Global
+import com.app.blockaat.helper.*
 import com.app.blockaat.home.interfaces.HomeItemClickInterface
 import com.app.blockaat.home.model.CollectionGroup
 import com.app.blockaat.home.model.CollectionList
@@ -317,7 +314,10 @@ class GroupListAdapter(
                     groupList.parentCAtType = strCategoryType
                     EventBus.getDefault().post(GroupListData(groupList, collectionGroup.group_type))
 
-
+                    // Analytics event
+                    if (Global.isUserLoggedIn(activity)){
+                        CustomEvents.contentViewed(activity,Global.getUserId(activity),groupList.id,groupList.title)
+                    }
                 }
 
 
@@ -351,6 +351,11 @@ class GroupListAdapter(
                 holder.itemView.mcMain.setOnClickListener {
                     groupList.parentCAtType = strCategoryType
                     EventBus.getDefault().post(GroupListData(groupList, collectionGroup.group_type))
+
+                    // Analytics event
+                    if (Global.isUserLoggedIn(activity)){
+                        CustomEvents.contentViewed(activity,Global.getUserId(activity),groupList.id,groupList.title)
+                    }
                     /*val intent = Intent(activity, ProductListActivity::class.java)
                     intent.putExtra("brandID", groupList.id.toString())
                     intent.putExtra("header_text", groupList.name)
@@ -392,6 +397,11 @@ class GroupListAdapter(
                     groupList.parentCAtType = strCategoryType
                     EventBus.getDefault().post(GroupListData(groupList, collectionGroup.group_type))
 
+                    // Analytics event
+                    if (Global.isUserLoggedIn(activity)){
+                        CustomEvents.contentViewed(activity,Global.getUserId(activity),groupList.id,groupList.title)
+                    }
+
                 }
             }
 
@@ -421,6 +431,11 @@ class GroupListAdapter(
                 holder.itemView.mcMain.setOnClickListener {
                     groupList.parentCAtType = strCategoryType
                      EventBus.getDefault().post(GroupListData(groupList, collectionGroup.group_type))
+
+                    // Analytics event
+                    if (Global.isUserLoggedIn(activity)){
+                        CustomEvents.contentViewed(activity,Global.getUserId(activity),groupList.id,groupList.title)
+                    }
 
                 }
             }

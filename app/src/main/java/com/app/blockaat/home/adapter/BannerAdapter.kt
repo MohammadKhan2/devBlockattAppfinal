@@ -12,6 +12,7 @@ import androidx.viewpager.widget.ViewPager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.app.blockaat.R
+import com.app.blockaat.helper.CustomEvents
 import com.app.blockaat.helper.Global
 import com.app.blockaat.home.interfaces.HomeItemClickInterface
 import com.app.blockaat.home.model.*
@@ -65,6 +66,11 @@ class BannerAdapter internal constructor(
         imageLayout.relImage.setOnClickListener {
             if (!a?.link_type.isNullOrEmpty() && !a?.link_id.isNullOrEmpty()) {
               homeItemClickInterface.onClickItem(position,"openItem",a?.link_type?:"",a?.link_id?:"",a?.name?:"")
+
+                // Analytics event
+                if (Global.isUserLoggedIn(mContext as Activity)){
+                    CustomEvents.contentViewed(mContext as Activity,Global.getUserId(mContext),a.id,a.name)
+                }
             }
         }
 
