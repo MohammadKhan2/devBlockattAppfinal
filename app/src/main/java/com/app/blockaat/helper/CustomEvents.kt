@@ -6,8 +6,11 @@ import android.os.Bundle
 import com.facebook.appevents.AppEventsConstants
 import com.facebook.appevents.AppEventsLogger
 import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.ktx.Firebase
 import com.pushwoosh.inapp.PushwooshInApp
 import com.pushwoosh.tags.TagsBundle
+
 
 object CustomEvents {
     private var firebaseAnalytics: FirebaseAnalytics? = null
@@ -22,11 +25,11 @@ object CustomEvents {
     }
 
     fun eventAddToCart(
-        activity: Activity,
-        entityID: String?,
-        productName: String?,
-        brandName: String?,
-        finalPrice: String?
+            activity: Activity,
+            entityID: String?,
+            productName: String?,
+            brandName: String?,
+            finalPrice: String?
     ) {
         //fb
         val parameters = Bundle()
@@ -37,9 +40,9 @@ object CustomEvents {
         parameters.putString("product_name", productName)
         parameters.putString(AppEventsConstants.EVENT_PARAM_CONTENT_TYPE, brandName)
         logger.logEvent(
-            AppEventsConstants.EVENT_NAME_ADDED_TO_CART,
-            finalPrice?.toDouble() ?: 0.0,
-            parameters
+                AppEventsConstants.EVENT_NAME_ADDED_TO_CART,
+                finalPrice?.toDouble() ?: 0.0,
+                parameters
         )
 
         //firebase
@@ -61,11 +64,11 @@ object CustomEvents {
     }
 
     fun eventAddToWishlist(
-        activity: Activity,
-        entityID: String?,
-        productName: String?,
-        brandName: String?,
-        finalPrice: String?
+            activity: Activity,
+            entityID: String?,
+            productName: String?,
+            brandName: String?,
+            finalPrice: String?
     ) {
         //fb
         val parameters = Bundle()
@@ -76,7 +79,7 @@ object CustomEvents {
         parameters.putString("product_name", productName)
         parameters.putString(AppEventsConstants.EVENT_PARAM_CONTENT_TYPE, brandName)
         logger.logEvent(
-            AppEventsConstants.EVENT_NAME_ADDED_TO_WISHLIST, finalPrice?.toDouble()
+                AppEventsConstants.EVENT_NAME_ADDED_TO_WISHLIST, finalPrice?.toDouble()
                 ?: 0.0, parameters
         )
 
@@ -93,11 +96,11 @@ object CustomEvents {
     }
 
     fun addToWishList(
-        activity: Activity,
-        entityID: String?,
-        productName: String?,
-        brandName: String?,
-        finalPrice: String?
+            activity: Activity,
+            entityID: String?,
+            productName: String?,
+            brandName: String?,
+            finalPrice: String?
     ) {
         //firebase
         val mFirebaseAnalytics = FirebaseAnalytics.getInstance(activity)
@@ -112,11 +115,11 @@ object CustomEvents {
     }
 
     fun addToWishList(
-        mFirebaseAnalytics: FirebaseAnalytics,
-        entityID: String?,
-        productName: String?,
-        brandName: String?,
-        finalPrice: String?
+            mFirebaseAnalytics: FirebaseAnalytics,
+            entityID: String?,
+            productName: String?,
+            brandName: String?,
+            finalPrice: String?
     ) {
         //firebase
         val bundle = Bundle()
@@ -129,11 +132,11 @@ object CustomEvents {
     }
 
     fun itemViewed(
-        activity: Activity,
-        productID: String?,
-        productName: String?,
-        finalPrice: String?,
-        productBrand: String?
+            activity: Activity,
+            productID: String?,
+            productName: String?,
+            finalPrice: String?,
+            productBrand: String?
     ) {
         //fb
         val parameters = Bundle()
@@ -144,7 +147,7 @@ object CustomEvents {
         parameters.putString(AppEventsConstants.EVENT_PARAM_CONTENT_ID, productID)
         parameters.putString("product_name", productName)
         logger.logEvent(
-            AppEventsConstants.EVENT_NAME_VIEWED_CONTENT, finalPrice?.toDouble()
+                AppEventsConstants.EVENT_NAME_VIEWED_CONTENT, finalPrice?.toDouble()
                 ?: 0.0, parameters
         )
 
@@ -160,11 +163,11 @@ object CustomEvents {
     }
 
     fun eventCompletedRegistration(
-        activity: Activity,
-        userID: Int?,
-        name: String?,
-        email: String?,
-        userType: String?
+            activity: Activity,
+            userID: Int?,
+            name: String?,
+            email: String?,
+            userType: String?
     ) {
         //fb
         val parameters = Bundle()
@@ -186,15 +189,16 @@ object CustomEvents {
     }
 
     fun registrationComplete(
-        activity: Activity,
-        userID: Int?,
-        name: String?,
-        email: String?,
-        userType: String?
+            activity: Activity,
+            userID: Int?,
+            name: String?,
+            email: String?,
+            userType: String?
     ) {
 
         //firebase
-        val mFirebaseAnalytics = FirebaseAnalytics.getInstance(activity)
+        var mFirebaseAnalytics = FirebaseAnalytics.getInstance(activity)
+        mFirebaseAnalytics = Firebase.analytics
         val bundle = Bundle()
         bundle.putString(FirebaseAnalytics.Param.SIGN_UP_METHOD, userType)
         bundle.putString("id", userID?.toString())
@@ -204,14 +208,15 @@ object CustomEvents {
     }
 
     fun userLogin(
-        activity: Activity,
-        userID: Int?,
-        name: String?,
-        email: String?,
+            activity: Activity,
+            userID: Int?,
+            name: String?,
+            email: String?,
     ) {
 
         //firebase
-        val mFirebaseAnalytics = FirebaseAnalytics.getInstance(activity)
+        var mFirebaseAnalytics = FirebaseAnalytics.getInstance(activity)
+        mFirebaseAnalytics = Firebase.analytics
         val bundle = Bundle()
         bundle.putString("id", userID?.toString())
         bundle.putString("name", name)
@@ -220,11 +225,11 @@ object CustomEvents {
     }
 
     fun eventContentViewed(
-        activity: Activity,
-        productID: String?,
-        productName: String?,
-        finalPrice: String?,
-        productBrand: String?
+            activity: Activity,
+            productID: String?,
+            productName: String?,
+            finalPrice: String?,
+            productBrand: String?
     ) {
         //fb
         val parameters = Bundle()
@@ -235,7 +240,7 @@ object CustomEvents {
         parameters.putString(AppEventsConstants.EVENT_PARAM_CONTENT_ID, productID)
         parameters.putString("product_name", productName)
         logger.logEvent(
-            AppEventsConstants.EVENT_NAME_VIEWED_CONTENT, finalPrice?.toDouble()
+                AppEventsConstants.EVENT_NAME_VIEWED_CONTENT, finalPrice?.toDouble()
                 ?: 0.0, parameters
         )
 
@@ -251,31 +256,33 @@ object CustomEvents {
     }
 
     fun contentViewed(
-        activity: Activity,
-        userId: String?,
-        itemId:Int?,
-        contentName:String?
+            activity: Activity,
+            userId: String?,
+            itemId: Int?,
+            contentName: String?
     ) {
 
         //firebase
-        val mFirebaseAnalytics = FirebaseAnalytics.getInstance(activity)
+        var mFirebaseAnalytics = FirebaseAnalytics.getInstance(activity)
+        mFirebaseAnalytics = Firebase.analytics
         if (mFirebaseAnalytics!=null){
             val bundle = Bundle()
             bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, contentName)
             bundle.putString("user_id", userId)
-            bundle.putString(FirebaseAnalytics.Param.ITEM_ID,itemId.toString())
+            bundle.putString(FirebaseAnalytics.Param.ITEM_ID, itemId.toString())
             mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.VIEW_ITEM, bundle)
         }
     }
 
     fun contentViewed(
-        activity: Activity,
-        userId: String?,
-        contentName:String?
+            activity: Activity,
+            userId: String?,
+            contentName: String?
     ) {
 
         //firebase
-        val mFirebaseAnalytics = FirebaseAnalytics.getInstance(activity)
+        var mFirebaseAnalytics = FirebaseAnalytics.getInstance(activity)
+        mFirebaseAnalytics = Firebase.analytics
         val bundle = Bundle()
         bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, contentName)
         bundle.putString("user_id", userId)
@@ -283,10 +290,10 @@ object CustomEvents {
     }
 
     fun eventSearch(
-        activity: Activity,
-        strProductID: String?,
-        strProductName: String?,
-        strProductTotal: String?
+            activity: Activity,
+            strProductID: String?,
+            strProductName: String?,
+            strProductTotal: String?
     ) {
         //fb
         val parameters = Bundle()
@@ -295,9 +302,9 @@ object CustomEvents {
         parameters.putString(AppEventsConstants.EVENT_PARAM_CONTENT_ID, strProductID)
         parameters.putString(AppEventsConstants.EVENT_PARAM_SEARCH_STRING, strProductName)
         logger.logEvent(
-            AppEventsConstants.EVENT_NAME_SEARCHED,
-            strProductTotal?.toDouble() ?: 0.0,
-            parameters
+                AppEventsConstants.EVENT_NAME_SEARCHED,
+                strProductTotal?.toDouble() ?: 0.0,
+                parameters
         )
 
         //firebase
@@ -311,10 +318,10 @@ object CustomEvents {
     }
 
     fun eventInitiatedCheckout(
-        activity: Activity,
-        orderID: Int?,
-        qty: String?,
-        grandTotal: String?
+            activity: Activity,
+            orderID: Int?,
+            qty: String?,
+            grandTotal: String?
     ) {
         //fb
         val parameters = Bundle()
@@ -326,7 +333,7 @@ object CustomEvents {
         parameters.putString(AppEventsConstants.EVENT_PARAM_NUM_ITEMS, qty)
         parameters.putString(AppEventsConstants.EVENT_PARAM_PAYMENT_INFO_AVAILABLE, "0")
         logger.logEvent(
-            AppEventsConstants.EVENT_NAME_INITIATED_CHECKOUT, grandTotal?.toDouble()
+                AppEventsConstants.EVENT_NAME_INITIATED_CHECKOUT, grandTotal?.toDouble()
                 ?: 0.0, parameters
         )
 
@@ -343,13 +350,14 @@ object CustomEvents {
     }
 
     fun initiatedCheckout(
-        activity: Activity,
-        userId:String?,
-        orderID: String?,
-        grandTotal: String?
+            activity: Activity,
+            userId: String?,
+            orderID: String?,
+            grandTotal: String?
     ) {
         //firebase
-        val mFirebaseAnalytics = FirebaseAnalytics.getInstance(activity)
+        var mFirebaseAnalytics = FirebaseAnalytics.getInstance(activity)
+        mFirebaseAnalytics = Firebase.analytics
         val bundle = Bundle()
         bundle.putString(FirebaseAnalytics.Param.ITEM_ID, orderID?.toString())
         bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, "Checkout")
@@ -360,13 +368,13 @@ object CustomEvents {
     }
 
     fun eventPurchased(
-        activity: Activity,
-        order_date: String?,
-        order_id: String?,
-        paymentMethod: String?,
-        grandTotal: String?,
-        email: String?,
-        userId: String?
+            activity: Activity,
+            order_date: String?,
+            order_id: String?,
+            paymentMethod: String?,
+            grandTotal: String?,
+            email: String?,
+            userId: String?
     ) {
         //fb
         val parameters = Bundle()
@@ -380,7 +388,7 @@ object CustomEvents {
         parameters.putString("currency", Global.getIso3(activity, ""))
 //        parameters.putString(AppEventsConstants.EVENT_PARAM_CURRENCY, Global.getIso3(activity, ""))
         logger.logEvent(
-            AppEventsConstants.EVENT_NAME_PURCHASED, grandTotal?.toDouble()
+                AppEventsConstants.EVENT_NAME_PURCHASED, grandTotal?.toDouble()
                 ?: 0.0, parameters
         )
 
@@ -401,16 +409,17 @@ object CustomEvents {
     }
 
     fun itemPurchased(
-        activity: Activity,
-        order_date: String?,
-        order_id: String?,
-        paymentMethod: String?,
-        grandTotal: String?,
-        email: String?,
-        userId: String?
+            activity: Activity,
+            order_date: String?,
+            order_id: String?,
+            paymentMethod: String?,
+            grandTotal: String?,
+            email: String?,
+            userId: String?
     ) {
         //firebase
-        val mFirebaseAnalytics = FirebaseAnalytics.getInstance(activity)
+        var mFirebaseAnalytics = FirebaseAnalytics.getInstance(activity)
+        mFirebaseAnalytics = Firebase.analytics
         val bundle = Bundle()
         bundle.putString("order_date", order_date)
         bundle.putString("order_id", order_id)
@@ -428,10 +437,11 @@ object CustomEvents {
 
     }
 
-    fun screenViewed(activity: Activity, activityName:String){
-        val mFirebaseAnalytics = FirebaseAnalytics.getInstance(activity)
+    fun screenViewed(activity: Activity, activityName: String){
+        var mFirebaseAnalytics = FirebaseAnalytics.getInstance(activity)
+        mFirebaseAnalytics = Firebase.analytics
         val bundle = Bundle()
-        bundle.putString("screen_viewed",activityName)
-        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.VIEW_ITEM,bundle)
+        bundle.putString("screen_viewed", activityName)
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle)
     }
 }

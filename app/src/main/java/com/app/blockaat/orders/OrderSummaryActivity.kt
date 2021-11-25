@@ -123,7 +123,9 @@ class OrderSummaryActivity : BaseActivity() {
         productsDBHelper = DBHelper(this@OrderSummaryActivity)
         productsDBHelper.deleteTable("table_cart")
 
-        orderSummaryData = intent.getSerializableExtra("orderSummaryData") as CheckoutDataModel
+        if(intent.hasExtra("orderSummaryData")){
+            orderSummaryData = intent.getSerializableExtra("orderSummaryData") as CheckoutDataModel
+        }
         if (intent.hasExtra("isFromVisaKNET") && intent.getStringExtra("isFromVisaKNET") == "yes") {
             paymentDataJson = JSONObject(intent.getStringExtra("paymentDetail"))
         }

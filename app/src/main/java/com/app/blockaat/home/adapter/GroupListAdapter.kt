@@ -30,6 +30,8 @@ import kotlinx.android.synthetic.main.item_home_product.view.txtDiscount
 import kotlinx.android.synthetic.main.item_home_product.view.txtFinalPrice
 import kotlinx.android.synthetic.main.item_home_product.view.txtName
 import kotlinx.android.synthetic.main.item_home_product.view.txtRegularPrice
+import kotlinx.android.synthetic.main.layout_product_detail.*
+import okhttp3.internal.notify
 import org.greenrobot.eventbus.EventBus
 
 class GroupListAdapter(
@@ -194,7 +196,8 @@ class GroupListAdapter(
                         Constants.PREFS_isUSER_LOGGED_IN
                     ) == "yes"
                 ) {
-                    val flag= groupList.item_in_wishlist == 0
+                   val flag = groupList.item_in_wishlist==0
+
                     Global.addOrRemoveWishList(activity,groupList.id.toString(),productsDBHelper,flag,object:AddWishListInterface{
                         override fun onRemove(result: WishListResponseModel) {
                             homeItemClickInterface.onClickItem(position, "homeWishlist", "", "", "")

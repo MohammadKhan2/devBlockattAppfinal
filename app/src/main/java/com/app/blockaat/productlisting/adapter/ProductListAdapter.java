@@ -26,6 +26,7 @@ import com.app.blockaat.helper.Constants;
 import com.app.blockaat.helper.CustomEvents;
 import com.app.blockaat.helper.DBHelper;
 import com.app.blockaat.helper.Global;
+import com.app.blockaat.helper.ProductsDataModel;
 import com.app.blockaat.helper.StickHeaderItemDecoration;
 import com.app.blockaat.home.interfaces.HomeItemClickInterface;
 import com.app.blockaat.login.LoginActivity;
@@ -475,17 +476,33 @@ public class ProductListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
                 ivWishlist.setOnClickListener(view -> {
                     if (Global.INSTANCE.isUserLoggedIn(activity)) {
-                        Boolean flag = arrListProductListing.get(position).getItem_in_wishlist() == 0;
-                        // updated by azim
-                        Global.INSTANCE.addOrRemoveWishList(activity, position,arrListProductListing.get(position).getId(), productsDBHelper, flag, new AddWishListInterface() {
+                        Boolean flag = false;//arrListProductListing.get(position).getItem_in_wishlist() == 0;
+                        if(arrListProductListing.get(position).getItem_in_wishlist()==1){
+                            flag = true;
+                        }else {
+                            flag = false;
+                        }
+                        Global.INSTANCE.addOrRemoveWishList(activity,arrListProductListing.get(position).getId(), productsDBHelper, flag, new AddWishListInterface() {
                             @Override
                             public void onRemove(@NotNull WishListResponseModel result) {
                                 onProductListListener.onProductClicked(arrListProductListing.get(position), "wishlist");
+                                ivWishlist.setImageResource(R.drawable.ic_wishlist_unselected);
+                                if(productsDBHelper.isProductPresentInWishlist(a.getId())){
+                                    productsDBHelper.deleteProductFromWishlist(a.getId());
+                                    arrListProductListing.get(position).setItem_in_wishlist(0);
+                                    notifyDataSetChanged();
+                                }
                             }
 
                             @Override
                             public void onAdd(@NotNull WishListResponseModel result) {
                                 onProductListListener.onProductClicked(arrListProductListing.get(position), "wishlist");
+                                ivWishlist.setImageResource(R.drawable.ic_wishlist_selected);
+                                if(!productsDBHelper.isProductPresentInWishlist(a.getId())){
+                                    productsDBHelper.addProductToWishlist(new ProductsDataModel(a.getId()));
+                                    arrListProductListing.get(position).setItem_in_wishlist(1);
+                                    notifyDataSetChanged();
+                                }
                             }
                         });
                        /* if (arrListProductListing.get(position).getItem_in_wishlist() == 1) {

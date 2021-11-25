@@ -1,5 +1,6 @@
 package com.app.blockaat
 
+import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.PixelFormat
@@ -18,6 +19,9 @@ import com.app.blockaat.navigation.NavigationActivity
 import com.facebook.applinks.AppLinkData
 import com.google.android.gms.analytics.HitBuilders.ScreenViewBuilder
 import com.google.android.gms.analytics.Tracker
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.ktx.Firebase
 import com.pushwoosh.Pushwoosh
 import io.branch.referral.Branch
 import io.reactivex.disposables.Disposable
@@ -36,6 +40,7 @@ class SplashActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
 
         CustomEvents.screenViewed(this,getString(R.string.splash))
+        azimLogin(this,123,"azim","adoolf@gmail.com")
 
         window.setFormat(PixelFormat.TRANSLUCENT)
 
@@ -414,5 +419,22 @@ class SplashActivity : BaseActivity() {
         if (disposable != null) {
             disposable?.dispose()
         }
+    }
+
+    fun azimLogin(
+            activity: Activity,
+            userID: Int?,
+            name: String?,
+            email: String?,
+    ) {
+
+        //firebase
+        var mFirebaseAnalytics = FirebaseAnalytics.getInstance(activity)
+        mFirebaseAnalytics = Firebase.analytics
+        val bundle = Bundle()
+        bundle.putString("id", userID?.toString())
+        bundle.putString("name", name)
+        bundle.putString("email", email)
+        mFirebaseAnalytics.logEvent("azim_login", bundle)
     }
 }

@@ -1832,13 +1832,13 @@ object Global {
                             if (result.status == 200) {
                                 if (result.data != null) {
                                     // start azim
-                                    val wishListData: WishListDataModel = result.data[position]
-                                    val productId: String? = wishListData.id
-                                    val productName:String? = wishListData.name
-                                    val brandName:String? = wishListData.brand_name
-                                    val price:String? = wishListData.final_price
-                                    firebaseAnalytics = AppController.instance.fAnalytics
-                                    CustomEvents.addToWishList(firebaseAnalytics!!,productId,productName,brandName,price)
+//                                    val wishListData: WishListDataModel = result.data[position]
+//                                    val productId: String? = wishListData.id
+//                                    val productName:String? = wishListData.name
+//                                    val brandName:String? = wishListData.brand_name
+//                                    val price:String? = wishListData.final_price
+//                                    firebaseAnalytics = AppController.instance.fAnalytics
+//                                    CustomEvents.addToWishList(firebaseAnalytics!!,productId,productName,brandName,price)
                                     if (!flagWishlist) {
                                         if (productsDBHelper.isProductPresentInWishlist(strProductID)) {
                                             productsDBHelper.deleteProductFromWishlist(strProductID)

@@ -562,7 +562,7 @@ class ProductListFragment : Fragment(), OnHeaderClicked, OnSubcategorySelectList
             jsonObject.addProperty("attribute_id", strAttributeID)
             jsonObject.addProperty("brand_id", strFilterBrandID)
             jsonObject.addProperty("category_id", strFilterCategoryID)
-            disposable = Global.apiService1.getProducts(
+            disposable = Global.apiService.getProducts(
                 jsonObject,
                 com.app.blockaat.apimanager.WebServices.SearchWs + Global.getLanguage(activity as Activity)
                         + "&category_id=" + strCategoryID + "&price_range=" + strRange + "&page=" +
