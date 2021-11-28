@@ -141,6 +141,7 @@ class OnlineCartDataAdapter(
                     object : AlertDialogInterface {
                         override fun onYesClick() {
                             deleteCartItem(a, strOrderID, onCartUpdateClicked, productsDBHelper)
+                            itemView.swipeMain.close(true)
                         }
 
                         override fun onNoClick() {
@@ -150,6 +151,7 @@ class OnlineCartDataAdapter(
             }
             itemView.linWishlist.setOnClickListener {
                 moveToWishlist(a, strOrderID, onCartUpdateClicked, productsDBHelper)
+                itemView.swipeMain.close(true)
 /*
                 Global.showAlert(
                     activity,
