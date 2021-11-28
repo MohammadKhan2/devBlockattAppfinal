@@ -53,8 +53,6 @@ class TvFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         mActivity = activity as NavigationActivity
-
-        CustomEvents.screenViewed(activity as NavigationActivity, getString(R.string.tv_screen))
         Global.setLocale(mActivity)
     }
 

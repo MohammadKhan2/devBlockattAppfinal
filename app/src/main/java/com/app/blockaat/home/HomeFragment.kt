@@ -41,7 +41,6 @@ class HomeFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mActivity = activity as NavigationActivity
-        CustomEvents.screenViewed(activity as NavigationActivity, getString(R.string.home_screen))
     }
 
     override fun onCreateView(

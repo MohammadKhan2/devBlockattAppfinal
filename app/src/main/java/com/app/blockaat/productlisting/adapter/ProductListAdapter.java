@@ -478,9 +478,9 @@ public class ProductListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                     if (Global.INSTANCE.isUserLoggedIn(activity)) {
                         Boolean flag = false;//arrListProductListing.get(position).getItem_in_wishlist() == 0;
                         if(arrListProductListing.get(position).getItem_in_wishlist()==1){
-                            flag = true;
-                        }else {
                             flag = false;
+                        }else {
+                            flag = true;
                         }
                         Global.INSTANCE.addOrRemoveWishList(activity,arrListProductListing.get(position).getId(), productsDBHelper, flag, new AddWishListInterface() {
                             @Override
@@ -497,7 +497,11 @@ public class ProductListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
                             @Override
                             public void onAdd(@NotNull WishListResponseModel result) {
                                 onProductListListener.onProductClicked(arrListProductListing.get(position), "wishlist");
+
+                                // Firebase event
+                                CustomEvents.INSTANCE.addToWishList(activity,a.getId(),a.getName(),a.getBrand_name(),a.getFinal_price());
                                 ivWishlist.setImageResource(R.drawable.ic_wishlist_selected);
+
                                 if(!productsDBHelper.isProductPresentInWishlist(a.getId())){
                                     productsDBHelper.addProductToWishlist(new ProductsDataModel(a.getId()));
                                     arrListProductListing.get(position).setItem_in_wishlist(1);

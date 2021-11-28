@@ -77,8 +77,10 @@ class AccountFragment : Fragment() {
         super.onCreate(savedInstanceState)
         mActivity = activity as NavigationActivity
 
-        CustomEvents.screenViewed(activity as NavigationActivity,getString(R.string.account_screen))
-
+        if (Global.isUserLoggedIn(mActivity)){
+            val userId = Global.getUserId(mActivity)
+            CustomEvents.screenViewed(mActivity,userId,getString(R.string.account_screen))
+        }
     }
 
     override fun onCreateView(

@@ -32,6 +32,7 @@ import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.PagerAdapter
+import com.adjust.sdk.Adjust
 import com.app.blockaat.R
 import com.app.blockaat.account.AccountFragment
 import com.app.blockaat.apimanager.WebServices
@@ -896,7 +897,7 @@ class NavigationActivity : BaseActivity(), NavigationView.OnNavigationItemSelect
                             .show(homeFragment).commit()
                         isHomeLoaded = true
                         if (Global.isUserLoggedIn(this)){
-                            CustomEvents.contentViewed(this,userId,"Home tab")
+                            CustomEvents.screenViewed(this,userId,"Home tab")
                         }
                     } else {
                         fm.beginTransaction().hide(activeFragment).show(homeFragment).commit()
@@ -944,6 +945,7 @@ class NavigationActivity : BaseActivity(), NavigationView.OnNavigationItemSelect
                         fm.beginTransaction().add(R.id.content_frame, brandsFragment, "1")
                             .show(brandsFragment).commit()
                         isBrandLoaded = true
+
                     } else {
                         fm.beginTransaction().hide(activeFragment).show(brandsFragment).commit()
 
@@ -988,7 +990,7 @@ class NavigationActivity : BaseActivity(), NavigationView.OnNavigationItemSelect
                             .commit()
                         isMusicianLoaded = true
                         if (Global.isUserLoggedIn(this)){
-                            CustomEvents.contentViewed(this,userId, "Talents tab")
+                            CustomEvents.screenViewed(this,userId, "Talents tab")
                         }
                     } else {
                         fm.beginTransaction().hide(activeFragment).show(celebrityFragment).commit()
@@ -1034,7 +1036,7 @@ class NavigationActivity : BaseActivity(), NavigationView.OnNavigationItemSelect
                             .commit()
                         isCatLoaded = true
                         if (Global.isUserLoggedIn(this)){
-                            CustomEvents.contentViewed(this,userId,"Blocks tab")
+                            CustomEvents.screenViewed(this,userId,"Blocks tab")
                         }
                     } else {
                         fm.beginTransaction().hide(activeFragment).show(categoriesFragment).commit()
@@ -1091,7 +1093,7 @@ class NavigationActivity : BaseActivity(), NavigationView.OnNavigationItemSelect
                             .show(cartFragment).commit()
                         isCartLoaded = true
                         if (Global.isUserLoggedIn(this)){
-                            CustomEvents.contentViewed(this,userId,"My Bag tab")
+                            CustomEvents.screenViewed(this,userId,"My Bag tab")
                         }
                     } else {
                         fm.beginTransaction().hide(activeFragment).show(cartFragment).commit()
@@ -1130,7 +1132,7 @@ class NavigationActivity : BaseActivity(), NavigationView.OnNavigationItemSelect
                             .commit()
                         isTvLoaded = true
                         if (Global.isUserLoggedIn(this)){
-                            CustomEvents.contentViewed(this,userId,"Tv tab")
+                            CustomEvents.screenViewed(this,userId,"Tv tab")
                         }
                     } else {
                         fm.beginTransaction().hide(activeFragment).show(tvFragment).commit()
@@ -2010,6 +2012,7 @@ class NavigationActivity : BaseActivity(), NavigationView.OnNavigationItemSelect
 
     override fun onResume() {
         super.onResume()
+        Adjust.onResume()
         updateCartBadge()
         updateCounts()
         if (Global.getStringFromSharedPref(this, Constants.PREFS_isUSER_LOGGED_IN)
@@ -2824,6 +2827,7 @@ class NavigationActivity : BaseActivity(), NavigationView.OnNavigationItemSelect
 
     override fun onPause() {
         super.onPause()
+        Adjust.onPause()
         // EventBus.getDefault().unregister(this)
     }
 

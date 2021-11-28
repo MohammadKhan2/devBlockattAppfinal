@@ -59,8 +59,8 @@ class AppController : Application() {
         Branch.disableLogging()
 
         // Adjust config
-        val appToken = "{YourAppToken}"
-        val environment = AdjustConfig.ENVIRONMENT_SANDBOX
+        val appToken = "2esby2kb8bgg"
+        val environment = AdjustConfig.ENVIRONMENT_PRODUCTION
         val config = AdjustConfig(this, appToken, environment)
         config.setLogLevel(LogLevel.VERBOSE);
         Adjust.onCreate(config)

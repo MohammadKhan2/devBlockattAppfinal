@@ -1505,6 +1505,9 @@ class ProductDetailsActivity : BaseActivity() {
                             )
                             productListDataModel?.item_in_wishlist = 1
                         }
+                        //Firebase event
+                        CustomEvents.addToWishList(this@ProductDetailsActivity,productDetailData?.id,productDetailData?.name,productDetailData?.brand_name,
+                            productDetailData?.final_price)
                     } else if (type == "related") {
                         updateRelatedItems()
                     }
@@ -1748,10 +1751,10 @@ class ProductDetailsActivity : BaseActivity() {
         if (productDetailData != null) {
             if (productsDBHelper.isProductPresentInWishlist(strProductID)) {
                 productDetailData?.item_in_wishlist = 1
-                /* sefali ivWishList.setImageResource(R.drawable.ic_wishlist_selected)*/
+                ivWishList.setImageResource(R.drawable.ic_wishlist_selected)
             } else {
                 productDetailData?.item_in_wishlist = 0
-                /* sefali  ivWishList.setImageResource(R.drawable.ic_wishlist_unselected)*/
+                ivWishList.setImageResource(R.drawable.ic_wishlist_unselected)
             }
         }
         updateRelatedItems()

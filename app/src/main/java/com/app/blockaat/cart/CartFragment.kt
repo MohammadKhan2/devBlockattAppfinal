@@ -52,8 +52,6 @@ class CartFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mActivity = activity as NavigationActivity
-
-        CustomEvents.screenViewed(activity as NavigationActivity,getString(R.string.my_bag_screen))
     }
 
     override fun onCreateView(

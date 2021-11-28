@@ -20,7 +20,11 @@ class ForgotPassActivity : BaseActivity()/*, View.OnFocusChangeListener*/ {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_frgtpass)
 
-        CustomEvents.screenViewed(this,getString(R.string.forgot_password_screen))
+        if (Global.isUserLoggedIn(this)){
+            val userId = Global.getUserId(this)
+            CustomEvents.screenViewed(this,userId,getString(R.string.forgot_password_screen))
+        }
+
         /* initializeToolbar()*/
         initializeFields()
         setFonts()

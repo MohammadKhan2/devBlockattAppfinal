@@ -40,7 +40,10 @@ class CelebrityActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_celebrity)
 
-        CustomEvents.screenViewed(this,getString(R.string.celebrity_screen))
+        if (Global.isUserLoggedIn(this)){
+            val userId = Global.getUserId(this)
+            CustomEvents.screenViewed(this,userId,getString(R.string.celebrity_screen))
+        }
 
         initializeToolbar()
         initializeFields()

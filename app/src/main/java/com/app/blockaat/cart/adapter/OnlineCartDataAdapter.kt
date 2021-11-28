@@ -10,10 +10,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.app.blockaat.R
+import com.app.blockaat.cart.CartActivity
 import com.app.blockaat.cart.model.DeleteCartRequest
 import com.app.blockaat.cart.model.GetCartListItemModel
 import com.app.blockaat.cart.model.UpdateCartRequest
 import com.app.blockaat.helper.*
+import com.app.blockaat.navigation.NavigationActivity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.lv_item_cart.view.*
@@ -210,6 +212,11 @@ class OnlineCartDataAdapter(
                                             result.data,
                                             "online"
                                         )
+                                        // azim
+                                        if (!productsDBHelper.isProductPresentInWishlist(a.id)){
+                                          productsDBHelper.addProductToWishlist(ProductsDataModel(a.id))
+                                        }
+                                        (activity as CartActivity).updateCounts()
                                     }
                                 } else {
                                     Global.showSnackbar(activity, result.message)

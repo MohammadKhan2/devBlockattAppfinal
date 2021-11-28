@@ -39,7 +39,10 @@ class SearchActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
 
-        CustomEvents.screenViewed(this,getString(R.string.search_screen))
+        if (Global.isUserLoggedIn(this)){
+            val userId = Global.getUserId(this)
+            CustomEvents.screenViewed(this,userId,getString(R.string.search_screen))
+        }
 
         Global.setLocale(this@SearchActivity )
         init()

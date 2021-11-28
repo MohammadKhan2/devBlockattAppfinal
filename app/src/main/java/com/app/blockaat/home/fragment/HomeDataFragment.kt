@@ -381,10 +381,10 @@ class HomeDataFragment : Fragment(), HomeItemClickInterface {
                     }
 
                     // Analytics event
-                    if (Global.isUserLoggedIn(activity as NavigationActivity)){
-                        CustomEvents.contentViewed(activity as NavigationActivity,
-                            Global.getUserId(activity as NavigationActivity),model.data.banners[position].id,model.data.banners[position].name)
-                    }
+//                    if (Global.isUserLoggedIn(mActivity)){
+//                        CustomEvents.contentViewed(mActivity,
+//                            Global.getUserId(mActivity),model.data.banners[position].id,model.data.banners[position].name)
+//                    }
                 }
             })
 

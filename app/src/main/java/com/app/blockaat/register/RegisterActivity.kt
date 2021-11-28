@@ -30,6 +30,7 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import androidx.appcompat.widget.Toolbar
+import com.adjust.sdk.Adjust
 import com.facebook.*
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
@@ -87,7 +88,7 @@ class RegisterActivity : BaseActivity(), TextWatcher/*, View.OnFocusChangeListen
         callbackManager = CallbackManager.Factory.create()
         setContentView(R.layout.activity_register)
 
-        CustomEvents.screenViewed(this,getString(R.string.register_screen))
+        CustomEvents.screenViewed(this,"",getString(R.string.register_screen))
 
         Global.setLocale(this)
         initializeToolbar()
@@ -1018,6 +1019,16 @@ class RegisterActivity : BaseActivity(), TextWatcher/*, View.OnFocusChangeListen
 
     override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
 
+    }
+
+    override fun onResume(){
+        super.onResume()
+        Adjust.onResume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Adjust.onPause()
     }
 
 /*    override fun onFocusChange(v: View?, hasFocus: Boolean) {

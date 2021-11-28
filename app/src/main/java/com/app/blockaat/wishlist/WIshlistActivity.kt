@@ -40,7 +40,10 @@ class WishlistActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_wishlist)
 
-        CustomEvents.screenViewed(this,getString(R.string.wish_list_screen))
+        if (Global.isUserLoggedIn(this)){
+            val userId = Global.getUserId(this)
+            CustomEvents.screenViewed(this,userId,getString(R.string.wish_list_screen))
+        }
 
         initializeToolbar()
         initializeFields()

@@ -35,7 +35,10 @@ class CategoryFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mActivity = activity as NavigationActivity
-        CustomEvents.screenViewed(activity as NavigationActivity, getString(R.string.blocks_screen))
+        if (Global.isUserLoggedIn(mActivity)){
+            val userId = Global.getUserId(mActivity)
+            CustomEvents.screenViewed(mActivity, userId,getString(R.string.blocks_screen))
+        }
     }
 
     override fun onCreateView(

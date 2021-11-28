@@ -17,6 +17,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import com.adjust.sdk.Adjust
 import com.app.blockaat.R
 import com.app.blockaat.cart.model.AddCartRequestApi
 import com.app.blockaat.helper.*
@@ -89,7 +90,7 @@ class LoginActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        CustomEvents.screenViewed(this,getString(R.string.login_screen))
+        CustomEvents.screenViewed(this,"",getString(R.string.login_screen))
         FacebookSdk.sdkInitialize(applicationContext)
         callbackManager = CallbackManager.Factory.create()
         initializeToolbar()
@@ -1094,7 +1095,16 @@ class LoginActivity : BaseActivity() {
     private fun hideProgressDialog() {
         dialog?.hideDialog()
     }
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    override fun onResume() {
+        super.onResume()
+        Adjust.onResume()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Adjust.onPause()
+    }
 }
 
 

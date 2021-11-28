@@ -39,8 +39,7 @@ class SplashActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        CustomEvents.screenViewed(this,getString(R.string.splash))
-        azimLogin(this,123,"azim","adoolf@gmail.com")
+//        CustomEvents.screenViewed(this,getString(R.string.splash))
 
         window.setFormat(PixelFormat.TRANSLUCENT)
 
@@ -419,22 +418,5 @@ class SplashActivity : BaseActivity() {
         if (disposable != null) {
             disposable?.dispose()
         }
-    }
-
-    fun azimLogin(
-            activity: Activity,
-            userID: Int?,
-            name: String?,
-            email: String?,
-    ) {
-
-        //firebase
-        var mFirebaseAnalytics = FirebaseAnalytics.getInstance(activity)
-        mFirebaseAnalytics = Firebase.analytics
-        val bundle = Bundle()
-        bundle.putString("id", userID?.toString())
-        bundle.putString("name", name)
-        bundle.putString("email", email)
-        mFirebaseAnalytics.logEvent("azim_login", bundle)
     }
 }

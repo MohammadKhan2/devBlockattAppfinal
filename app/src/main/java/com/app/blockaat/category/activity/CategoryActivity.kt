@@ -47,7 +47,10 @@ class CategoryActivity : BaseActivity(), OnCategorySelectListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_category)
 
-        CustomEvents.screenViewed(this,getString(R.string.category_screen))
+        if (Global.isUserLoggedIn(this)){
+            val userId = Global.getUserId(this)
+            CustomEvents.screenViewed(this,userId,getString(R.string.category_screen))
+        }
 
         Global.setLocale(this@CategoryActivity)
         initializeToolbar()

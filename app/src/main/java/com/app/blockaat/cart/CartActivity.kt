@@ -11,6 +11,7 @@ import android.view.View.VISIBLE
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.adjust.sdk.Adjust
 import com.google.gson.Gson
 import com.app.blockaat.R
 import com.app.blockaat.account.AccountActivity
@@ -592,6 +593,7 @@ class CartActivity : BaseActivity() {
 
     override fun onPause() {
         super.onPause()
+        Adjust.onPause()
         hideProgressDialog()
     }
 
@@ -602,6 +604,7 @@ class CartActivity : BaseActivity() {
 
     override fun onResume() {
         super.onResume()
+        Adjust.onResume()
         loadData()
 
         isAddAddress = Global.getBooleanFromSharedPref(this@CartActivity, Constants.ADD_ADDRESS)
@@ -630,6 +633,23 @@ class CartActivity : BaseActivity() {
             Global.showSnackbar(this@CartActivity, resources.getString(R.string.user_success_msg))
         }
 
+
+    }
+
+    fun updateCounts() {
+        if (Global.isUserLoggedIn(this)) {
+
+            // txtWishlistCount.visibility = View.GONE
+            if (Global.getTotalWishListProductCount(this) > 0) {
+                txtWishlistCount.visibility = View.VISIBLE
+                txtWishlistCount.text =
+                    Global.getTotalWishListProductCount(this).toString()
+            } else {
+                txtWishlistCount.visibility = View.GONE
+            }
+        } else {
+            txtWishlistCount.visibility = View.GONE
+        }
 
     }
 
