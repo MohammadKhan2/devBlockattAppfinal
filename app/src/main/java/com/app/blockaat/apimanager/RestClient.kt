@@ -46,6 +46,7 @@ import java.io.IOException
 import java.util.concurrent.TimeUnit
 
 interface RestClient {
+     var retrofit: Retrofit
 
     @POST
     fun addToCart(
@@ -395,7 +396,13 @@ interface RestClient {
     ): Observable<CheckoutItemResponseModel>
 
     companion object {
+
+
+          var RestClientOBj: RestClient? = null
+
         fun create(): RestClient {
+
+
             val okHttpBuilder = OkHttpClient.Builder()
 
             okHttpBuilder.connectTimeout(4, TimeUnit.MINUTES)
@@ -422,7 +429,7 @@ interface RestClient {
 
             val gson = GsonBuilder().setLenient().create()
 
-            val retrofit =
+          val   retrofit =
                 Retrofit.Builder().addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create(gson))
                     .baseUrl(WebServices.DOMAIN).client(httpClient).build()
@@ -461,6 +468,55 @@ interface RestClient {
                     .addConverterFactory(GsonConverterFactory.create(gson))
                     .baseUrl(WebServices.DOMAIN1).client(httpClient).build()
             return retrofit.create(RestClient::class.java)
+        }
+
+        fun create3(): RestClient {
+
+
+            if(RestClientOBj==null){
+
+                val okHttpBuilder = OkHttpClient.Builder()
+
+                okHttpBuilder.connectTimeout(4, TimeUnit.MINUTES)
+                okHttpBuilder.readTimeout(4, TimeUnit.MINUTES).build()
+                okHttpBuilder.writeTimeout(4, TimeUnit.MINUTES)
+
+                val logging = HttpLoggingInterceptor() // Live
+                logging.level = HttpLoggingInterceptor.Level.BODY // Live
+                val httpClient =
+                    okHttpBuilder //here we can add Interceptor for dynamical adding headers
+                        .addNetworkInterceptor(object : Interceptor {
+                            @Throws(IOException::class)
+                            override fun intercept(chain: Interceptor.Chain): Response {
+                                val request: Request =
+                                    chain.request().newBuilder()
+                                        .addHeader("authtoken", Constants.HEADER)
+                                        .build()
+                                return chain.proceed(request)
+                            }
+                        }) //here we adding Interceptor for full level logging
+                        .addNetworkInterceptor(logging)
+                        .build()
+
+
+                val gson = GsonBuilder().setLenient().create()
+
+              val  retrofit =
+                    Retrofit.Builder().addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                        .addConverterFactory(GsonConverterFactory.create(gson))
+                        .baseUrl(WebServices.DOMAIN).client(httpClient).build()
+
+                RestClientOBj=    retrofit.create(RestClient::class.java)
+                return retrofit.create(RestClient::class.java)
+
+            }else{
+
+                return RestClientOBj as RestClient
+
+            }
+
+
+
         }
 
     }
