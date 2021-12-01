@@ -106,6 +106,9 @@ class CartFragment : Fragment() {
         }
 
         txtProceedToCheckout!!.setOnClickListener {
+            if (progressDialog!=null){
+                hideProgressDialog()
+            }
             if (Global.isUserLoggedIn(mActivity)) {
                 checkItemStock()
             } else {
@@ -524,6 +527,9 @@ class CartFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         disposable?.dispose()
+        if (progressDialog!=null){
+            hideProgressDialog()
+        }
     }
 
     override fun onResume() {

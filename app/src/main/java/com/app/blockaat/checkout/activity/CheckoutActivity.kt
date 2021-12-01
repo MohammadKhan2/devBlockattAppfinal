@@ -718,6 +718,9 @@ class CheckoutActivity : BaseActivity(), PaymentClickListener {
     //below is inbuilt function of android to manage activity toolbar arrow
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when (item.itemId) {
         android.R.id.home -> {
+            if (dialog!=null){
+                hideProgressDialog()
+            }
             val view = this.currentFocus
             if (view != null) {
                 val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -732,10 +735,16 @@ class CheckoutActivity : BaseActivity(), PaymentClickListener {
     override fun onDestroy() {
         super.onDestroy()
         disposable?.dispose()
+        if (dialog!=null){
+            hideProgressDialog()
+        }
     }
 
     override fun onBackPressed() {
         // cancelCheckoutApi()
+        if (dialog!=null){
+            hideProgressDialog()
+        }
         intent.putExtra("shipToThisAddData", checkoutDataModel)
         setResult(PROMOCODE_UPDATE_RESULT, intent)
         finish()//finishing activity

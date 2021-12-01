@@ -143,9 +143,15 @@ class CartActivity : BaseActivity() {
 
         relWishlistImage.setOnClickListener {
             if (Global.isUserLoggedIn(this)) {
+                if (progressDialog!=null){
+                    hideProgressDialog()
+                }
                 val i = Intent(this, WishlistActivity::class.java)
                 startActivity(i)
             } else {
+                if (progressDialog!=null){
+                    hideProgressDialog()
+                }
                 val i = Intent(this, LoginActivity::class.java)
                 i.putExtra("isFromProducts", "yes")
                 startActivityForResult(i, 1)
@@ -154,6 +160,9 @@ class CartActivity : BaseActivity() {
 
         ivBackArrow.setOnClickListener {
 
+            if (progressDialog!=null){
+                hideProgressDialog()
+            }
             if (intent.getStringExtra("isFromOrderSummary") == "yes") {
                 val i = Intent(this@CartActivity, NavigationActivity::class.java)
                 i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
@@ -169,11 +178,17 @@ class CartActivity : BaseActivity() {
         }
 
         txtEmptyBtn.setOnClickListener {
+            if (progressDialog!=null){
+                hideProgressDialog()
+            }
             val i = Intent(this@CartActivity, NavigationActivity::class.java)
             startActivity(i)
             finishAffinity()
         }
         txtProceedToCheckout.setOnClickListener {
+            if (progressDialog!=null){
+                hideProgressDialog()
+            }
             if (Global.getStringFromSharedPref(
                     this@CartActivity,
                     Constants.PREFS_isUSER_LOGGED_IN
@@ -600,6 +615,9 @@ class CartActivity : BaseActivity() {
     override fun onDestroy() {
         super.onDestroy()
         disposable?.dispose()
+        if (progressDialog!=null){
+            hideProgressDialog()
+        }
     }
 
     override fun onResume() {
