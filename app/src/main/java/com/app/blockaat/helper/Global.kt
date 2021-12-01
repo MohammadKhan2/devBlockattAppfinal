@@ -36,6 +36,7 @@ import com.google.android.material.tabs.TabLayout
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.app.blockaat.R
+import com.app.blockaat.apimanager.WebClient
 import com.app.blockaat.cart.CartActivity
 import com.app.blockaat.cart.model.AddCartRequestApi
 import com.app.blockaat.cart.model.AddCartRequestModel
@@ -117,6 +118,10 @@ object Global {
     //below function is required to initialize retrofit interface
     val apiService by lazy {
         RestClient.create()
+    }
+
+    val apiService2 by lazy {
+        RestClient.create3()
     }
 
     val apiService1 by lazy {
