@@ -356,6 +356,10 @@ object Global {
 
     }
 
+    fun updateItemCount(view: TextView,string:String){
+        view.text = string
+    }
+
 
         fun setPriceWithCurrency(activity: Context, strPrice: String): String =
             if (strPrice.isNullOrEmpty()) {

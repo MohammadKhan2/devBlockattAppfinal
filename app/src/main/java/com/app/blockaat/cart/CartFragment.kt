@@ -284,15 +284,15 @@ class CartFragment : Fragment() {
         }
     }
 
+    @SuppressLint("StringFormatInvalid")
     private val onCartUpdateClicked =
         com.app.blockaat.cart.interfaces.UpdateCartItemEvent { data: GetCartListDataModel?, type: String ->
             if (type == "online") {
                 if (adapterCartListOnline != null) {
                     arrListCartItemOnline.clear()
                     arrListCartItemOnline.addAll(data!!.items!!)
+                    txtTotalItem.text = getString(R.string.total_items_in_cart, data?.items?.size.toString())
                     adapterCartListOnline.notifyDataSetChanged()
-
-
 
                     if (data.items != null && data.items.size != 0) {
                         showListData()
@@ -319,6 +319,7 @@ class CartFragment : Fragment() {
                 if (adapterCartListOffline != null) {
                     arrListCartItemOffline.clear()
                     arrListCartItemOffline.addAll(productsDBHelper.getAllCartProducts())
+                    txtTotalItem.text = getString(R.string.total_items_in_cart, data?.items?.size.toString())
                     adapterCartListOffline.notifyDataSetChanged()
 
                     if (productsDBHelper.getAllCartProducts() != null && productsDBHelper.getAllCartProducts().size != 0) {

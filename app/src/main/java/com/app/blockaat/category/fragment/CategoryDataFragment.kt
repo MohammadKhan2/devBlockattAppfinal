@@ -105,7 +105,7 @@ class CategoryDataFragment : Fragment(), OnCategorySelectListener{
             if (!isFromRefresh)
                 showProgressDialog(mActivity)
 
-            Global.apiService2.getCategories(
+            Global.apiService.getCategories(
                 com.app.blockaat.apimanager.WebServices.CategoryWs + Global.getSelectedLanguage(
                     mActivity
                 ) + "&category_id=" + 1
