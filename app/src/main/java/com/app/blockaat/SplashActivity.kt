@@ -41,54 +41,60 @@ class SplashActivity : BaseActivity() {
 
 //        CustomEvents.screenViewed(this,getString(R.string.splash))
 
-        window.setFormat(PixelFormat.TRANSLUCENT)
+        try {
+            window.setFormat(PixelFormat.TRANSLUCENT)
 
-        requestWindowFeature(Window.FEATURE_NO_TITLE)
-        window.setFlags(
-            WindowManager.LayoutParams.FLAG_FULLSCREEN,
-            WindowManager.LayoutParams.FLAG_FULLSCREEN
-        )
+            requestWindowFeature(Window.FEATURE_NO_TITLE)
+            window.setFlags(
+                WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN
+            )
 
-        setContentView(R.layout.activity_splash)
-        if (supportActionBar != null) {
-            supportActionBar?.hide()
-        }
+            setContentView(R.layout.activity_splash)
+            if (supportActionBar != null) {
+                supportActionBar?.hide()
+            }
 //        startService(Intent(this@SplashActivity, GetStoreService::class.java))
 
-        ////////////////////////Store device density//////////////////////
-        setUpDeviceWidth()
-        if (Global.getStringFromSharedPref(this, Constants.PREFS_LANGUAGE).isNullOrEmpty()) {
-            AppController.instance.arabicLanguage()
-        }
+            ////////////////////////Store device density//////////////////////
+            setUpDeviceWidth()
+            if (Global.getStringFromSharedPref(this, Constants.PREFS_LANGUAGE).isNullOrEmpty()) {
+                AppController.instance.arabicLanguage()
+            }
 
-        printKeyHash()
-        dialog = CustomProgressBar(this)
-        setOnClickListener()
-        setUpStore()
-        /*   setFonts()*/
-        init()
-        Constants.DEVICE_TOKEN = Pushwoosh.getInstance().pushToken ?: ""
-        println("T : " + Constants.DEVICE_TOKEN)
+            printKeyHash()
+            dialog = CustomProgressBar(this)
+            setOnClickListener()
+            setUpStore()
+            /*   setFonts()*/
+            init()
+            Constants.DEVICE_TOKEN = Pushwoosh.getInstance().pushToken ?: ""
+            println("T : " + Constants.DEVICE_TOKEN)
+        } catch (e: Exception) {
+        }
     }
 
 
     private fun setUpDeviceWidth() {
-        val displaymetrics: DisplayMetrics = DisplayMetrics()
-        windowManager.defaultDisplay.getMetrics(displaymetrics)
-        val width: Double = displaymetrics.widthPixels.toDouble()
+        try {
+            val displaymetrics: DisplayMetrics = DisplayMetrics()
+            windowManager.defaultDisplay.getMetrics(displaymetrics)
+            val width: Double = displaymetrics.widthPixels.toDouble()
 /*
         Log.d(
             "widthPixel",
             width.toString() + "  " + displaymetrics.densityDpi.toString() + "  " + displaymetrics.heightPixels.toString()
         )
 */
-        val DeviceMultiplier: Double = (width / 320)
-        SharedPreferencesHelper.writeString(
-            this,
-            Constants.PREFS_DEVIDE_MULTIPLIER,
-            DeviceMultiplier.toString()
-        )
-        Constants.DEVICE_DENSITY = (Global.getDeviceWidthInDouble(this) / 320)
+            val DeviceMultiplier: Double = (width / 320)
+            SharedPreferencesHelper.writeString(
+                this,
+                Constants.PREFS_DEVIDE_MULTIPLIER,
+                DeviceMultiplier.toString()
+            )
+            Constants.DEVICE_DENSITY = (Global.getDeviceWidthInDouble(this) / 320)
+        } catch (e: Exception) {
+        }
     }
 
     private fun printKeyHash() {
@@ -149,12 +155,15 @@ class SplashActivity : BaseActivity() {
     }
 
     fun init() {
-        val handler = Handler()
-        handler.postDelayed({
-            val intent = Intent(this, NavigationActivity::class.java)
-            startActivity(intent)
-            finish()
-        }, 3000)
+        try {
+            val handler = Handler()
+            handler.postDelayed({
+                val intent = Intent(this, NavigationActivity::class.java)
+                startActivity(intent)
+                finish()
+            }, 3000)
+        } catch (e: Exception) {
+        }
 
     }
 
@@ -165,142 +174,132 @@ class SplashActivity : BaseActivity() {
     override fun onStart() {
         super.onStart()
 
-        //handle facebook deferred link
-        AppLinkData.fetchDeferredAppLinkData(this,
-            object : AppLinkData.CompletionHandler {
-                override fun onDeferredAppLinkDataFetched(appLinkData: AppLinkData?) {
-                    // Process app link data
-                    Log.e("SPLASH", "universal Link:" + appLinkData?.targetUri)
-                    if (appLinkData?.targetUri != null) {
-                        val uri = Uri.parse(appLinkData?.targetUri.toString())
-                        val targetId: String = uri.getQueryParameter("target_id").toString()
-                        val target: String = uri.getQueryParameter("target").toString()
-                        val name_en: String = uri.getQueryParameter("name_en").toString()
-                        val name_ar: String = uri.getQueryParameter("name_ar").toString()
+        try {//handle facebook deferred link
+            AppLinkData.fetchDeferredAppLinkData(this,
+                object : AppLinkData.CompletionHandler {
+                    override fun onDeferredAppLinkDataFetched(appLinkData: AppLinkData?) {
+                        // Process app link data
+                        Log.e("SPLASH", "universal Link:" + appLinkData?.targetUri)
+                        if (appLinkData?.targetUri != null) {
+                            val uri = Uri.parse(appLinkData?.targetUri.toString())
+                            val targetId: String = uri.getQueryParameter("target_id").toString()
+                            val target: String = uri.getQueryParameter("target").toString()
+                            val name_en: String = uri.getQueryParameter("name_en").toString()
+                            val name_ar: String = uri.getQueryParameter("name_ar").toString()
+                            Global.saveStringInSharedPref(
+                                this@SplashActivity,
+                                Constants.PREFS_isFROM_DEFERRED,
+                                "yes"
+                            )
+                            Global.saveStringInSharedPref(
+                                this@SplashActivity,
+                                Constants.PREFS_DEFERREDPLINK_TARGET,
+                                target
+                            )
+                            Global.saveStringInSharedPref(
+                                this@SplashActivity,
+                                Constants.PREFS_DEFERREDLINK_ID,
+                                targetId
+                            )
+                            Global.saveStringInSharedPref(
+                                this@SplashActivity,
+                                Constants.PREFS_DEFERREDLINK_NAME,
+                                if (Global.isEnglishLanguage(this@SplashActivity)) name_en else name_ar
+                                    ?: ""
+                            )
+
+                        }
+                    }
+                }
+            )
+
+
+            // Branch init
+            Branch.getInstance().initSession({ referringParams, error ->
+                //  println("Here i am branch data  $referringParams")
+                if (error == null) {
+                    if (referringParams != null && referringParams.has("target_id") && !referringParams.getString(
+                            "target_id"
+                        ).isNullOrEmpty()
+                    ) {
                         Global.saveStringInSharedPref(
                             this@SplashActivity,
-                            Constants.PREFS_isFROM_DEFERRED,
+                            Constants.PREFS_isFROM_DEEPLINK,
                             "yes"
                         )
                         Global.saveStringInSharedPref(
                             this@SplashActivity,
-                            Constants.PREFS_DEFERREDPLINK_TARGET,
-                            target
+                            Constants.PREFS_DEEPLINK_TARGET,
+                            referringParams.optString("target", "")
                         )
                         Global.saveStringInSharedPref(
                             this@SplashActivity,
-                            Constants.PREFS_DEFERREDLINK_ID,
-                            targetId
+                            Constants.PREFS_DEEPLINK_ID,
+                            referringParams.optString("target_id", "")
+                        )
+                        Global.saveStringInSharedPref(
+                            this@SplashActivity,
+                            Constants.PREFS_DEEPLINK_NAME,
+                            referringParams.optString("title", "")
+                        )
+                        Global.saveStringInSharedPref(
+                            this@SplashActivity,
+                            Constants.PREFS_DEEPLINK_CREATOR_ID,
+                            referringParams.optString("creator_id", "")
                         )
                         Global.saveStringInSharedPref(
                             this@SplashActivity,
                             Constants.PREFS_DEFERREDLINK_NAME,
-                            if (Global.isEnglishLanguage(this@SplashActivity)) name_en else name_ar
-                                ?: ""
+                            if (Global.isEnglishLanguage(this@SplashActivity)) referringParams.optString(
+                                "name",
+                                ""
+                            ) else
+                                referringParams.optString("name_ar", "")
+                                    ?: ""
                         )
 
+                    } else {
+                        Global.saveStringInSharedPref(
+                            this@SplashActivity,
+                            Constants.PREFS_isFROM_DEEPLINK,
+                            ""
+                        )
+                        Global.saveStringInSharedPref(
+                            this@SplashActivity,
+                            Constants.PREFS_DEEPLINK_TARGET,
+                            ""
+                        )
+                        Global.saveStringInSharedPref(
+                            this@SplashActivity,
+                            Constants.PREFS_DEEPLINK_ID,
+                            ""
+                        )
+                        Global.saveStringInSharedPref(
+                            this@SplashActivity,
+                            Constants.PREFS_DEEPLINK_CREATOR_ID,
+                            ""
+                        )
+                        Global.saveStringInSharedPref(
+                            this@SplashActivity,
+                            Constants.PREFS_DEEPLINK_NAME,
+                            ""
+                        )
                     }
                 }
-            }
-        )
 
-
-        // Branch init
-        Branch.getInstance().initSession({ referringParams, error ->
-            //  println("Here i am branch data  $referringParams")
-            if (error == null) {
-                if (referringParams != null && referringParams.has("target_id") && !referringParams.getString(
-                        "target_id"
-                    ).isNullOrEmpty()
-                ) {
-                    Global.saveStringInSharedPref(
-                        this@SplashActivity,
-                        Constants.PREFS_isFROM_DEEPLINK,
-                        "yes"
-                    )
-                    Global.saveStringInSharedPref(
-                        this@SplashActivity,
-                        Constants.PREFS_DEEPLINK_TARGET,
-                        referringParams.optString("target", "")
-                    )
-                    Global.saveStringInSharedPref(
-                        this@SplashActivity,
-                        Constants.PREFS_DEEPLINK_ID,
-                        referringParams.optString("target_id", "")
-                    )
-                    Global.saveStringInSharedPref(
-                        this@SplashActivity,
-                        Constants.PREFS_DEEPLINK_NAME,
-                        referringParams.optString("title", "")
-                    )
-                    Global.saveStringInSharedPref(
-                        this@SplashActivity,
-                        Constants.PREFS_DEEPLINK_CREATOR_ID,
-                        referringParams.optString("creator_id", "")
-                    )
-                    Global.saveStringInSharedPref(
-                        this@SplashActivity,
-                        Constants.PREFS_DEFERREDLINK_NAME,
-                        if (Global.isEnglishLanguage(this@SplashActivity)) referringParams.optString(
-                            "name",
-                            ""
-                        ) else
-                            referringParams.optString("name_ar", "")
-                                ?: ""
-                    )
-
-                } else {
-                    Global.saveStringInSharedPref(
-                        this@SplashActivity,
-                        Constants.PREFS_isFROM_DEEPLINK,
-                        ""
-                    )
-                    Global.saveStringInSharedPref(
-                        this@SplashActivity,
-                        Constants.PREFS_DEEPLINK_TARGET,
-                        ""
-                    )
-                    Global.saveStringInSharedPref(
-                        this@SplashActivity,
-                        Constants.PREFS_DEEPLINK_ID,
-                        ""
-                    )
-                    Global.saveStringInSharedPref(
-                        this@SplashActivity,
-                        Constants.PREFS_DEEPLINK_CREATOR_ID,
-                        ""
-                    )
-                    Global.saveStringInSharedPref(
-                        this@SplashActivity,
-                        Constants.PREFS_DEEPLINK_NAME,
-                        ""
-                    )
-                }
-            }
-
-        }, this.intent.data, this)
+            }, this.intent.data, this)
+        } catch (e: Exception) {
+        }
     }
 
-    /* private fun setCategory(text: CharSequence?) {
-         if (!arrListCategory.isNullOrEmpty()) {
-             for (category in arrListCategory!!) {
-                 if (text.toString().toLowerCase() == category?.name?.toLowerCase()) {
-                     Global.saveStringInSharedPref(
-                         this@SplashActivity,
-                         Constants.PREFS_CATEGORY,
-                         category.id.toString()
-                     )
-                     break
-                 }
-             }
-         }
- //        getIntroImages()
 
-     }*/
 
     override fun onNewIntent(intent: Intent) {
-        super.onNewIntent(intent)
-        this.intent = intent
+        try {
+            super.onNewIntent(intent)
+            this.intent = intent
+        } catch (e: Exception) {
+        }
     }
 
 //    private fun getIntroImages() {
@@ -414,9 +413,12 @@ class SplashActivity : BaseActivity() {
    */
 
     override fun onDestroy() {
-        super.onDestroy()
-        if (disposable != null) {
-            disposable?.dispose()
+        try {
+            super.onDestroy()
+            if (disposable != null) {
+                disposable?.dispose()
+            }
+        } catch (e: Exception) {
         }
     }
 }

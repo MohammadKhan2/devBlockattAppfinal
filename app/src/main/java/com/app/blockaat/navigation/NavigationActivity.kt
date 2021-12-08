@@ -199,187 +199,194 @@ class NavigationActivity : BaseActivity(), NavigationView.OnNavigationItemSelect
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        try {
+            super.onCreate(savedInstanceState)
+            setContentView(R.layout.activity_main)
 
-        // Obtain the shared Tracker instance.
-        val application: AppController = application as AppController
-        mTracker = application.getDefaultTracker()!!
-        mTracker.setScreenName("Home Screen")
+            // Obtain the shared Tracker instance.
+            val application: AppController = application as AppController
+            mTracker = application.getDefaultTracker()!!
+            mTracker.setScreenName("Home Screen")
 
-        mTracker.send(HitBuilders.ScreenViewBuilder().build())
-        productsDBHelper = DBHelper(this@NavigationActivity)
-        bottom_navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
-        val drawer = findViewById<View>(R.id.drawer_layout) as DrawerLayout
-        toolbar = findViewById<View>(R.id.toolbar) as Toolbar
-        navigationView = findViewById<View>(R.id.nav_view) as NavigationView
-        txtHead.visibility = VISIBLE
-        viewStart.visibility = GONE
-        view.visibility = VISIBLE
-        if (!Global.isEnglishLanguage(this)) {
-            ivBackArrow.rotationY = 180f
-            navigationView.setBackgroundResource(R.drawable.ic_nav_background_arabic)
-        } else {
-            navigationView.setBackgroundResource(R.drawable.ic_nav_background_english)
-
-        }
-        ivBackArrow.visibility = GONE
-
-        boolToggle = true
-
-
-        /*toggle = object : ActionBarDrawerToggle(this, drawer, null, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
-
-            */
-        /** Called when a drawer has settled in a completely closed state.  *//*
-            override fun onDrawerClosed(view: View) {
-                super.onDrawerClosed(view)
-                // Do whatever you want here
-                println("Drawer closed")
-
-            }
-
-            */
-        /** Called when a drawer has settled in a completely open state.  *//*
-            override fun onDrawerOpened(drawerView: View) {
-                super.onDrawerOpened(drawerView)
-                // Do whatever you want here
-                hideKeyboard()
-                println("Drawer open")
-            }
-        }*/
-
-        // Set the drawer toggle as the DrawerListener
-        //drawer.addDrawerListener(toggle!!)
-        //toggle?.syncState()
-
-        //navigationView.setNavigationItemSelectedListener(this)
-
-        //bottom_navigation.itemIconTintList = null
-        bottom_navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
-        bottom_navigation.setItemIconTintList(null);
-
-        // disableShiftMode(bottom_navigation)
-
-        txtSignIn.setOnClickListener {
-            val i = Intent(this@NavigationActivity, LoginActivity::class.java)
-            startActivityForResult(i, 1)
-            drawer.closeDrawers()
-        }
-        txtUserName.setOnClickListener {
-            loadAccountFragment()
-            drawer.closeDrawers()
-        }
-        val calendar = Calendar.getInstance()
-        val year = calendar[Calendar.YEAR]
-        txtCopyright.text =
-            resources.getString(R.string.copyright) + year.toString()+" "+ resources.getString(R.string.app_name)
-
-        //Facebook follow us
-        cvFaceBook.setOnClickListener {
-
-            val uri = Uri.parse("https://www.facebook.com/")
-            val insta = Intent(Intent.ACTION_VIEW, uri)
-            insta.setPackage("com.facebook.android")
-
-            if (isIntentAvailable(this@NavigationActivity, insta)) {
-                startActivity(insta)
+            mTracker.send(HitBuilders.ScreenViewBuilder().build())
+            productsDBHelper = DBHelper(this@NavigationActivity)
+            bottom_navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+            val drawer = findViewById<View>(R.id.drawer_layout) as DrawerLayout
+            toolbar = findViewById<View>(R.id.toolbar) as Toolbar
+            navigationView = findViewById<View>(R.id.nav_view) as NavigationView
+            txtHead.visibility = VISIBLE
+            viewStart.visibility = GONE
+            view.visibility = VISIBLE
+            if (!Global.isEnglishLanguage(this)) {
+                ivBackArrow.rotationY = 180f
+                navigationView.setBackgroundResource(R.drawable.ic_nav_background_arabic)
             } else {
-                val intent = Intent(this@NavigationActivity, WebViewActivity::class.java)
-                intent.putExtra("text_header", resources.getString(R.string.facebook))
-                intent.putExtra("strUrl", "https://www.facebook.com/")
-                startActivity(intent)
+                navigationView.setBackgroundResource(R.drawable.ic_nav_background_english)
+
             }
+            ivBackArrow.visibility = GONE
 
-            drawer.closeDrawers()
-        }
-        //Instagram follow us
-        cvInstagram.setOnClickListener {
+            boolToggle = true
 
-            val uri = Uri.parse("http://instagram.com/")
-            val insta = Intent(Intent.ACTION_VIEW, uri)
-            insta.setPackage("com.instagram.android")
 
-            if (isIntentAvailable(this@NavigationActivity, insta)) {
-                startActivity(insta)
-            } else {
-                val intent = Intent(this@NavigationActivity, WebViewActivity::class.java)
-                intent.putExtra("text_header", resources.getString(R.string.instagram))
-                intent.putExtra("strUrl", "https://www.instagram.com")
-                startActivity(intent)
+            /*toggle = object : ActionBarDrawerToggle(this, drawer, null, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
+
+                    */
+            /** Called when a drawer has settled in a completely closed state.  *//*
+                override fun onDrawerClosed(view: View) {
+                    super.onDrawerClosed(view)
+                    // Do whatever you want here
+                    println("Drawer closed")
+
+                }
+
+                */
+            /** Called when a drawer has settled in a completely open state.  *//*
+                override fun onDrawerOpened(drawerView: View) {
+                    super.onDrawerOpened(drawerView)
+                    // Do whatever you want here
+                    hideKeyboard()
+                    println("Drawer open")
+                }
+            }*/
+
+            // Set the drawer toggle as the DrawerListener
+            //drawer.addDrawerListener(toggle!!)
+            //toggle?.syncState()
+
+            //navigationView.setNavigationItemSelectedListener(this)
+
+            //bottom_navigation.itemIconTintList = null
+            bottom_navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+            bottom_navigation.setItemIconTintList(null);
+
+            // disableShiftMode(bottom_navigation)
+
+            txtSignIn.setOnClickListener {
+                val i = Intent(this@NavigationActivity, LoginActivity::class.java)
+                startActivityForResult(i, 1)
+                drawer.closeDrawers()
             }
-            drawer.closeDrawers()
-        }
-        // Snapchat follow us
-        cvSnapchat.setOnClickListener {
-
-            val intent = Intent(Intent.ACTION_SEND)
-            intent.type = "*/*"
-            intent.setPackage("com.snapchat.android")
-            startActivity(Intent.createChooser(intent, "Open Snapchat"))
-            drawer.closeDrawers()
-        }
-        cvGooglePlus.setOnClickListener {
-
-            drawer.closeDrawers()
-        }
-
-        tvLogout.setOnClickListener {
-            showLogoutAlert()
-            //   (accountFragment as AccountFragment).showLogoutAlert()
-
-            drawer.closeDrawers()
-        }
-
-        imgSearch.setOnClickListener {
-            val intent = Intent(this@NavigationActivity, SearchActivity::class.java)
-            startActivity(intent)
-        }
-
-        ivDrawer.setOnClickListener {
-            if (!drawer.isDrawerOpen(GravityCompat.START)) {
-                drawer.openDrawer(GravityCompat.START)
-                Global.hideKeyboard(this@NavigationActivity)
+            txtUserName.setOnClickListener {
+                loadAccountFragment()
+                drawer.closeDrawers()
             }
-        }
+            val calendar = Calendar.getInstance()
+            val year = calendar[Calendar.YEAR]
+            txtCopyright.text =
+                resources.getString(R.string.copyright) + year.toString()+" "+ resources.getString(R.string.app_name)
 
-        ///Will handle back click when fragment show from view all
-        toolbar!!.setNavigationOnClickListener() {
-            if (!boolToggle) {
-                //resetDrawerIcon()
-                onBackPressed()
-//                displayView(0)
-            } else {
-                val drawer = findViewById<View>(R.id.drawer_layout) as DrawerLayout
-                if (drawer.isDrawerOpen(GravityCompat.START)) {
-                    drawer.openDrawer(GravityCompat.START)
+            //Facebook follow us
+            cvFaceBook.setOnClickListener {
+
+                val uri = Uri.parse("https://www.facebook.com/")
+                val insta = Intent(Intent.ACTION_VIEW, uri)
+                insta.setPackage("com.facebook.android")
+
+                if (isIntentAvailable(this@NavigationActivity, insta)) {
+                    startActivity(insta)
                 } else {
+                    val intent = Intent(this@NavigationActivity, WebViewActivity::class.java)
+                    intent.putExtra("text_header", resources.getString(R.string.facebook))
+                    intent.putExtra("strUrl", "https://www.facebook.com/")
+                    startActivity(intent)
+                }
+
+                drawer.closeDrawers()
+            }
+            //Instagram follow us
+            cvInstagram.setOnClickListener {
+
+                val uri = Uri.parse("http://instagram.com/")
+                val insta = Intent(Intent.ACTION_VIEW, uri)
+                insta.setPackage("com.instagram.android")
+
+                if (isIntentAvailable(this@NavigationActivity, insta)) {
+                    startActivity(insta)
+                } else {
+                    val intent = Intent(this@NavigationActivity, WebViewActivity::class.java)
+                    intent.putExtra("text_header", resources.getString(R.string.instagram))
+                    intent.putExtra("strUrl", "https://www.instagram.com")
+                    startActivity(intent)
+                }
+                drawer.closeDrawers()
+            }
+            // Snapchat follow us
+            cvSnapchat.setOnClickListener {
+
+                val intent = Intent(Intent.ACTION_SEND)
+                intent.type = "*/*"
+                intent.setPackage("com.snapchat.android")
+                startActivity(Intent.createChooser(intent, "Open Snapchat"))
+                drawer.closeDrawers()
+            }
+            cvGooglePlus.setOnClickListener {
+
+                drawer.closeDrawers()
+            }
+
+            tvLogout.setOnClickListener {
+                showLogoutAlert()
+                //   (accountFragment as AccountFragment).showLogoutAlert()
+
+                drawer.closeDrawers()
+            }
+
+            imgSearch.setOnClickListener {
+                val intent = Intent(this@NavigationActivity, SearchActivity::class.java)
+                startActivity(intent)
+            }
+
+            ivDrawer.setOnClickListener {
+                if (!drawer.isDrawerOpen(GravityCompat.START)) {
                     drawer.openDrawer(GravityCompat.START)
+                    Global.hideKeyboard(this@NavigationActivity)
                 }
             }
-        }
-        ////
-        arrListFilterData = ArrayList()
-        setTabFonts()
-        setFonts()
-        setOnClickListerner()
-        displayView(0)
-        setLeftDrawer()
-        imgSearch.visibility = View.VISIBLE
-        updateCounts()
-        Handler().postDelayed({
-            //doSomethingHere()
-            setNavigation()
 
-        }, 1000)
-        handleDeepLink()
+            ///Will handle back click when fragment show from view all
+            toolbar!!.setNavigationOnClickListener() {
+                if (!boolToggle) {
+                    //resetDrawerIcon()
+                    onBackPressed()
+    //                displayView(0)
+                } else {
+                    val drawer = findViewById<View>(R.id.drawer_layout) as DrawerLayout
+                    if (drawer.isDrawerOpen(GravityCompat.START)) {
+                        drawer.openDrawer(GravityCompat.START)
+                    } else {
+                        drawer.openDrawer(GravityCompat.START)
+                    }
+                }
+            }
+            ////
+            arrListFilterData = ArrayList()
+            setTabFonts()
+            setFonts()
+            setOnClickListerner()
+            displayView(0)
+            setLeftDrawer()
+            imgSearch.visibility = View.VISIBLE
+            updateCounts()
+            Handler().postDelayed({
+                //doSomethingHere()
+                setNavigation()
+
+            }, 1000)
+            handleDeepLink()
+        } catch (e: Exception) {
+        }
 
     }
 
     private fun isIntentAvailable(ctx: Context, intent: Intent): Boolean {
-        val packageManager = ctx.packageManager
-        val list = packageManager.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY)
-        return list.size > 0
+        try {
+            val packageManager = ctx.packageManager
+            val list = packageManager.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY)
+            return list.size > 0
+        } catch (e: Exception) {
+        }
+        return false;
     }
 
     fun showLogoutAlert() {
@@ -497,145 +504,161 @@ class NavigationActivity : BaseActivity(), NavigationView.OnNavigationItemSelect
     }
 
     private fun setUserInfo() {
-        txtSignIn.visibility = View.VISIBLE
-        tvLogout.visibility = View.GONE
-        txtUser.visibility = View.GONE
-        txtUserName.visibility = View.GONE
+        try {
+            txtSignIn.visibility = View.VISIBLE
+            tvLogout.visibility = View.GONE
+            txtUser.visibility = View.GONE
+            txtUserName.visibility = View.GONE
+        } catch (e: Exception) {
+        }
     }
 
 
     private fun handleDeepLink() {
-        if (Global.getStringFromSharedPref(
-                this,
-                Constants.PREFS_isFROM_DEEPLINK
-            ) == "yes"
-        ) {
-            deepLinking()
-        } else if (Global.getStringFromSharedPref(
-                this,
-                Constants.PREFS_isFROM_DEFERRED
-            ) == "yes"
-        ) {
-            openUniversalLink()
-        } else if (intent.hasExtra(Pushwoosh.PUSH_RECEIVE_EVENT)) {
-            //when coming from push notification
-            pushNotifications()
+        try {
+            if (Global.getStringFromSharedPref(
+                    this,
+                    Constants.PREFS_isFROM_DEEPLINK
+                ) == "yes"
+            ) {
+                deepLinking()
+            } else if (Global.getStringFromSharedPref(
+                    this,
+                    Constants.PREFS_isFROM_DEFERRED
+                ) == "yes"
+            ) {
+                openUniversalLink()
+            } else if (intent.hasExtra(Pushwoosh.PUSH_RECEIVE_EVENT)) {
+                //when coming from push notification
+                pushNotifications()
+            }
+        } catch (e: Exception) {
         }
     }
 
 
     private fun openUniversalLink() {
-        val target = Global.getStringFromSharedPref(
-            this,
-            Constants.PREFS_DEFERREDPLINK_TARGET
-        )
-        val linkId =
-            Global.getStringFromSharedPref(
+
+        try {
+            val target = Global.getStringFromSharedPref(
                 this,
-                Constants.PREFS_DEFERREDLINK_ID
+                Constants.PREFS_DEFERREDPLINK_TARGET
             )
-        val name = Global.getStringFromSharedPref(
-            this,
-            Constants.PREFS_DEFERREDLINK_NAME
-        )
-        // Log.e("HOME", "target:" + target + "id:" + linkId + "name:" + name)
+            val linkId =
+                Global.getStringFromSharedPref(
+                    this,
+                    Constants.PREFS_DEFERREDLINK_ID
+                )
+            val name = Global.getStringFromSharedPref(
+                this,
+                Constants.PREFS_DEFERREDLINK_NAME
+            )
+            // Log.e("HOME", "target:" + target + "id:" + linkId + "name:" + name)
 //      TODO:navigation to be handled here
 
 
-        //clear deeplink data
-        Global.saveStringInSharedPref(
-            this,
-            Constants.PREFS_isFROM_DEFERRED,
-            ""
-        )
-        Global.saveStringInSharedPref(
-            this,
-            Constants.PREFS_DEFERREDPLINK_TARGET,
-            ""
-        )
-        Global.saveStringInSharedPref(
-            this,
-            Constants.PREFS_DEFERREDLINK_ID,
-            ""
-        )
-        Global.saveStringInSharedPref(
-            this,
-            Constants.PREFS_DEFERREDLINK_NAME,
-            ""
-        )
+            //clear deeplink data
+            Global.saveStringInSharedPref(
+                this,
+                Constants.PREFS_isFROM_DEFERRED,
+                ""
+            )
+            Global.saveStringInSharedPref(
+                this,
+                Constants.PREFS_DEFERREDPLINK_TARGET,
+                ""
+            )
+            Global.saveStringInSharedPref(
+                this,
+                Constants.PREFS_DEFERREDLINK_ID,
+                ""
+            )
+            Global.saveStringInSharedPref(
+                this,
+                Constants.PREFS_DEFERREDLINK_NAME,
+                ""
+            )
+        } catch (e: Exception) {
+        }
     }
 
     //branch io navigation
     private fun deepLinking() {
-        val target = Global.getStringFromSharedPref(
-            this,
-            Constants.PREFS_DEEPLINK_TARGET
-        )
-        val linkId =
-            Global.getStringFromSharedPref(
+        try {
+            val target = Global.getStringFromSharedPref(
                 this,
-                Constants.PREFS_DEEPLINK_ID
+                Constants.PREFS_DEEPLINK_TARGET
             )
-        val name = Global.getStringFromSharedPref(
-            this,
-            Constants.PREFS_DEFERREDLINK_NAME
-        )
+            val linkId =
+                Global.getStringFromSharedPref(
+                    this,
+                    Constants.PREFS_DEEPLINK_ID
+                )
+            val name = Global.getStringFromSharedPref(
+                this,
+                Constants.PREFS_DEFERREDLINK_NAME
+            )
 
 
-        displayProductList(target,linkId,name)
+            displayProductList(target,linkId,name)
 //        TODO:handle target and id here
 
-        //clear deeplink data
-        Global.saveStringInSharedPref(
-            this,
-            Constants.PREFS_isFROM_DEEPLINK,
-            ""
-        )
-        Global.saveStringInSharedPref(
-            this,
-            Constants.PREFS_DEEPLINK_TARGET,
-            ""
-        )
-        Global.saveStringInSharedPref(
-            this,
-            Constants.PREFS_DEEPLINK_ID,
-            ""
-        )
-        Global.saveStringInSharedPref(
-            this,
-            Constants.PREFS_DEEPLINK_NAME,
-            ""
-        )
+            //clear deeplink data
+            Global.saveStringInSharedPref(
+                this,
+                Constants.PREFS_isFROM_DEEPLINK,
+                ""
+            )
+            Global.saveStringInSharedPref(
+                this,
+                Constants.PREFS_DEEPLINK_TARGET,
+                ""
+            )
+            Global.saveStringInSharedPref(
+                this,
+                Constants.PREFS_DEEPLINK_ID,
+                ""
+            )
+            Global.saveStringInSharedPref(
+                this,
+                Constants.PREFS_DEEPLINK_NAME,
+                ""
+            )
+        } catch (e: Exception) {
+        }
     }
 
     //pushwoosh notification navigation handled
     private fun pushNotifications() {
-        var target_id = ""
-        var title = ""
+        try {
+            var target_id = ""
+            var title = ""
 
-        val jsonObject =
-            JSONObject(intent.getStringExtra(Pushwoosh.PUSH_RECEIVE_EVENT).toString())
-        println("HERE IS PUSHWOOSH DATA ::: " + jsonObject)
+            val jsonObject =
+                JSONObject(intent.getStringExtra(Pushwoosh.PUSH_RECEIVE_EVENT).toString())
+            println("HERE IS PUSHWOOSH DATA ::: " + jsonObject)
 
-        if (jsonObject.has("target_id") && !jsonObject.getString("target_id")
-                .isNullOrEmpty()
-        ) {
-            target_id = jsonObject.getString("target_id")
+            if (jsonObject.has("target_id") && !jsonObject.getString("target_id")
+                    .isNullOrEmpty()
+            ) {
+                target_id = jsonObject.getString("target_id")
 
-            if (Global.isEnglishLanguage(this)) {
-                if (jsonObject.has("name_en")) {
-                    title = jsonObject.getString("name_en") ?: ""
-                }
-            } else {
-                if (jsonObject.has("name_ar")) {
-                    title = jsonObject.getString("name_ar") ?: ""
+                if (Global.isEnglishLanguage(this)) {
+                    if (jsonObject.has("name_en")) {
+                        title = jsonObject.getString("name_en") ?: ""
+                    }
+                } else {
+                    if (jsonObject.has("name_ar")) {
+                        title = jsonObject.getString("name_ar") ?: ""
+                    }
                 }
             }
-        }
 
-        //TODO:navigation is to be handled here
-        if (target_id.isNotEmpty()) {
+            //TODO:navigation is to be handled here
+            if (target_id.isNotEmpty()) {
 
+            }
+        } catch (e: Exception) {
         }
     }
 
@@ -645,149 +668,156 @@ class NavigationActivity : BaseActivity(), NavigationView.OnNavigationItemSelect
     }
 
     private fun setFonts() {
-        txtSignIn.typeface = Global.fontBtn
-        txtUserName.typeface = Global.fontMedium
-        txtUser.typeface = Global.fontMedium
-        tvLogout.typeface = Global.fontMedium
-        txtFollowUs.typeface = Global.fontMedium
+        try {
+            txtSignIn.typeface = Global.fontBtn
+            txtUserName.typeface = Global.fontMedium
+            txtUser.typeface = Global.fontMedium
+            tvLogout.typeface = Global.fontMedium
+            txtFollowUs.typeface = Global.fontMedium
 //      txtSortOptionTitle.typeface = Global.fontBold
-        txtFilterByLabel.typeface = Global.fontBold
-        txtApply.typeface = Global.fontBtn
-        txtClearAll.typeface = Global.fontBtn
+            txtFilterByLabel.typeface = Global.fontBold
+            txtApply.typeface = Global.fontBtn
+            txtClearAll.typeface = Global.fontBtn
+        } catch (e: Exception) {
+        }
 //       txtAppName.typeface = Global.fontExtraBold
     }
 
     private fun setOnClickListerner() {
-        ivBackArrow.setOnClickListener {
-            onBackPressed()
-        }
-        ivShare.setOnClickListener {
-            val shareIntent = ShareCompat.IntentBuilder
-                .from(this)
-                .setType("text/plain")
-                .setChooserTitle("")
-                .setText(getString(R.string.share_app_msg) + "https://play.google.com/store/apps/details?id=" + packageName)
-                .intent
-
-            if (shareIntent.resolveActivity(packageManager) != null) {
-                startActivity(shareIntent)
+        try {
+            ivBackArrow.setOnClickListener {
+                onBackPressed()
             }
-        }
+            ivShare.setOnClickListener {
+                val shareIntent = ShareCompat.IntentBuilder
+                    .from(this)
+                    .setType("text/plain")
+                    .setChooserTitle("")
+                    .setText(getString(R.string.share_app_msg) + "https://play.google.com/store/apps/details?id=" + packageName)
+                    .intent
 
-        /*imgCross.setOnClickListener {
-            val drawer = findViewById<View>(R.id.drawer_layout) as DrawerLayout
-            if (drawer.isDrawerOpen(GravityCompat.START)) {
-                drawer.closeDrawer(GravityCompat.START)
-            } else {
-                drawer.openDrawer(GravityCompat.START)
-            }
-        }*/
-
-        imgUser.setOnClickListener {
-            if (Global.isUserLoggedIn(this)) {
-                loadAccountFragment()
-            } else {
-                val i = Intent(this@NavigationActivity, LoginActivity::class.java)
-                startActivityForResult(i, 1)
-            }
-        }
-
-        relWishlistImage.setOnClickListener {
-            if (Global.isUserLoggedIn(this)) {
-                val i = Intent(this@NavigationActivity, WishlistActivity::class.java)
-                startActivity(i)
-            } else {
-                val i = Intent(this@NavigationActivity, LoginActivity::class.java)
-                startActivityForResult(i, 1)
-            }
-        }
-
-        relClearAll.setOnClickListener {
-            println("Clear data")
-            if (!arrListFilterData.isNullOrEmpty() && adapterFilter != null) {
-
-                //filterInterface?.onFilterClicked(arrListFilterData,adapterFilter,"clear")
-                for (i in 0 until arrListFilterData?.size as Int) {
-                    val fragment = adapterFilter?.getItem(i)
-                    (fragment as FilterListFragment).clearAll()
+                if (shareIntent.resolveActivity(packageManager) != null) {
+                    startActivity(shareIntent)
                 }
             }
-            adapterFilter?.notifyDataSetChanged()
-        }
 
-        imgCloseSheet.setOnClickListener {
-            println("Clear data")
-            if (!arrListFilterData.isNullOrEmpty() && adapterFilter != null) {
+            /*imgCross.setOnClickListener {
+                    val drawer = findViewById<View>(R.id.drawer_layout) as DrawerLayout
+                    if (drawer.isDrawerOpen(GravityCompat.START)) {
+                        drawer.closeDrawer(GravityCompat.START)
+                    } else {
+                        drawer.openDrawer(GravityCompat.START)
+                    }
+                }*/
 
-                //filterInterface?.onFilterClicked(arrListFilterData,adapterFilter,"clear")
-                for (i in 0 until arrListFilterData?.size as Int) {
-                    val fragment = adapterFilter?.getItem(i)
-                    (fragment as FilterListFragment).clearAll()
+            imgUser.setOnClickListener {
+                if (Global.isUserLoggedIn(this)) {
+                    loadAccountFragment()
+                } else {
+                    val i = Intent(this@NavigationActivity, LoginActivity::class.java)
+                    startActivityForResult(i, 1)
                 }
             }
-            adapterFilter?.notifyDataSetChanged()
 
-        }
-
-
-        relApply.setOnClickListener {
-
-            if (!arrListFilterData.isNullOrEmpty() && adapterFilter != null) {
-                //filterInterface?.onFilterClicked(arrListFilterData,adapterFilter,"apply")
-                EventBus.getDefault()
-                    .post(FilterObject(arrListFilterData, adapterFilter, "apply", parentType))
-                simpleViewnimator.visibility = View.GONE
-                Global.hideKeyboard(this)
-                setLeftDrawer()
+            relWishlistImage.setOnClickListener {
+                if (Global.isUserLoggedIn(this)) {
+                    val i = Intent(this@NavigationActivity, WishlistActivity::class.java)
+                    startActivity(i)
+                } else {
+                    val i = Intent(this@NavigationActivity, LoginActivity::class.java)
+                    startActivityForResult(i, 1)
+                }
             }
 
+            relClearAll.setOnClickListener {
+                println("Clear data")
+                if (!arrListFilterData.isNullOrEmpty() && adapterFilter != null) {
+
+                    //filterInterface?.onFilterClicked(arrListFilterData,adapterFilter,"clear")
+                    for (i in 0 until arrListFilterData?.size as Int) {
+                        val fragment = adapterFilter?.getItem(i)
+                        (fragment as FilterListFragment).clearAll()
+                    }
+                }
+                adapterFilter?.notifyDataSetChanged()
+            }
+
+            imgCloseSheet.setOnClickListener {
+                println("Clear data")
+                if (!arrListFilterData.isNullOrEmpty() && adapterFilter != null) {
+
+                    //filterInterface?.onFilterClicked(arrListFilterData,adapterFilter,"clear")
+                    for (i in 0 until arrListFilterData?.size as Int) {
+                        val fragment = adapterFilter?.getItem(i)
+                        (fragment as FilterListFragment).clearAll()
+                    }
+                }
+                adapterFilter?.notifyDataSetChanged()
+
+            }
+
+
+            relApply.setOnClickListener {
+
+                if (!arrListFilterData.isNullOrEmpty() && adapterFilter != null) {
+                    //filterInterface?.onFilterClicked(arrListFilterData,adapterFilter,"apply")
+                    EventBus.getDefault()
+                        .post(FilterObject(arrListFilterData, adapterFilter, "apply", parentType))
+                    simpleViewnimator.visibility = View.GONE
+                    Global.hideKeyboard(this)
+                    setLeftDrawer()
+                }
+
+            }
+        } catch (e: Exception) {
         }
 
     }
 
     private fun setLeftDrawer() {
 
-        val arryList = ArrayList<Navigationmodel>()
+        try {
+            val arryList = ArrayList<Navigationmodel>()
 
-        val leftMenu1 =
-            Navigationmodel(
-                1, resources.getString(R.string.menu_home),
-                R.drawable.finalhome_unsel, isArrowVisible = true
-            )
-        arryList.add(leftMenu1)
+            val leftMenu1 =
+                Navigationmodel(
+                    1, resources.getString(R.string.menu_home),
+                    R.drawable.finalhome_unsel, isArrowVisible = true
+                )
+            arryList.add(leftMenu1)
 
-        val leftMenu2 = Navigationmodel(
-            1,
-            resources.getString(R.string.bottom_menu_avenue),
-            R.drawable.finalcat_unsel,
-            isArrowVisible = false
-        )
-        arryList.add(leftMenu2)
-
-        val leftMenu3 =
-            Navigationmodel(
-                0,
-                resources.getString(R.string.brands),
-                R.drawable.ic_brand_new,
+            val leftMenu2 = Navigationmodel(
+                1,
+                resources.getString(R.string.bottom_menu_avenue),
+                R.drawable.finalcat_unsel,
                 isArrowVisible = false
             )
-        arryList.add(leftMenu3)
+            arryList.add(leftMenu2)
 
-        /* val leftMenu4 = Navigati`onmodel(
-             1,
-             resources.getString(R.string.bottom_menu_stars),
-             isArrowVisible = true
-         )
-         arryList.add(leftMenu4)*/
+            val leftMenu3 =
+                Navigationmodel(
+                    0,
+                    resources.getString(R.string.brands),
+                    R.drawable.ic_brand_new,
+                    isArrowVisible = false
+                )
+            arryList.add(leftMenu3)
 
-        val leftMenu5 =
-            Navigationmodel(
-                0,
-                resources.getString(R.string.my_account),
-                R.drawable.ic_user_grey,
-                isArrowVisible = false
-            )
-        arryList.add(leftMenu5)
+            /* val leftMenu4 = Navigati`onmodel(
+                     1,
+                     resources.getString(R.string.bottom_menu_stars),
+                     isArrowVisible = true
+                 )
+                 arryList.add(leftMenu4)*/
+
+            val leftMenu5 =
+                Navigationmodel(
+                    0,
+                    resources.getString(R.string.my_account),
+                    R.drawable.ic_user_grey,
+                    isArrowVisible = false
+                )
+            arryList.add(leftMenu5)
 /*
         if (!Global.isEnglishLanguage(this@NavigationActivity)) {
             val leftMenu6 =
@@ -798,234 +828,351 @@ class NavigationActivity : BaseActivity(), NavigationView.OnNavigationItemSelect
                     isArrowVisible = false)
             arryList.add(leftMenu6)
         }else{*/
-        val leftMenu6 =
-            Navigationmodel(
-                0,
-                resources.getString(R.string.language),
-                R.drawable.ic_language,
-                isArrowVisible = false
-            )
-        arryList.add(leftMenu6)
+            val leftMenu6 =
+                Navigationmodel(
+                    0,
+                    resources.getString(R.string.language),
+                    R.drawable.ic_language,
+                    isArrowVisible = false
+                )
+            arryList.add(leftMenu6)
 
-        /* val leftMenu6 =
-             Navigationmodel(0, resources.getString(R.string.my_orders), isArrowVisible = true)
-         arryList.add(leftMenu6)
+            /* val leftMenu6 =
+                     Navigationmodel(0, resources.getString(R.string.my_orders), isArrowVisible = true)
+                 arryList.add(leftMenu6)
 
-         val leftMenu7 =
-             Navigationmodel(0, resources.getString(R.string.acc_my_wishlist), isArrowVisible = true)
-         arryList.add(leftMenu7)
+                 val leftMenu7 =
+                     Navigationmodel(0, resources.getString(R.string.acc_my_wishlist), isArrowVisible = true)
+                 arryList.add(leftMenu7)
 
-         val leftMenu8 =
-             Navigationmodel(0, resources.getString(R.string.current_lang), isArrowVisible = false)
-         arryList.add(leftMenu8)
+                 val leftMenu8 =
+                     Navigationmodel(0, resources.getString(R.string.current_lang), isArrowVisible = false)
+                 arryList.add(leftMenu8)
 
-         val leftMenu9 =
-             Navigationmodel(0, resources.getString(R.string.acc_rate_us), isArrowVisible = true)
-         arryList.add(leftMenu9)*/
+                 val leftMenu9 =
+                     Navigationmodel(0, resources.getString(R.string.acc_rate_us), isArrowVisible = true)
+                 arryList.add(leftMenu9)*/
 
-        navAdapter = NavigationAapter(arryList, this@NavigationActivity, onStoreUpdateClicked)
-        rcyDrawer.layoutManager = LinearLayoutManager(this@NavigationActivity)
-        rcyDrawer.adapter = navAdapter
+            navAdapter = NavigationAapter(arryList, this@NavigationActivity, onStoreUpdateClicked)
+            rcyDrawer.layoutManager = LinearLayoutManager(this@NavigationActivity)
+            rcyDrawer.adapter = navAdapter
 
-        scrollNav.visibility = View.VISIBLE
+            scrollNav.visibility = View.VISIBLE
 
-        val pInfo: PackageInfo? = this.packageManager.getPackageInfo(packageName, 0)
-        val verName: String = pInfo!!.versionName
-        txtVersion.text = resources.getString(R.string.version_name, verName)
-        //txtVersion.typeface = typeNormal
-        //navigationView.setNavigationItemSelectedListener(this)
+            val pInfo: PackageInfo? = this.packageManager.getPackageInfo(packageName, 0)
+            val verName: String = pInfo!!.versionName
+            txtVersion.text = resources.getString(R.string.version_name, verName)
+            //txtVersion.typeface = typeNormal
+            //navigationView.setNavigationItemSelectedListener(this)
+        } catch (e: Exception) {
+        }
 
     }
 
 
     fun updateCartBadge() {
-        setBadgeCount(
-            4,
-            Global.getTotalCartProductQtyCount(this@NavigationActivity)
-        )  // set wishlist count
-        println("Here i am cart count is        " + Global.getTotalCartProductQtyCount(this@NavigationActivity))
+        try {
+            setBadgeCount(
+                4,
+                Global.getTotalCartProductQtyCount(this@NavigationActivity)
+            )  // set wishlist count
+            println("Here i am cart count is        " + Global.getTotalCartProductQtyCount(this@NavigationActivity))
+        } catch (e: Exception) {
+        }
     }
 
 
     private fun setBadgeCount(position: Int, count: Int) {
-        val bottomNavigationMenuView = bottom_navigation.getChildAt(0) as BottomNavigationMenuView
-        val itemViewCart = bottomNavigationMenuView.getChildAt(position) as BottomNavigationItemView
-        val badgeCart = LayoutInflater.from(this)
-            .inflate(R.layout.layout_bottom_tab_badge, bottomNavigationMenuView, false)
-        val txtBadgeCount: TextView = badgeCart.findViewById(R.id.txtBadgeCount) as TextView
-        if (!Global.isEnglishLanguage(this@NavigationActivity)) {
-            (txtBadgeCount.layoutParams as FrameLayout.LayoutParams).gravity = Gravity.END
-        }
-        if (!Global.isEnglishLanguage(this@NavigationActivity)) {
-            ivLogo.setImageResource(R.drawable.app_logo_ar)
-            imgAppLogo.setImageResource(R.drawable.app_logo_ar)
-        } else {
-            ivLogo.setImageResource(R.drawable.app_logo)
-            imgAppLogo.setImageResource(R.drawable.app_logo)
 
-        }
+        try {
+            val bottomNavigationMenuView = bottom_navigation.getChildAt(0) as BottomNavigationMenuView
+            val itemViewCart = bottomNavigationMenuView.getChildAt(position) as BottomNavigationItemView
+            val badgeCart = LayoutInflater.from(this)
+                .inflate(R.layout.layout_bottom_tab_badge, bottomNavigationMenuView, false)
+            val txtBadgeCount: TextView = badgeCart.findViewById(R.id.txtBadgeCount) as TextView
+            if (!Global.isEnglishLanguage(this@NavigationActivity)) {
+                (txtBadgeCount.layoutParams as FrameLayout.LayoutParams).gravity = Gravity.END
+            }
+            if (!Global.isEnglishLanguage(this@NavigationActivity)) {
+                ivLogo.setImageResource(R.drawable.app_logo_ar)
+                imgAppLogo.setImageResource(R.drawable.app_logo_ar)
+            } else {
+                ivLogo.setImageResource(R.drawable.app_logo)
+                imgAppLogo.setImageResource(R.drawable.app_logo)
 
-        txtBadgeCount.text = count.toString()
-        //as count will always be in english number so apply english font
-        txtBadgeCount.typeface = Global.fontMedium
+            }
 
-        if (itemViewCart.childCount != 2)
-            itemViewCart.removeViewAt(2)
+            txtBadgeCount.text = count.toString()
+            //as count will always be in english number so apply english font
+            txtBadgeCount.typeface = Global.fontMedium
 
-        if (count > 0) {
-            itemViewCart.addView(badgeCart)
+            if (itemViewCart.childCount != 2)
+                itemViewCart.removeViewAt(2)
+
+            if (count > 0) {
+                itemViewCart.addView(badgeCart)
+            }
+        } catch (e: Exception) {
         }
     }
 
 
     fun displayView(position: Int, categoryId: Int = 0) {
-        val data = Bundle()
-        var fragment: Fragment? = null
-        val fragmentManager = supportFragmentManager
-        val ft = fragmentManager.beginTransaction()
-        var i: Intent? = null
-        val userId:String? = Global.getUserId(this)
+        try {
+            val data = Bundle()
+            var fragment: Fragment? = null
+            val fragmentManager = supportFragmentManager
+            val ft = fragmentManager.beginTransaction()
+            var i: Intent? = null
+            val userId:String? = Global.getUserId(this)
 
-        txtHead.typeface = Global.fontNavBar
+            txtHead.typeface = Global.fontNavBar
 
-        when (position) {
-            0 -> {
-                if (selectedTabPosition != 0) {
+            when (position) {
+                0 -> {
+                    if (selectedTabPosition != 0) {
 
-//                    if (isCatLoaded){
-//                      if((categoriesFragment as CategoryFragment).childFragmentManager.backStackEntryCount>=1){
-//                      (categoriesFragment as CategoryFragment).childFragmentManager.popBackStackImmediate()
-//                  }
-//                    }
+    //                    if (isCatLoaded){
+    //                      if((categoriesFragment as CategoryFragment).childFragmentManager.backStackEntryCount>=1){
+    //                      (categoriesFragment as CategoryFragment).childFragmentManager.popBackStackImmediate()
+    //                  }
+    //                    }
 
-                    if (!isHomeLoaded) {
-                        fm.beginTransaction().add(R.id.content_frame, homeFragment, "0")
-                            .show(homeFragment).commit()
-                        isHomeLoaded = true
-                        if (Global.isUserLoggedIn(this)){
-                            CustomEvents.screenViewed(this,userId,"Home tab")
+                        if (!isHomeLoaded) {
+                            fm.beginTransaction().add(R.id.content_frame, homeFragment, "0")
+                                .show(homeFragment).commit()
+                            isHomeLoaded = true
+                            if (Global.isUserLoggedIn(this)){
+                                CustomEvents.screenViewed(this,userId,"Home tab")
+                            }
+                        } else {
+                            fm.beginTransaction().hide(activeFragment).show(homeFragment).commit()
                         }
-                    } else {
-                        fm.beginTransaction().hide(activeFragment).show(homeFragment).commit()
-                    }
 
-                    activeFragment = HomeFragment()
-                    selectedTabPosition = 0
+                        activeFragment = HomeFragment()
+                        selectedTabPosition = 0
 
-                    fm.beginTransaction().hide(categoriesFragment).remove(cartFragment)
-                        .hide(brandsFragment)
-                        .hide(tvFragment).hide(faqFragment).hide(contactUsFragment)
-                        .hide(celebrityFragment).hide(accountFragment)
-                            .commit()
+                        fm.beginTransaction().hide(categoriesFragment).remove(cartFragment)
+                            .hide(brandsFragment)
+                            .hide(tvFragment).hide(faqFragment).hide(contactUsFragment)
+                            .hide(celebrityFragment).hide(accountFragment)
+                                .commit()
 
-                    activeFragment = homeFragment
-                    isCartLoaded = false
-                    bottom_navigation.selectedItemId = R.id.navigation_home
+                        activeFragment = homeFragment
+                        isCartLoaded = false
+                        bottom_navigation.selectedItemId = R.id.navigation_home
 
-                    println(" Is home fragment added :" + homeFragment.isAdded)
-                    if (homeFragment.isAdded) {
-                        displayHomeHeader()
-                    } else {
-                        imgSearch.visibility = View.VISIBLE
+                        println(" Is home fragment added :" + homeFragment.isAdded)
+                        if (homeFragment.isAdded) {
+                            displayHomeHeader()
+                        } else {
+                            imgSearch.visibility = View.VISIBLE
 
-                        ivShare.visibility = View.GONE
-                        txtHead.visibility = View.GONE
-                        txtHead.text = resources.getString(R.string.menu_home)
-                        view.visibility = View.GONE
-                        viewStart.visibility = View.GONE
-                        ivLogo.visibility = View.VISIBLE
-                        ivBackArrow.visibility = if (isViewAll) VISIBLE else GONE
-                        ivDrawer.visibility = if (isViewAll) GONE else VISIBLE
-                        relWishlistImage.visibility = View.VISIBLE
+                            ivShare.visibility = View.GONE
+                            txtHead.visibility = View.GONE
+                            txtHead.text = resources.getString(R.string.menu_home)
+                            view.visibility = View.GONE
+                            viewStart.visibility = View.GONE
+                            ivLogo.visibility = View.VISIBLE
+                            ivBackArrow.visibility = if (isViewAll) VISIBLE else GONE
+                            ivDrawer.visibility = if (isViewAll) GONE else VISIBLE
+                            relWishlistImage.visibility = View.VISIBLE
+                        }
+
                     }
 
                 }
+                1 -> {
+                    if (selectedTabPosition != 1) {
+                        val bundle = Bundle()
+                        bundle.putString("categoryID", categoryId.toString())
 
-            }
-            1 -> {
-                if (selectedTabPosition != 1) {
-                    val bundle = Bundle()
-                    bundle.putString("categoryID", categoryId.toString())
+                        if (!isBrandLoaded) {
 
-                    if (!isBrandLoaded) {
+                            brandsFragment.arguments = bundle
+                            fm.beginTransaction().add(R.id.content_frame, brandsFragment, "1")
+                                .show(brandsFragment).commit()
+                            isBrandLoaded = true
 
-                        brandsFragment.arguments = bundle
-                        fm.beginTransaction().add(R.id.content_frame, brandsFragment, "1")
-                            .show(brandsFragment).commit()
-                        isBrandLoaded = true
+                        } else {
+                            fm.beginTransaction().hide(activeFragment).show(brandsFragment).commit()
 
-                    } else {
-                        fm.beginTransaction().hide(activeFragment).show(brandsFragment).commit()
-
-                    }
-                    activeFragment = com.app.blockaat.brands.BrandFragment()
-                    selectedTabPosition = 1
-                    fm.beginTransaction().hide(homeFragment).remove(cartFragment)
-                        .hide(categoriesFragment)
-                        .hide(tvFragment).hide(faqFragment).hide(contactUsFragment)
-                        .hide(celebrityFragment).hide(accountFragment).commit()
-                    activeFragment = categoriesFragment
-                    isCartLoaded = false
-                    if (brandsFragment.isAdded) {
-                        displayBrandHeader()
-                    } else {
-                        imgSearch.visibility = View.VISIBLE
-                        txtHead.text = resources.getString(R.string.menu_brand)
-                        txtHead.visibility = View.VISIBLE
-                        ivLogo.visibility = View.GONE
-                        ivShare.visibility = View.GONE
-                        ivBackArrow.visibility = if (isViewAll) VISIBLE else GONE
-                        ivDrawer.visibility = if (isViewAll) GONE else VISIBLE
-                        relWishlistImage.visibility = View.VISIBLE
-                        view.visibility = View.GONE
-                        viewStart.visibility = View.GONE
-                        if (!boolToggle) {
-                            resetDrawerIcon()
+                        }
+                        activeFragment = com.app.blockaat.brands.BrandFragment()
+                        selectedTabPosition = 1
+                        fm.beginTransaction().hide(homeFragment).remove(cartFragment)
+                            .hide(categoriesFragment)
+                            .hide(tvFragment).hide(faqFragment).hide(contactUsFragment)
+                            .hide(celebrityFragment).hide(accountFragment).commit()
+                        activeFragment = categoriesFragment
+                        isCartLoaded = false
+                        if (brandsFragment.isAdded) {
+                            displayBrandHeader()
+                        } else {
+                            imgSearch.visibility = View.VISIBLE
+                            txtHead.text = resources.getString(R.string.menu_brand)
+                            txtHead.visibility = View.VISIBLE
+                            ivLogo.visibility = View.GONE
+                            ivShare.visibility = View.GONE
+                            ivBackArrow.visibility = if (isViewAll) VISIBLE else GONE
+                            ivDrawer.visibility = if (isViewAll) GONE else VISIBLE
+                            relWishlistImage.visibility = View.VISIBLE
+                            view.visibility = View.GONE
+                            viewStart.visibility = View.GONE
+                            if (!boolToggle) {
+                                resetDrawerIcon()
+                            }
                         }
                     }
                 }
-            }
 
-            2 -> {
-                if (selectedTabPosition != 2 || isMusicianLoaded) {
-                    if (isMusicianLoaded){
+                2 -> {
+                    if (selectedTabPosition != 2 || isMusicianLoaded) {
                         if (isMusicianLoaded){
-                            if((celebrityFragment as CelebrityFragment).childFragmentManager.backStackEntryCount>=1){
-                                (celebrityFragment as CelebrityFragment).childFragmentManager.popBackStackImmediate()
+                            if (isMusicianLoaded){
+                                if((celebrityFragment as CelebrityFragment).childFragmentManager.backStackEntryCount>=1){
+                                    (celebrityFragment as CelebrityFragment).childFragmentManager.popBackStackImmediate()
+                                }
+                            }
+                        }
+
+                        val bundle = Bundle()
+                        bundle.putString("categoryID", categoryId.toString())
+                        if (!isMusicianLoaded) {
+                            celebrityFragment.arguments = bundle
+                            fm.beginTransaction().add(R.id.content_frame, celebrityFragment, "3")
+                                .show(celebrityFragment)
+                                .commit()
+                            isMusicianLoaded = true
+                            if (Global.isUserLoggedIn(this)){
+                                CustomEvents.screenViewed(this,userId, "Talents tab")
+                            }
+                        } else {
+                            fm.beginTransaction().hide(activeFragment).show(celebrityFragment).commit()
+
+
+                        }
+                        activeFragment = CelebrityFragment()
+                        selectedTabPosition = 2
+                        fm.beginTransaction().hide(homeFragment).remove(cartFragment)
+                            .hide(brandsFragment)
+                            .hide(tvFragment).hide(faqFragment).hide(contactUsFragment)
+                            .hide(categoriesFragment).hide(accountFragment).commit()
+
+                        activeFragment = celebrityFragment
+                        isCartLoaded = false
+                        if (celebrityFragment.isAdded) {
+                            displayCelebrityHeader()
+                        } else {
+                            imgSearch.visibility = View.VISIBLE
+                            txtHead.text = resources.getString(R.string.bottom_menu_stars)
+                            txtHead.visibility = View.VISIBLE
+                            ivLogo.visibility = View.GONE
+                            ivShare.visibility = View.GONE
+                            ivBackArrow.visibility = if (isViewAll) VISIBLE else GONE
+                            ivDrawer.visibility = if (isViewAll) GONE else VISIBLE
+                            relWishlistImage.visibility = View.VISIBLE
+                            view.visibility = View.GONE
+                            viewStart.visibility = View.GONE
+                            if (!boolToggle) {
+                                resetDrawerIcon()
                             }
                         }
                     }
 
-                    val bundle = Bundle()
-                    bundle.putString("categoryID", categoryId.toString())
-                    if (!isMusicianLoaded) {
-                        celebrityFragment.arguments = bundle
-                        fm.beginTransaction().add(R.id.content_frame, celebrityFragment, "3")
-                            .show(celebrityFragment)
-                            .commit()
-                        isMusicianLoaded = true
-                        if (Global.isUserLoggedIn(this)){
-                            CustomEvents.screenViewed(this,userId, "Talents tab")
+                }
+                3 -> {
+                    if (selectedTabPosition != 3 || isCatLoaded) {
+                        if (isCatLoaded){
+                          if((categoriesFragment as CategoryFragment).childFragmentManager.backStackEntryCount>=1){
+                          (categoriesFragment as CategoryFragment).childFragmentManager.popBackStackImmediate()
+                      }
                         }
-                    } else {
-                        fm.beginTransaction().hide(activeFragment).show(celebrityFragment).commit()
 
-
+                        if (!isCatLoaded) {
+                            fm.beginTransaction().add(R.id.content_frame, categoriesFragment, "2")
+                                .show(categoriesFragment)
+                                .commit()
+                            isCatLoaded = true
+                            if (Global.isUserLoggedIn(this)){
+                                CustomEvents.screenViewed(this,userId,"Blocks tab")
+                            }
+                        } else {
+                            fm.beginTransaction().hide(activeFragment).show(categoriesFragment).commit()
+                        }
+                        activeFragment = CategoryFragment()
+                        selectedTabPosition = 3
+                        fm.beginTransaction().hide(homeFragment).remove(cartFragment)
+                            .hide(brandsFragment)
+                            .hide(tvFragment).hide(faqFragment).hide(contactUsFragment)
+                            .hide(celebrityFragment).hide(accountFragment).commit()
+                        activeFragment = categoriesFragment
+                        isCartLoaded = false
+                        if (categoriesFragment.isAdded) {
+                            displayCategoryHeader()
+                        } else {
+                            imgSearch.visibility = View.VISIBLE
+                            /* txtHead.text = resources.getString(R.string.menu_categories)*/
+                            txtHead.text = resources.getString(R.string.bottom_menu_avenue)
+                            txtHead.visibility = View.VISIBLE
+                            ivLogo.visibility = View.GONE
+                            ivShare.visibility = View.GONE
+                            ivBackArrow.visibility = if (isViewAll) VISIBLE else GONE
+                            ivDrawer.visibility = if (isViewAll) GONE else VISIBLE
+                            relWishlistImage.visibility = View.VISIBLE
+                            view.visibility = View.GONE
+                            viewStart.visibility = View.GONE
+                            if (!boolToggle) {
+                                resetDrawerIcon()
+                            }
+                        }
                     }
-                    activeFragment = CelebrityFragment()
-                    selectedTabPosition = 2
-                    fm.beginTransaction().hide(homeFragment).remove(cartFragment)
-                        .hide(brandsFragment)
-                        .hide(tvFragment).hide(faqFragment).hide(contactUsFragment)
-                        .hide(categoriesFragment).hide(accountFragment).commit()
 
-                    activeFragment = celebrityFragment
-                    isCartLoaded = false
-                    if (celebrityFragment.isAdded) {
-                        displayCelebrityHeader()
-                    } else {
+                }
+
+                4 -> {
+                    if (selectedTabPosition != 4) {
+                        if (!boolToggle) {
+                            resetDrawerIcon()
+                        }
                         imgSearch.visibility = View.VISIBLE
-                        txtHead.text = resources.getString(R.string.bottom_menu_stars)
+
+                        ivShare.visibility = View.GONE
+                        txtHead.text = resources.getString(R.string.menu_cart)
+                        txtHead.visibility = View.VISIBLE
+                        view.visibility = View.VISIBLE
+                        ivLogo.visibility = View.GONE
+                        viewStart.visibility = View.GONE
+                        ivBackArrow.visibility = View.GONE
+                        ivDrawer.visibility = View.VISIBLE
+                        relWishlistImage.visibility = View.VISIBLE
+
+                        if (!isCartLoaded) {
+                            fm.beginTransaction().add(R.id.content_frame, cartFragment, "4")
+                                .show(cartFragment).commit()
+                            isCartLoaded = true
+                            if (Global.isUserLoggedIn(this)){
+                                CustomEvents.screenViewed(this,userId,"My Bag tab")
+                            }
+                        } else {
+                            fm.beginTransaction().hide(activeFragment).show(cartFragment).commit()
+                        }
+                        activeFragment = CartFragment()
+                        selectedTabPosition = 4
+                        fm.beginTransaction().hide(homeFragment).hide(categoriesFragment)
+                            .hide(brandsFragment)
+                            .hide(tvFragment).hide(faqFragment).hide(contactUsFragment)
+                            .hide(celebrityFragment).remove(wishListFragment).hide(accountFragment)
+                            .commit()
+                        activeFragment = cartFragment
+                    }
+
+                }
+
+                5 -> {
+                    if (selectedTabPosition != 5) {
+                        imgSearch.visibility = View.VISIBLE
+                        txtHead.text = resources.getString(R.string.tv)
                         txtHead.visibility = View.VISIBLE
                         ivLogo.visibility = View.GONE
                         ivShare.visibility = View.GONE
@@ -1037,254 +1184,149 @@ class NavigationActivity : BaseActivity(), NavigationView.OnNavigationItemSelect
                         if (!boolToggle) {
                             resetDrawerIcon()
                         }
+
+                        if (!isTvLoaded) {
+                            fm.beginTransaction().add(R.id.content_frame, tvFragment, "5")
+                                .show(tvFragment)
+                                .commit()
+                            isTvLoaded = true
+                            if (Global.isUserLoggedIn(this)){
+                                CustomEvents.screenViewed(this,userId,"Tv tab")
+                            }
+                        } else {
+                            fm.beginTransaction().hide(activeFragment).show(tvFragment).commit()
+                        }
+                        activeFragment = com.app.blockaat.brands.BrandFragment()
+                        selectedTabPosition = 5
+                        fm.beginTransaction().hide(homeFragment).remove(cartFragment)
+                            .hide(brandsFragment)
+                            .hide(celebrityFragment).hide(faqFragment).hide(contactUsFragment)
+                            .hide(categoriesFragment).remove(wishListFragment).hide(accountFragment)
+                            .commit()
+                        /*fm.beginTransaction().hide(homeFragment).hide(categoriesFragment).hide(cartFragment)
+                            .hide(brandsFragment).commit()*/
+                        activeFragment = TvFragment()
+                        isCartLoaded = false
+                    }
+
+                }
+
+                6 -> {
+                    if (selectedTabPosition != 6) {
+                        loadFaqFragment()
                     }
                 }
 
-            }
-            3 -> {
-                if (selectedTabPosition != 3 || isCatLoaded) {
-                    if (isCatLoaded){
-                      if((categoriesFragment as CategoryFragment).childFragmentManager.backStackEntryCount>=1){
-                      (categoriesFragment as CategoryFragment).childFragmentManager.popBackStackImmediate()
-                  }
+                7 -> {
+                    if (selectedTabPosition != 7) {
+                        loadFaqFragment()
                     }
+                }
 
-                    if (!isCatLoaded) {
-                        fm.beginTransaction().add(R.id.content_frame, categoriesFragment, "2")
-                            .show(categoriesFragment)
-                            .commit()
-                        isCatLoaded = true
-                        if (Global.isUserLoggedIn(this)){
-                            CustomEvents.screenViewed(this,userId,"Blocks tab")
-                        }
-                    } else {
-                        fm.beginTransaction().hide(activeFragment).show(categoriesFragment).commit()
-                    }
-                    activeFragment = CategoryFragment()
-                    selectedTabPosition = 3
-                    fm.beginTransaction().hide(homeFragment).remove(cartFragment)
-                        .hide(brandsFragment)
-                        .hide(tvFragment).hide(faqFragment).hide(contactUsFragment)
-                        .hide(celebrityFragment).hide(accountFragment).commit()
-                    activeFragment = categoriesFragment
-                    isCartLoaded = false
-                    if (categoriesFragment.isAdded) {
-                        displayCategoryHeader()
-                    } else {
-                        imgSearch.visibility = View.VISIBLE
-                        /* txtHead.text = resources.getString(R.string.menu_categories)*/
-                        txtHead.text = resources.getString(R.string.bottom_menu_avenue)
+                10 -> {
+                    if (selectedTabPosition != 10) {
+                        toggle?.isDrawerIndicatorEnabled = false
+                        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+                        boolToggle = false
+                        imgSearch.visibility = View.GONE
+                        ivBackArrow.visibility = View.VISIBLE
+                        ivDrawer.visibility = View.GONE
+                        view.visibility = View.VISIBLE
+                        relWishlistImage.visibility = GONE
+                        viewStart.visibility = GONE
+                        txtHead.text = resources.getString(R.string.contact_us)
                         txtHead.visibility = View.VISIBLE
                         ivLogo.visibility = View.GONE
                         ivShare.visibility = View.GONE
-                        ivBackArrow.visibility = if (isViewAll) VISIBLE else GONE
-                        ivDrawer.visibility = if (isViewAll) GONE else VISIBLE
-                        relWishlistImage.visibility = View.VISIBLE
-                        view.visibility = View.GONE
-                        viewStart.visibility = View.GONE
-                        if (!boolToggle) {
-                            resetDrawerIcon()
+
+                        if (!isContactUsLoaded) {
+                            fm.beginTransaction().add(R.id.content_frame, contactUsFragment, "7")
+                                .show(contactUsFragment)
+                                .commit()
+                            isContactUsLoaded = true
+                        } else {
+                            fm.beginTransaction().hide(activeFragment).show(contactUsFragment).commit()
                         }
-                    }
-                }
-
-            }
-
-            4 -> {
-                if (selectedTabPosition != 4) {
-                    if (!boolToggle) {
-                        resetDrawerIcon()
-                    }
-                    imgSearch.visibility = View.VISIBLE
-
-                    ivShare.visibility = View.GONE
-                    txtHead.text = resources.getString(R.string.menu_cart)
-                    txtHead.visibility = View.VISIBLE
-                    view.visibility = View.VISIBLE
-                    ivLogo.visibility = View.GONE
-                    viewStart.visibility = View.GONE
-                    ivBackArrow.visibility = View.GONE
-                    ivDrawer.visibility = View.VISIBLE
-                    relWishlistImage.visibility = View.VISIBLE
-
-                    if (!isCartLoaded) {
-                        fm.beginTransaction().add(R.id.content_frame, cartFragment, "4")
-                            .show(cartFragment).commit()
-                        isCartLoaded = true
-                        if (Global.isUserLoggedIn(this)){
-                            CustomEvents.screenViewed(this,userId,"My Bag tab")
-                        }
-                    } else {
-                        fm.beginTransaction().hide(activeFragment).show(cartFragment).commit()
-                    }
-                    activeFragment = CartFragment()
-                    selectedTabPosition = 4
-                    fm.beginTransaction().hide(homeFragment).hide(categoriesFragment)
-                        .hide(brandsFragment)
-                        .hide(tvFragment).hide(faqFragment).hide(contactUsFragment)
-                        .hide(celebrityFragment).remove(wishListFragment).hide(accountFragment)
-                        .commit()
-                    activeFragment = cartFragment
-                }
-
-            }
-
-            5 -> {
-                if (selectedTabPosition != 5) {
-                    imgSearch.visibility = View.VISIBLE
-                    txtHead.text = resources.getString(R.string.tv)
-                    txtHead.visibility = View.VISIBLE
-                    ivLogo.visibility = View.GONE
-                    ivShare.visibility = View.GONE
-                    ivBackArrow.visibility = if (isViewAll) VISIBLE else GONE
-                    ivDrawer.visibility = if (isViewAll) GONE else VISIBLE
-                    relWishlistImage.visibility = View.VISIBLE
-                    view.visibility = View.GONE
-                    viewStart.visibility = View.GONE
-                    if (!boolToggle) {
-                        resetDrawerIcon()
-                    }
-
-                    if (!isTvLoaded) {
-                        fm.beginTransaction().add(R.id.content_frame, tvFragment, "5")
-                            .show(tvFragment)
+                        activeFragment = ContactUsFragment()
+                        selectedTabPosition = 7
+                        fm.beginTransaction().hide(homeFragment).remove(cartFragment)
+                            .hide(brandsFragment)
+                            .hide(celebrityFragment).hide(tvFragment).hide(faqFragment)
+                            .hide(categoriesFragment).remove(wishListFragment).hide(accountFragment)
                             .commit()
-                        isTvLoaded = true
-                        if (Global.isUserLoggedIn(this)){
-                            CustomEvents.screenViewed(this,userId,"Tv tab")
-                        }
-                    } else {
-                        fm.beginTransaction().hide(activeFragment).show(tvFragment).commit()
+                        /*fm.beginTransaction().hide(homeFragment).hide(categoriesFragment).hide(cartFragment)
+                            .hide(brandsFragment).commit()*/
+                        activeFragment = ContactUsFragment()
+                        isCartLoaded = false
                     }
-                    activeFragment = com.app.blockaat.brands.BrandFragment()
-                    selectedTabPosition = 5
-                    fm.beginTransaction().hide(homeFragment).remove(cartFragment)
-                        .hide(brandsFragment)
-                        .hide(celebrityFragment).hide(faqFragment).hide(contactUsFragment)
-                        .hide(categoriesFragment).remove(wishListFragment).hide(accountFragment)
-                        .commit()
-                    /*fm.beginTransaction().hide(homeFragment).hide(categoriesFragment).hide(cartFragment)
-                        .hide(brandsFragment).commit()*/
-                    activeFragment = TvFragment()
-                    isCartLoaded = false
                 }
 
             }
 
-            6 -> {
-                if (selectedTabPosition != 6) {
-                    loadFaqFragment()
-                }
-            }
+            /* when (position) {
+                     0 -> {
+                         fragment = HomeFragment()
+                         txtHead.visibility = View.VISIBLE
+                         txtHead.text=resources.getString(R.string.menu_home)
+                         imgLogo.visibility = View.VISIBLE
+                         ft.replace(R.id.content_frame, fragment)
+                         ft.commit()
 
-            7 -> {
-                if (selectedTabPosition != 7) {
-                    loadFaqFragment()
-                }
-            }
+                     }
 
-            10 -> {
-                if (selectedTabPosition != 10) {
-                    toggle?.isDrawerIndicatorEnabled = false
-                    supportActionBar?.setDisplayHomeAsUpEnabled(true)
-                    boolToggle = false
-                    imgSearch.visibility = View.GONE
-                    ivBackArrow.visibility = View.VISIBLE
-                    ivDrawer.visibility = View.GONE
-                    view.visibility = View.VISIBLE
-                    relWishlistImage.visibility = GONE
-                    viewStart.visibility = GONE
-                    txtHead.text = resources.getString(R.string.contact_us)
-                    txtHead.visibility = View.VISIBLE
-                    ivLogo.visibility = View.GONE
-                    ivShare.visibility = View.GONE
+                     1 -> {
+                         fragment = BrandFragment()
+                         txtHead.text=resources.getString(R.string.menu_brand)
+                         txtHead.visibility = View.VISIBLE
+                         imgLogo.visibility = View.GONE
+                         *//* data.putString("id", strId)
+                         fragment.arguments = data*//*
+                        ft.replace(R.id.content_frame, fragment)
+                        ft.commit()
 
-                    if (!isContactUsLoaded) {
-                        fm.beginTransaction().add(R.id.content_frame, contactUsFragment, "7")
-                            .show(contactUsFragment)
-                            .commit()
-                        isContactUsLoaded = true
-                    } else {
-                        fm.beginTransaction().hide(activeFragment).show(contactUsFragment).commit()
                     }
-                    activeFragment = ContactUsFragment()
-                    selectedTabPosition = 7
-                    fm.beginTransaction().hide(homeFragment).remove(cartFragment)
-                        .hide(brandsFragment)
-                        .hide(celebrityFragment).hide(tvFragment).hide(faqFragment)
-                        .hide(categoriesFragment).remove(wishListFragment).hide(accountFragment)
-                        .commit()
-                    /*fm.beginTransaction().hide(homeFragment).hide(categoriesFragment).hide(cartFragment)
-                        .hide(brandsFragment).commit()*/
-                    activeFragment = ContactUsFragment()
-                    isCartLoaded = false
-                }
-            }
 
+                    2 -> {
+                        fragment = CategoryFragment()
+                        txtHead.text=resources.getString(R.string.menu_categories)
+                        txtHead.visibility = View.VISIBLE
+                        imgLogo.visibility = View.GONE
+                       *//* data.putString("id", strId)
+                        fragment.arguments = data*//*
+                        ft.replace(R.id.content_frame, fragment)
+                        ft.commit()
+
+                    }
+
+                    3 -> {
+                        fragment = celebrityFragment()
+                        txtHead.text=resources.getString(R.string.menu_music)
+                        txtHead.visibility = View.VISIBLE
+                        imgLogo.visibility = View.GONE
+                        *//* data.putString("id", strId)
+                         fragment.arguments = data*//*
+                        ft.replace(R.id.content_frame, fragment)
+                        ft.commit()
+
+                    }
+
+                    4 -> {
+                        fragment = CartFragment()
+                        txtHead.text=resources.getString(R.string.menu_cart)
+                        txtHead.visibility = View.VISIBLE
+                        imgLogo.visibility = View.GONE
+                        *//* data.putString("id", strId)
+                         fragment.arguments = data*//*
+                        ft.replace(R.id.content_frame, fragment)
+                        ft.commit()
+
+                    }*/
+            // }
+
+            val drawer = findViewById<View>(R.id.drawer_layout) as DrawerLayout
+            drawer.closeDrawer(GravityCompat.START)
+        } catch (e: Exception) {
         }
-
-        /* when (position) {
-             0 -> {
-                 fragment = HomeFragment()
-                 txtHead.visibility = View.VISIBLE
-                 txtHead.text=resources.getString(R.string.menu_home)
-                 imgLogo.visibility = View.VISIBLE
-                 ft.replace(R.id.content_frame, fragment)
-                 ft.commit()
-
-             }
-
-             1 -> {
-                 fragment = BrandFragment()
-                 txtHead.text=resources.getString(R.string.menu_brand)
-                 txtHead.visibility = View.VISIBLE
-                 imgLogo.visibility = View.GONE
-                 *//* data.putString("id", strId)
-                 fragment.arguments = data*//*
-                ft.replace(R.id.content_frame, fragment)
-                ft.commit()
-
-            }
-
-            2 -> {
-                fragment = CategoryFragment()
-                txtHead.text=resources.getString(R.string.menu_categories)
-                txtHead.visibility = View.VISIBLE
-                imgLogo.visibility = View.GONE
-               *//* data.putString("id", strId)
-                fragment.arguments = data*//*
-                ft.replace(R.id.content_frame, fragment)
-                ft.commit()
-
-            }
-
-            3 -> {
-                fragment = celebrityFragment()
-                txtHead.text=resources.getString(R.string.menu_music)
-                txtHead.visibility = View.VISIBLE
-                imgLogo.visibility = View.GONE
-                *//* data.putString("id", strId)
-                 fragment.arguments = data*//*
-                ft.replace(R.id.content_frame, fragment)
-                ft.commit()
-
-            }
-
-            4 -> {
-                fragment = CartFragment()
-                txtHead.text=resources.getString(R.string.menu_cart)
-                txtHead.visibility = View.VISIBLE
-                imgLogo.visibility = View.GONE
-                *//* data.putString("id", strId)
-                 fragment.arguments = data*//*
-                ft.replace(R.id.content_frame, fragment)
-                ft.commit()
-
-            }*/
-        // }
-
-        val drawer = findViewById<View>(R.id.drawer_layout) as DrawerLayout
-        drawer.closeDrawer(GravityCompat.START)
     }
 
     fun updateTabPosition(){
@@ -1292,108 +1334,117 @@ class NavigationActivity : BaseActivity(), NavigationView.OnNavigationItemSelect
     }
 
     private fun loadAccountFragment() {
-        if (selectedTabPosition != 11) {
-            imgSearch.visibility = View.VISIBLE
-            txtHead.text = resources.getString(R.string.account)
-            txtHead.visibility = View.VISIBLE
-            ivLogo.visibility = View.GONE
-            ivShare.visibility = View.GONE
-            ivBackArrow.visibility = if (isViewAll) VISIBLE else GONE
-            ivDrawer.visibility = if (isViewAll) GONE else VISIBLE
-            relWishlistImage.visibility = View.VISIBLE
-            view.visibility = View.GONE
-            viewStart.visibility = View.GONE
-            if (!boolToggle) {
-                resetDrawerIcon()
-            }
+        try {
+            if (selectedTabPosition != 11) {
+                imgSearch.visibility = View.VISIBLE
+                txtHead.text = resources.getString(R.string.account)
+                txtHead.visibility = View.VISIBLE
+                ivLogo.visibility = View.GONE
+                ivShare.visibility = View.GONE
+                ivBackArrow.visibility = if (isViewAll) VISIBLE else GONE
+                ivDrawer.visibility = if (isViewAll) GONE else VISIBLE
+                relWishlistImage.visibility = View.VISIBLE
+                view.visibility = View.GONE
+                viewStart.visibility = View.GONE
+                if (!boolToggle) {
+                    resetDrawerIcon()
+                }
 
-            if (!isAccountLoaded) {
-                fm.beginTransaction().add(R.id.content_frame, accountFragment, "11")
-                    .show(accountFragment)
-                    .commit()
-                isAccountLoaded = true
-            } else {
-                fm.beginTransaction().hide(activeFragment).show(accountFragment).commit()
-            }
+                if (!isAccountLoaded) {
+                    fm.beginTransaction().add(R.id.content_frame, accountFragment, "11")
+                        .show(accountFragment)
+                        .commit()
+                    isAccountLoaded = true
+                } else {
+                    fm.beginTransaction().hide(activeFragment).show(accountFragment).commit()
+                }
 
-            activeFragment = AccountFragment()
-            selectedTabPosition = 11
-            fm.beginTransaction()
-                .hide(homeFragment).remove(cartFragment)
-                .hide(brandsFragment).hide(faqDetailsFragment)
-                .hide(celebrityFragment).hide(tvFragment).hide(contactUsFragment)
-                .hide(categoriesFragment).remove(wishListFragment)
-                .hide(faqFragment).commit()
-            activeFragment = accountFragment
+                activeFragment = AccountFragment()
+                selectedTabPosition = 11
+                fm.beginTransaction()
+                    .hide(homeFragment).remove(cartFragment)
+                    .hide(brandsFragment).hide(faqDetailsFragment)
+                    .hide(celebrityFragment).hide(tvFragment).hide(contactUsFragment)
+                    .hide(categoriesFragment).remove(wishListFragment)
+                    .hide(faqFragment).commit()
+                activeFragment = accountFragment
+            }
+        } catch (e: Exception) {
         }
 
     }
 
     private fun loadFaqFragment() {
-        toggle?.isDrawerIndicatorEnabled = false
-        boolToggle = false
-        imgSearch.visibility = View.GONE
-        ivShare.visibility = View.GONE
-        ivBackArrow.visibility = View.VISIBLE
-        ivDrawer.visibility = View.GONE
-        view.visibility = View.VISIBLE
-        relWishlistImage.visibility = GONE
-        txtHead.text = resources.getString(R.string.faqs_title)
-        txtHead.visibility = View.VISIBLE
-        ivLogo.visibility = View.GONE
-        viewStart.visibility = View.GONE
+        try {
+            toggle?.isDrawerIndicatorEnabled = false
+            boolToggle = false
+            imgSearch.visibility = View.GONE
+            ivShare.visibility = View.GONE
+            ivBackArrow.visibility = View.VISIBLE
+            ivDrawer.visibility = View.GONE
+            view.visibility = View.VISIBLE
+            relWishlistImage.visibility = GONE
+            txtHead.text = resources.getString(R.string.faqs_title)
+            txtHead.visibility = View.VISIBLE
+            ivLogo.visibility = View.GONE
+            viewStart.visibility = View.GONE
 //        txtAppName.visibility = View.GONE
-        if (!isFaqLoaded) {
-            fm.beginTransaction().add(R.id.content_frame, faqFragment, "7")
-                .show(faqFragment)
-                .commit()
-            isFaqLoaded = true
-        } else {
-            fm.beginTransaction().hide(activeFragment).show(faqFragment).commit()
+            if (!isFaqLoaded) {
+                fm.beginTransaction().add(R.id.content_frame, faqFragment, "7")
+                    .show(faqFragment)
+                    .commit()
+                isFaqLoaded = true
+            } else {
+                fm.beginTransaction().hide(activeFragment).show(faqFragment).commit()
+            }
+            activeFragment = FaqFragment()
+            selectedTabPosition = 7
+            fm.beginTransaction().hide(homeFragment).remove(cartFragment)
+                .hide(brandsFragment).hide(faqDetailsFragment)
+                .hide(celebrityFragment).hide(tvFragment).hide(contactUsFragment)
+                .hide(categoriesFragment).remove(wishListFragment).hide(accountFragment).commit()
+            activeFragment = faqFragment
+            isCartLoaded = false
+        } catch (e: Exception) {
         }
-        activeFragment = FaqFragment()
-        selectedTabPosition = 7
-        fm.beginTransaction().hide(homeFragment).remove(cartFragment)
-            .hide(brandsFragment).hide(faqDetailsFragment)
-            .hide(celebrityFragment).hide(tvFragment).hide(contactUsFragment)
-            .hide(categoriesFragment).remove(wishListFragment).hide(accountFragment).commit()
-        activeFragment = faqFragment
-        isCartLoaded = false
     }
 
     fun loadFaqDetailsFragment(faqDataModel: FaqDataModel) {
-        toggle?.isDrawerIndicatorEnabled = false
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        boolToggle = false
-        imgSearch.visibility = View.GONE
-        ivShare.visibility = View.GONE
-        ivBackArrow.visibility = View.VISIBLE
-        ivDrawer.visibility = View.GONE
-        view.visibility = View.VISIBLE
-        txtHead.text = resources.getString(R.string.faqs_title)
-        txtHead.visibility = View.VISIBLE
-        viewStart.visibility = View.GONE
-        ivLogo.visibility = View.GONE
-        val bundle: Bundle = Bundle()
-        bundle.putSerializable("faqModel", faqDataModel)
-        faqDetailsFragment.arguments = bundle
-        if (!isFaqDetailsLoaded) {
-            fm.beginTransaction().add(R.id.content_frame, faqDetailsFragment, "7")
-                .show(faqDetailsFragment)
-                .commit()
-            isFaqDetailsLoaded = true
-        } else {
-            fm.beginTransaction().hide(activeFragment).show(faqDetailsFragment).commit()
-        }
-        activeFragment = FaqDetailsFragment()
-        selectedTabPosition = 7
-        fm.beginTransaction().hide(homeFragment).remove(cartFragment)
-            .hide(brandsFragment).hide(faqFragment)
-            .hide(celebrityFragment).hide(tvFragment).hide(contactUsFragment)
-            .hide(categoriesFragment).remove(wishListFragment).hide(accountFragment).commit()
+        try {
+            toggle?.isDrawerIndicatorEnabled = false
+            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            boolToggle = false
+            imgSearch.visibility = View.GONE
+            ivShare.visibility = View.GONE
+            ivBackArrow.visibility = View.VISIBLE
+            ivDrawer.visibility = View.GONE
+            view.visibility = View.VISIBLE
+            txtHead.text = resources.getString(R.string.faqs_title)
+            txtHead.visibility = View.VISIBLE
+            viewStart.visibility = View.GONE
+            ivLogo.visibility = View.GONE
+            val bundle: Bundle = Bundle()
+            bundle.putSerializable("faqModel", faqDataModel)
+            faqDetailsFragment.arguments = bundle
+            if (!isFaqDetailsLoaded) {
+                fm.beginTransaction().add(R.id.content_frame, faqDetailsFragment, "7")
+                    .show(faqDetailsFragment)
+                    .commit()
+                isFaqDetailsLoaded = true
+            } else {
+                fm.beginTransaction().hide(activeFragment).show(faqDetailsFragment).commit()
+            }
+            activeFragment = FaqDetailsFragment()
+            selectedTabPosition = 7
+            fm.beginTransaction().hide(homeFragment).remove(cartFragment)
+                .hide(brandsFragment).hide(faqFragment)
+                .hide(celebrityFragment).hide(tvFragment).hide(contactUsFragment)
+                .hide(categoriesFragment).remove(wishListFragment).hide(accountFragment).commit()
 
-        activeFragment = faqDetailsFragment
-        isCartLoaded = false
+            activeFragment = faqDetailsFragment
+            isCartLoaded = false
+        } catch (e: Exception) {
+        }
     }
 
     /////show language alert
@@ -1431,30 +1482,37 @@ class NavigationActivity : BaseActivity(), NavigationView.OnNavigationItemSelect
     //////////
     @SuppressLint("CheckResult")
     private fun getRootParameters() {
-        if (NetworkUtil.getConnectivityStatus(this@NavigationActivity) != 0) {
-            //loading
-            Global.apiService.getRootCategories(
-                WebServices.RootCategoriesWs + Global.getLanguage(this@NavigationActivity) + "&store=" + Global.getStringFromSharedPref(
-                    this@NavigationActivity,
-                    Constants.PREFS_STORE_CODE
+
+        try {
+            if (NetworkUtil.getConnectivityStatus(this@NavigationActivity) != 0) {
+                //loading
+                Global.apiService.getRootCategories(
+                    WebServices.RootCategoriesWs + Global.getLanguage(this@NavigationActivity) + "&store=" + Global.getStringFromSharedPref(
+                        this@NavigationActivity,
+                        Constants.PREFS_STORE_CODE
+                    )
+                            + "&user_id=" + Global.getStringFromSharedPref(
+                        this@NavigationActivity,
+                        Constants.PREFS_USER_ID
+                    )
                 )
-                        + "&user_id=" + Global.getStringFromSharedPref(
-                    this@NavigationActivity,
-                    Constants.PREFS_USER_ID
-                )
-            )
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(this::handleResponse, this::handleError)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(this::handleResponse, this::handleError)
+            }
+        } catch (e: Exception) {
         }
     }
 
     ///handling success response for home
     private fun handleResponse(rootCategories: RootCategoriesModel?) {
-        if (rootCategories?.status == 200) {
-            setData(rootCategories.data)
-        } else {
-            rootCategories?.message?.let { Global.showSnackbar(this@NavigationActivity, it) }
+        try {
+            if (rootCategories?.status == 200) {
+                setData(rootCategories.data)
+            } else {
+                rootCategories?.message?.let { Global.showSnackbar(this@NavigationActivity, it) }
+            }
+        } catch (e: Exception) {
         }
 
     }
@@ -1469,29 +1527,35 @@ class NavigationActivity : BaseActivity(), NavigationView.OnNavigationItemSelect
     }
 
     fun updateCounts() {
-        if (Global.isUserLoggedIn(this)) {
+        try {
+            if (Global.isUserLoggedIn(this)) {
 
-            // txtWishlistCount.visibility = View.GONE
-            if (Global.getTotalWishListProductCount(this) > 0) {
-                txtWishlistCount.visibility = View.VISIBLE
-                txtWishlistCount.text =
-                    Global.getTotalWishListProductCount(this).toString()
+                // txtWishlistCount.visibility = View.GONE
+                if (Global.getTotalWishListProductCount(this) > 0) {
+                    txtWishlistCount.visibility = View.VISIBLE
+                    txtWishlistCount.text =
+                        Global.getTotalWishListProductCount(this).toString()
+                } else {
+                    txtWishlistCount.visibility = View.GONE
+                }
             } else {
                 txtWishlistCount.visibility = View.GONE
             }
-        } else {
-            txtWishlistCount.visibility = View.GONE
+        } catch (e: Exception) {
         }
 
     }
 
     //Will show fragment on click of view all from home page
     fun showFragment(position: Int, categoryId: Int) {
-        toggle?.isDrawerIndicatorEnabled = false
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        bottom_navigation.visibility = View.GONE
-        boolToggle = false
-        displayView(position, categoryId)
+        try {
+            toggle?.isDrawerIndicatorEnabled = false
+            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            bottom_navigation.visibility = View.GONE
+            boolToggle = false
+            displayView(position, categoryId)
+        } catch (e: Exception) {
+        }
     }
 ////
 
@@ -1509,25 +1573,34 @@ class NavigationActivity : BaseActivity(), NavigationView.OnNavigationItemSelect
     ///Resetting Drawer Menu button
     private fun resetDrawerIcon() {
 
-        toggle?.isDrawerIndicatorEnabled = true
-        bottom_navigation.visibility = View.VISIBLE
-        ivBackArrow.visibility = GONE
-        //ivDrawer.visibility = View.VISIBLE
-        boolToggle = true
-        isViewAll = false
+        try {
+            toggle?.isDrawerIndicatorEnabled = true
+            bottom_navigation.visibility = View.VISIBLE
+            ivBackArrow.visibility = GONE
+            //ivDrawer.visibility = View.VISIBLE
+            boolToggle = true
+            isViewAll = false
+        } catch (e: Exception) {
+        }
     }
 
     ////////////
     fun clickHomeTab() {
-        resetDrawerIcon()
-        val view = bottom_navigation.findViewById<BottomNavigationItemView>(R.id.navigation_home)
-        view.performClick()
+        try {
+            resetDrawerIcon()
+            val view = bottom_navigation.findViewById<BottomNavigationItemView>(R.id.navigation_home)
+            view.performClick()
+        } catch (e: Exception) {
+        }
     }
 
     fun clickCartTab() {
-        resetDrawerIcon()
-        val view = bottom_navigation.findViewById<BottomNavigationItemView>(R.id.navigation_cart)
-        view.performClick()
+        try {
+            resetDrawerIcon()
+            val view = bottom_navigation.findViewById<BottomNavigationItemView>(R.id.navigation_cart)
+            view.performClick()
+        } catch (e: Exception) {
+        }
     }
 
     fun clickCelebrityTab() {
@@ -1552,75 +1625,78 @@ class NavigationActivity : BaseActivity(), NavigationView.OnNavigationItemSelect
 
     override fun onBackPressed() {
 
-        val drawer = findViewById<View>(R.id.drawer_layout) as DrawerLayout
+        try {
+            val drawer = findViewById<View>(R.id.drawer_layout) as DrawerLayout
 
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START)
-        } else {
-            if (selectedTabPosition == 0 && activeFragment == homeFragment) {
-                val poppedBack = (homeFragment as HomeFragment).popBack()
-                if (poppedBack) {
-                    displayHomeHeader()
-                } else {
-                    if (backPressed + 2000 > System.currentTimeMillis()) {
-                        super.onBackPressed()
-                        finish()
-
+            if (drawer.isDrawerOpen(GravityCompat.START)) {
+                drawer.closeDrawer(GravityCompat.START)
+            } else {
+                if (selectedTabPosition == 0 && activeFragment == homeFragment) {
+                    val poppedBack = (homeFragment as HomeFragment).popBack()
+                    if (poppedBack) {
+                        displayHomeHeader()
                     } else {
                         if (backPressed + 2000 > System.currentTimeMillis()) {
                             super.onBackPressed()
                             finish()
 
                         } else {
-                            Global.showSnackbar(
-                                this@NavigationActivity,
-                                resources.getString(R.string.press_back_once_again_to_close_app)
-                            )
-                            backPressed = System.currentTimeMillis()
+                            if (backPressed + 2000 > System.currentTimeMillis()) {
+                                super.onBackPressed()
+                                finish()
+
+                            } else {
+                                Global.showSnackbar(
+                                    this@NavigationActivity,
+                                    resources.getString(R.string.press_back_once_again_to_close_app)
+                                )
+                                backPressed = System.currentTimeMillis()
+                            }
                         }
                     }
-                }
 
 
-            } else if (selectedTabPosition == 1) {
+                } else if (selectedTabPosition == 1) {
 
-                val poppedBack = (brandsFragment as com.app.blockaat.brands.BrandFragment).popBack()
-                if (poppedBack) {
-                    displayBrandHeader()
+                    val poppedBack = (brandsFragment as com.app.blockaat.brands.BrandFragment).popBack()
+                    if (poppedBack) {
+                        displayBrandHeader()
+                    } else {
+                        clickHomeTab()
+                    }
+
+                } else if (selectedTabPosition == 2) {
+                    val poppedBack = (celebrityFragment as CelebrityFragment).popBack()
+                    if (poppedBack) {
+                        displayCelebrityHeader()
+                    } else {
+                        clickHomeTab()
+                    }
+
+                } else if (selectedTabPosition == 3) {
+
+
+                    //category
+                    val poppedBack = (categoriesFragment as CategoryFragment).popBack()
+                    if (poppedBack) {
+                        displayCategoryHeader()
+                    } else {
+                        clickHomeTab()
+                    }
+
+
+                } else if (isFaqDetailsLoaded && activeFragment == faqDetailsFragment) {
+                    loadFaqFragment()
+                } else if (selectedTabPosition == 11 && isAccountLoaded) {
+                    clickHomeTab()
+                } else if (selectedTabPosition == 5 && isTvLoaded) {
+                    clickHomeTab()
                 } else {
                     clickHomeTab()
                 }
 
-            } else if (selectedTabPosition == 2) {
-                val poppedBack = (celebrityFragment as CelebrityFragment).popBack()
-                if (poppedBack) {
-                    displayCelebrityHeader()
-                } else {
-                    clickHomeTab()
-                }
-
-            } else if (selectedTabPosition == 3) {
-
-
-                //category
-                val poppedBack = (categoriesFragment as CategoryFragment).popBack()
-                if (poppedBack) {
-                    displayCategoryHeader()
-                } else {
-                    clickHomeTab()
-                }
-
-
-            } else if (isFaqDetailsLoaded && activeFragment == faqDetailsFragment) {
-                loadFaqFragment()
-            } else if (selectedTabPosition == 11 && isAccountLoaded) {
-                clickHomeTab()
-            } else if (selectedTabPosition == 5 && isTvLoaded) {
-                clickHomeTab()
-            } else {
-                clickHomeTab()
             }
-
+        } catch (e: Exception) {
         }
     }
 
@@ -1846,49 +1922,54 @@ class NavigationActivity : BaseActivity(), NavigationView.OnNavigationItemSelect
     }
 
     private fun showRateUs() {
-        val dialog = Dialog(this@NavigationActivity)
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        dialog.setContentView(R.layout.alert_rate_us)
-        dialog.show()
 
-        dialog.txtRateUsTitle.typeface = Global.fontBold
-        dialog.txtRateUsMsg.typeface = Global.fontRegular
-        dialog.txtRateItNow.typeface = Global.fontBtn
-        dialog.txtRemindMe.typeface = Global.fontBtn
-        dialog.txtCancel.typeface = Global.fontBtn
+        try {
+            val dialog = Dialog(this@NavigationActivity)
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+            dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            dialog.setContentView(R.layout.alert_rate_us)
+            dialog.show()
 
-        dialog.txtRateItNow.setOnClickListener {
-            dialog.dismiss()
-            val uri: Uri = Uri.parse("market://details?id=$packageName")
-            val goToMarket = Intent(Intent.ACTION_VIEW, uri)
-            // To count with Play market backstack, After pressing back button,
-            // to taken back to our application, we need to add following flags to intent.
-            goToMarket.addFlags(
-                Intent.FLAG_ACTIVITY_NO_HISTORY or
-                        Intent.FLAG_ACTIVITY_NEW_DOCUMENT or
-                        Intent.FLAG_ACTIVITY_MULTIPLE_TASK
-            )
-            try {
-                startActivity(goToMarket)
-            } catch (e: ActivityNotFoundException) {
-                startActivity(
-                    Intent(
-                        Intent.ACTION_VIEW,
-                        Uri.parse("http://play.google.com/store/apps/details?id=$packageName")
-                    )
+            dialog.txtRateUsTitle.typeface = Global.fontBold
+            dialog.txtRateUsMsg.typeface = Global.fontRegular
+            dialog.txtRateItNow.typeface = Global.fontBtn
+            dialog.txtRemindMe.typeface = Global.fontBtn
+            dialog.txtCancel.typeface = Global.fontBtn
+
+            dialog.txtRateItNow.setOnClickListener {
+                dialog.dismiss()
+                val uri: Uri = Uri.parse("market://details?id=$packageName")
+                val goToMarket = Intent(Intent.ACTION_VIEW, uri)
+                // To count with Play market backstack, After pressing back button,
+                // to taken back to our application, we need to add following flags to intent.
+                goToMarket.addFlags(
+                    Intent.FLAG_ACTIVITY_NO_HISTORY or
+                            Intent.FLAG_ACTIVITY_NEW_DOCUMENT or
+                            Intent.FLAG_ACTIVITY_MULTIPLE_TASK
                 )
+                try {
+                    startActivity(goToMarket)
+                } catch (e: ActivityNotFoundException) {
+                    startActivity(
+                        Intent(
+                            Intent.ACTION_VIEW,
+                            Uri.parse("http://play.google.com/store/apps/details?id=$packageName")
+                        )
+                    )
+                }
+
             }
 
+            dialog.txtRemindMe.setOnClickListener {
+                dialog.dismiss()
+            }
+
+            dialog.txtCancel.setOnClickListener {
+                dialog.dismiss()
+            }
+        } catch (e: Exception) {
         }
 
-        dialog.txtRemindMe.setOnClickListener {
-            dialog.dismiss()
-        }
-
-        dialog.txtCancel.setOnClickListener {
-            dialog.dismiss()
-        }
     }
 
 
@@ -1898,7 +1979,8 @@ class NavigationActivity : BaseActivity(), NavigationView.OnNavigationItemSelect
             position: Int,
             type: String,
             storeModel: StoreDataModel?
-        ) {
+        )
+        {
             Global.strStoreCode = storeModel?.iso_code.toString()
             Global.strCurrencyCodeEn = storeModel?.currency_en.toString()
             Global.strCurrencyCodeAr = storeModel?.currency_ar.toString()
@@ -2034,25 +2116,28 @@ class NavigationActivity : BaseActivity(), NavigationView.OnNavigationItemSelect
     }
 
     override fun onResume() {
-        super.onResume()
-        Adjust.onResume()
-        updateCartBadge()
-        updateCounts()
-        if (Global.getStringFromSharedPref(this, Constants.PREFS_isUSER_LOGGED_IN)
-                .equals("yes", true)
-        ) {
-            txtSignIn.visibility = View.GONE
-            txtUser.visibility = View.VISIBLE
-            txtUserName.visibility = View.VISIBLE
-            txtUserName.text =
-                Global.getStringFromSharedPref(this, Constants.PREFS_USER_FIRST_NAME) + " "
-            Global.getStringFromSharedPref(this, Constants.PREFS_USER_LAST_NAME)
-            tvLogout.visibility = View.VISIBLE
-        } else {
-            txtSignIn.visibility = View.VISIBLE
-            txtUserName.visibility = View.GONE
-            txtUser.visibility = View.GONE
-            tvLogout.visibility = View.GONE
+        try {
+            super.onResume()
+            Adjust.onResume()
+            updateCartBadge()
+            updateCounts()
+            if (Global.getStringFromSharedPref(this, Constants.PREFS_isUSER_LOGGED_IN)
+                    .equals("yes", true)
+            ) {
+                txtSignIn.visibility = View.GONE
+                txtUser.visibility = View.VISIBLE
+                txtUserName.visibility = View.VISIBLE
+                txtUserName.text =
+                    Global.getStringFromSharedPref(this, Constants.PREFS_USER_FIRST_NAME) + " "
+                Global.getStringFromSharedPref(this, Constants.PREFS_USER_LAST_NAME)
+                tvLogout.visibility = View.VISIBLE
+            } else {
+                txtSignIn.visibility = View.VISIBLE
+                txtUserName.visibility = View.GONE
+                txtUser.visibility = View.GONE
+                tvLogout.visibility = View.GONE
+            }
+        } catch (e: Exception) {
         }
         // EventBus.getDefault().register(this)
 
@@ -2064,19 +2149,22 @@ class NavigationActivity : BaseActivity(), NavigationView.OnNavigationItemSelect
     }
 
     fun userLoginUpdate(isLoggedIn: Boolean) {
-        if (isLoggedIn) {
-            txtSignIn.visibility = View.GONE
-            txtUser.visibility = View.VISIBLE
-            txtUserName.visibility = View.VISIBLE
-            txtUserName.text =
-                Global.getStringFromSharedPref(this, Constants.PREFS_USER_FIRST_NAME) + " "
-            Global.getStringFromSharedPref(this, Constants.PREFS_USER_LAST_NAME)
-            tvLogout.visibility = View.VISIBLE
-        } else {
-            txtSignIn.visibility = View.VISIBLE
-            txtUser.visibility = View.GONE
-            txtUserName.visibility = View.GONE
-            tvLogout.visibility = View.GONE
+        try {
+            if (isLoggedIn) {
+                txtSignIn.visibility = View.GONE
+                txtUser.visibility = View.VISIBLE
+                txtUserName.visibility = View.VISIBLE
+                txtUserName.text =
+                    Global.getStringFromSharedPref(this, Constants.PREFS_USER_FIRST_NAME) + " "
+                Global.getStringFromSharedPref(this, Constants.PREFS_USER_LAST_NAME)
+                tvLogout.visibility = View.VISIBLE
+            } else {
+                txtSignIn.visibility = View.VISIBLE
+                txtUser.visibility = View.GONE
+                txtUserName.visibility = View.GONE
+                tvLogout.visibility = View.GONE
+            }
+        } catch (e: Exception) {
         }
     }
 
@@ -2089,122 +2177,143 @@ class NavigationActivity : BaseActivity(), NavigationView.OnNavigationItemSelect
     }
 
     override fun attachBaseContext(newBase: Context) {
-        var newBase = newBase
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val config = newBase.resources.configuration
+        try {
+            var newBase = newBase
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                val config = newBase.resources.configuration
 
 
-            val locale = Locale(SharedPreferencesHelper.getString(this, "lang_new", "en"))
-            Locale.setDefault(locale)
-            config.setLocale(locale)
-            newBase = newBase.createConfigurationContext(config)
+                val locale = Locale(SharedPreferencesHelper.getString(this, "lang_new", "en"))
+                Locale.setDefault(locale)
+                config.setLocale(locale)
+                newBase = newBase.createConfigurationContext(config)
+            }
+            super.attachBaseContext(newBase)
+        } catch (e: Exception) {
         }
-        super.attachBaseContext(newBase)
     }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == 1) {
-            Global.showSnackbar(
-                this@NavigationActivity,
-                resources.getString(R.string.user_success_msg)
-            )
-            updateCounts()
+        try {
+            super.onActivityResult(requestCode, resultCode, data)
+            if (resultCode == 1) {
+                Global.showSnackbar(
+                    this@NavigationActivity,
+                    resources.getString(R.string.user_success_msg)
+                )
+                updateCounts()
+            }
+        } catch (e: Exception) {
         }
     }
 
     fun displayProductListInHome(header: String) {
-        println("Header :: " + header)
-        isProductListLoadedInHome = true
-        imgSearch.visibility = View.VISIBLE
-        ivShare.visibility = View.GONE
-        txtHead.text = Global.toCamelCase(header)
-        strHomeProductListHeader = header
-        txtHead.visibility = View.VISIBLE
-        ivLogo.visibility = View.GONE
-        view.visibility = View.GONE
-        viewStart.visibility = View.VISIBLE
-        ivBackArrow.visibility = View.VISIBLE
-        ivDrawer.visibility = View.GONE
-        relWishlistImage.visibility = View.VISIBLE
-        toggle?.isDrawerIndicatorEnabled = false
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        boolToggle = false
+        try {
+            println("Header :: " + header)
+            isProductListLoadedInHome = true
+            imgSearch.visibility = View.VISIBLE
+            ivShare.visibility = View.GONE
+            txtHead.text = Global.toCamelCase(header)
+            strHomeProductListHeader = header
+            txtHead.visibility = View.VISIBLE
+            ivLogo.visibility = View.GONE
+            view.visibility = View.GONE
+            viewStart.visibility = View.VISIBLE
+            ivBackArrow.visibility = View.VISIBLE
+            ivDrawer.visibility = View.GONE
+            relWishlistImage.visibility = View.VISIBLE
+            toggle?.isDrawerIndicatorEnabled = false
+            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            boolToggle = false
+        } catch (e: Exception) {
+        }
     }
 
     fun displayProductListInBrands(header: String) {
-        isProductListLoadedInBrands = true
-        imgSearch.visibility = View.VISIBLE
-        ivShare.visibility = View.GONE
-        txtHead.text = Global.toCamelCase(header)
-        strBrandProductListHeader = header
-        txtHead.visibility = View.VISIBLE
-        viewStart.visibility = View.VISIBLE
-        ivLogo.visibility = View.GONE
-        view.visibility = View.GONE
-        ivBackArrow.visibility = View.VISIBLE
-        ivDrawer.visibility = View.GONE
-        relWishlistImage.visibility = View.VISIBLE
-        toggle?.isDrawerIndicatorEnabled = false
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        boolToggle = false
+        try {
+            isProductListLoadedInBrands = true
+            imgSearch.visibility = View.VISIBLE
+            ivShare.visibility = View.GONE
+            txtHead.text = Global.toCamelCase(header)
+            strBrandProductListHeader = header
+            txtHead.visibility = View.VISIBLE
+            viewStart.visibility = View.VISIBLE
+            ivLogo.visibility = View.GONE
+            view.visibility = View.GONE
+            ivBackArrow.visibility = View.VISIBLE
+            ivDrawer.visibility = View.GONE
+            relWishlistImage.visibility = View.VISIBLE
+            toggle?.isDrawerIndicatorEnabled = false
+            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            boolToggle = false
+        } catch (e: Exception) {
+        }
     }
 
     fun displayProductListInCategory(header: String) {
-        isProductListLoadedInCategory = true
-        imgSearch.visibility = View.VISIBLE
-        ivShare.visibility = View.GONE
-        txtHead.text = Global.toCamelCase(header)
-        strCategoryProductListHeader = header
-        arrListCategoryTitle?.add(header)
-        txtHead.visibility = View.VISIBLE
-        viewStart.visibility = View.VISIBLE
-        ivLogo.visibility = View.GONE
-        view.visibility = View.GONE
-        ivBackArrow.visibility = View.VISIBLE
-        ivDrawer.visibility = View.GONE
-        relWishlistImage.visibility = View.VISIBLE
-        toggle?.isDrawerIndicatorEnabled = false
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        boolToggle = false
+        try {
+            isProductListLoadedInCategory = true
+            imgSearch.visibility = View.VISIBLE
+            ivShare.visibility = View.GONE
+            txtHead.text = Global.toCamelCase(header)
+            strCategoryProductListHeader = header
+            arrListCategoryTitle?.add(header)
+            txtHead.visibility = View.VISIBLE
+            viewStart.visibility = View.VISIBLE
+            ivLogo.visibility = View.GONE
+            view.visibility = View.GONE
+            ivBackArrow.visibility = View.VISIBLE
+            ivDrawer.visibility = View.GONE
+            relWishlistImage.visibility = View.VISIBLE
+            toggle?.isDrawerIndicatorEnabled = false
+            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            boolToggle = false
+        } catch (e: Exception) {
+        }
     }
 
     fun displaySubCategoryInCategory(header: String) {
-        isProductListLoadedInCategory = true
-        imgSearch.visibility = View.VISIBLE
-        ivShare.visibility = View.GONE
-        txtHead.text = Global.toCamelCase(header)
-        strCategoryProductListHeader = header
-        arrListCategoryTitle?.add(header)
-        txtHead.visibility = View.VISIBLE
-        viewStart.visibility = View.VISIBLE
-        ivLogo.visibility = View.GONE
-        view.visibility = View.GONE
-        ivBackArrow.visibility = View.VISIBLE
-        ivDrawer.visibility = View.GONE
-        relWishlistImage.visibility = View.VISIBLE
-        toggle?.isDrawerIndicatorEnabled = false
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        boolToggle = false
+        try {
+            isProductListLoadedInCategory = true
+            imgSearch.visibility = View.VISIBLE
+            ivShare.visibility = View.GONE
+            txtHead.text = Global.toCamelCase(header)
+            strCategoryProductListHeader = header
+            arrListCategoryTitle?.add(header)
+            txtHead.visibility = View.VISIBLE
+            viewStart.visibility = View.VISIBLE
+            ivLogo.visibility = View.GONE
+            view.visibility = View.GONE
+            ivBackArrow.visibility = View.VISIBLE
+            ivDrawer.visibility = View.GONE
+            relWishlistImage.visibility = View.VISIBLE
+            toggle?.isDrawerIndicatorEnabled = false
+            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            boolToggle = false
+        } catch (e: Exception) {
+        }
     }
 
     fun displayProductListInCelebrity(header: String) {
-        isProductListLoadedInCelebrity = true
-        imgSearch.visibility = View.VISIBLE
-        ivShare.visibility = View.GONE
-        viewStart.visibility = View.VISIBLE
-        txtHead.text = Global.toCamelCase(header)
-        strCelebrityProductListHeader = header
-        txtHead.visibility = View.VISIBLE
-        ivLogo.visibility = View.GONE
-        view.visibility = View.GONE
-        ivBackArrow.visibility = View.VISIBLE
-        ivDrawer.visibility = View.GONE
-        relWishlistImage.visibility = View.VISIBLE
-        toggle?.isDrawerIndicatorEnabled = false
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        boolToggle = false
+        try {
+            isProductListLoadedInCelebrity = true
+            imgSearch.visibility = View.VISIBLE
+            ivShare.visibility = View.GONE
+            viewStart.visibility = View.VISIBLE
+            txtHead.text = Global.toCamelCase(header)
+            strCelebrityProductListHeader = header
+            txtHead.visibility = View.VISIBLE
+            ivLogo.visibility = View.GONE
+            view.visibility = View.GONE
+            ivBackArrow.visibility = View.VISIBLE
+            ivDrawer.visibility = View.GONE
+            relWishlistImage.visibility = View.VISIBLE
+            toggle?.isDrawerIndicatorEnabled = false
+            supportActionBar?.setDisplayHomeAsUpEnabled(true)
+            boolToggle = false
+        } catch (e: Exception) {
+        }
     }
 
 

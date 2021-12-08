@@ -106,196 +106,208 @@ class HomeDataFragment : Fragment(), HomeItemClickInterface {
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        init(view)
-        setFont(view)
-        getHomePageData()
+        try {
+            super.onViewCreated(view, savedInstanceState)
+            init(view)
+            setFont(view)
+            getHomePageData()
+        } catch (e: Exception) {
+        }
     }
 
     private fun init(rootView: View) {
-        dialog = CustomProgressBar(mActivity)
+        try {
+            dialog = CustomProgressBar(mActivity)
 
-        autoPager = rootView.findViewById(R.id.autoPager)
-        linViewPagerIndicator1 = rootView.findViewById(R.id.linViewPagerIndicator1) as LinearLayout
+            autoPager = rootView.findViewById(R.id.autoPager)
+            linViewPagerIndicator1 = rootView.findViewById(R.id.linViewPagerIndicator1) as LinearLayout
 
-        rcyBrands = rootView.findViewById(R.id.rcyBrands)
-     // viewPagerIndicator = rootView.findViewById(R.id.viewPagerIndicator)
-        swipeLayout = rootView.findViewById(R.id.swipeHome)
-        lnrBrands = rootView.findViewById(R.id.lnrBrands)
-        lnrMain = rootView.findViewById(R.id.lnrMain)
+            rcyBrands = rootView.findViewById(R.id.rcyBrands)
+            // viewPagerIndicator = rootView.findViewById(R.id.viewPagerIndicator)
+            swipeLayout = rootView.findViewById(R.id.swipeHome)
+            lnrBrands = rootView.findViewById(R.id.lnrBrands)
+            lnrMain = rootView.findViewById(R.id.lnrMain)
 
 
-        //Celebrity of week
-        arrListCelebrityOfWeek = ArrayList()
-        adapterCelebrityOfWeek = CelebrityOfWeekAdapter(
-            arrListCelebrityOfWeek as ArrayList<Influencer?>,
-            mActivity,
-            param1.toString()
-        )
-        rcyCelebrityOfWeek.layoutManager = LinearLayoutManager(
-            mActivity,
-            LinearLayoutManager.HORIZONTAL,
-            false
-        )
-        rcyCelebrityOfWeek.adapter = adapterCelebrityOfWeek
+            //Celebrity of week
+            arrListCelebrityOfWeek = ArrayList()
+            adapterCelebrityOfWeek = CelebrityOfWeekAdapter(
+                arrListCelebrityOfWeek as ArrayList<Influencer?>,
+                mActivity,
+                param1.toString()
+            )
+            rcyCelebrityOfWeek.layoutManager = LinearLayoutManager(
+                mActivity,
+                LinearLayoutManager.HORIZONTAL,
+                false
+            )
+            rcyCelebrityOfWeek.adapter = adapterCelebrityOfWeek
 
-        //Celebrity
-        arrListCelebrity = ArrayList()
-        arrListCelebrity2 = ArrayList()
-        arrListCelebrity3 = ArrayList()
+            //Celebrity
+            arrListCelebrity = ArrayList()
+            arrListCelebrity2 = ArrayList()
+            arrListCelebrity3 = ArrayList()
             adapterCelebrity1 = CelebrityAdapter(
             arrListCelebrity as ArrayList<Influencer?>,
             mActivity,
             param1.toString()
         )
-        rcyCelebrity1.layoutManager = GridLayoutManager(
-            mActivity,
-            1,
-            GridLayoutManager.HORIZONTAL,
-            false
-        )
-        rcyCelebrity1.adapter = adapterCelebrity1
-        rcyCelebrity1.isNestedScrollingEnabled = false
-        rcyCelebrity2.isNestedScrollingEnabled = false
-        rcyCelebrity3.isNestedScrollingEnabled = false
-        rcyCelebrity2.layoutManager = GridLayoutManager(
-            mActivity,
-            1,
-            GridLayoutManager.HORIZONTAL,
-            false
-        )
-        adapterCelebrity2 = CelebrityAdapter(
-            arrListCelebrity2 as ArrayList<Influencer?>,
-            mActivity,
-            param1.toString()
-        )
-        rcyCelebrity2.adapter = adapterCelebrity2
-
-        rcyCelebrity3.layoutManager = GridLayoutManager(
+            rcyCelebrity1.layoutManager = GridLayoutManager(
                 mActivity,
                 1,
                 GridLayoutManager.HORIZONTAL,
                 false
-        )
-        adapterCelebrity3 = CelebrityAdapter(
-                arrListCelebrity3 as ArrayList<Influencer?>,
+            )
+            rcyCelebrity1.adapter = adapterCelebrity1
+            rcyCelebrity1.isNestedScrollingEnabled = false
+            rcyCelebrity2.isNestedScrollingEnabled = false
+            rcyCelebrity3.isNestedScrollingEnabled = false
+            rcyCelebrity2.layoutManager = GridLayoutManager(
+                mActivity,
+                1,
+                GridLayoutManager.HORIZONTAL,
+                false
+            )
+            adapterCelebrity2 = CelebrityAdapter(
+                arrListCelebrity2 as ArrayList<Influencer?>,
                 mActivity,
                 param1.toString()
-        )
-        rcyCelebrity3.adapter = adapterCelebrity3
+            )
+            rcyCelebrity2.adapter = adapterCelebrity2
+
+            rcyCelebrity3.layoutManager = GridLayoutManager(
+                    mActivity,
+                    1,
+                    GridLayoutManager.HORIZONTAL,
+                    false
+            )
+            adapterCelebrity3 = CelebrityAdapter(
+                    arrListCelebrity3 as ArrayList<Influencer?>,
+                    mActivity,
+                    param1.toString()
+            )
+            rcyCelebrity3.adapter = adapterCelebrity3
 
 
-        //Brand
-        arrListBrands = ArrayList()
-        adapterBrands =
-            BrandsAdapter(arrListBrands as java.util.ArrayList<Brands?>, mActivity, this)
-        rcyBrands?.layoutManager = GridLayoutManager(
-            mActivity,
-            2,
-            LinearLayoutManager.HORIZONTAL,
-            false
-        )
-        rcyBrands?.adapter = adapterBrands
-
-        //Best Sellers
-        arrListBestSellers = ArrayList()
-        adapterTopSeller = TopSellerAdapter(
-            arrListBestSellers as java.util.ArrayList<BestSellers?>,
-            mActivity
-        )
-        rcyTopSeller.layoutManager = LinearLayoutManager(
-            mActivity,
-            LinearLayoutManager.HORIZONTAL,
-            false
-        )
-        rcyTopSeller.adapter = adapterTopSeller
-
-        //Collection group
-        arrListGroup = ArrayList()
-        rcyCollection.layoutManager = LinearLayoutManager(mActivity)
-        adapterGroupAdapter =
-            GroupAdapter(
-                arrListGroup as ArrayList<CollectionGroup>,
+            //Brand
+            arrListBrands = ArrayList()
+            adapterBrands =
+                BrandsAdapter(arrListBrands as java.util.ArrayList<Brands?>, mActivity, this)
+            rcyBrands?.layoutManager = GridLayoutManager(
                 mActivity,
-                this,
-                groupItemClickListener,
-                param1.toString()
+                2,
+                LinearLayoutManager.HORIZONTAL,
+                false
             )
-        rcyCollection.adapter = adapterGroupAdapter
+            rcyBrands?.adapter = adapterBrands
 
-        rootView.findViewById<TextView>(R.id.txtTopSellerView).setOnClickListener {
-            val homeLinkModel = HomeLinkModel(
-                link_id = param1.toString() ?: "",
-                link_type = "N",
-                type_name = resources.getString(R.string.featured_products) ?: "",
-                url = "",
-                categoryId = param1.toString()
+            //Best Sellers
+            arrListBestSellers = ArrayList()
+            adapterTopSeller = TopSellerAdapter(
+                arrListBestSellers as java.util.ArrayList<BestSellers?>,
+                mActivity
             )
-            EventBus.getDefault().post(homeLinkModel)
+            rcyTopSeller.layoutManager = LinearLayoutManager(
+                mActivity,
+                LinearLayoutManager.HORIZONTAL,
+                false
+            )
+            rcyTopSeller.adapter = adapterTopSeller
 
-//            val intent = Intent(activity, ProductListActivity::class.java)
-//            intent.putExtra("isFeatured", "1")
-//            intent.putExtra("header_text", resources.getString(R.string.featured_products))
-//            intent.putExtra("categoryID", param1.toString())
-//            startActivity(intent)
-        }
+            //Collection group
+            arrListGroup = ArrayList()
+            rcyCollection.layoutManager = LinearLayoutManager(mActivity)
+            adapterGroupAdapter =
+                GroupAdapter(
+                    arrListGroup as ArrayList<CollectionGroup>,
+                    mActivity,
+                    this,
+                    groupItemClickListener,
+                    param1.toString()
+                )
+            rcyCollection.adapter = adapterGroupAdapter
 
-        rootView.findViewById<TextView>(R.id.txtCelebrityView).setOnClickListener {
-            //(mActivity).showViewAll(2, param1 as Int)
-            val intent = Intent(mActivity, CelebrityActivity::class.java)
-            intent.putExtra("categoryID", param1.toString())
-            startActivity(intent)
-        }
+            rootView.findViewById<TextView>(R.id.txtTopSellerView).setOnClickListener {
+                val homeLinkModel = HomeLinkModel(
+                    link_id = param1.toString() ?: "",
+                    link_type = "N",
+                    type_name = resources.getString(R.string.featured_products) ?: "",
+                    url = "",
+                    categoryId = param1.toString()
+                )
+                EventBus.getDefault().post(homeLinkModel)
 
-        rootView.findViewById<TextView>(R.id.txtBrandsView).setOnClickListener {
-          //  println("VIew All brand")
-            startActivity(Intent(mActivity, BrandsActivity::class.java))
-        }
+    //            val intent = Intent(activity, ProductListActivity::class.java)
+    //            intent.putExtra("isFeatured", "1")
+    //            intent.putExtra("header_text", resources.getString(R.string.featured_products))
+    //            intent.putExtra("categoryID", param1.toString())
+    //            startActivity(intent)
+            }
+
+            rootView.findViewById<TextView>(R.id.txtCelebrityView).setOnClickListener {
+                //(mActivity).showViewAll(2, param1 as Int)
+                val intent = Intent(mActivity, CelebrityActivity::class.java)
+                intent.putExtra("categoryID", param1.toString())
+                startActivity(intent)
+            }
+
+            rootView.findViewById<TextView>(R.id.txtBrandsView).setOnClickListener {
+              //  println("VIew All brand")
+                startActivity(Intent(mActivity, BrandsActivity::class.java))
+            }
 
 
-        swipeLayout?.setOnRefreshListener {
-            isFromRefresh = true
-            swipeLayout?.isRefreshing = true
-            swipeLayout?.postDelayed({
-                swipeLayout?.isRefreshing = false
+            swipeLayout?.setOnRefreshListener {
+                isFromRefresh = true
+                swipeLayout?.isRefreshing = true
+                swipeLayout?.postDelayed({
+                    swipeLayout?.isRefreshing = false
 
-                if (NetworkUtil.getConnectivityStatus(mActivity) != 0) {
-                    getHomePageData()
+                    if (NetworkUtil.getConnectivityStatus(mActivity) != 0) {
+                        getHomePageData()
 
-                }
-            }, 1000)
+                    }
+                }, 1000)
+            }
+        } catch (e: Exception) {
         }
 
     }
 
     private fun setFont(rootView: View) {
 
-        txtCelebrityOfWeek.typeface = Global.fontSemiBold
-        txtCelebrity.typeface = Global.fontSemiBold
-        txtCelebrityView.typeface = Global.fontSemiBold
-        txtTopSeller.typeface = Global.fontSemiBold
-        txtTopSellerView.typeface = Global.fontSemiBold
-        txtBrands.typeface = Global.fontSemiBold
-        txtBrandsView.typeface = Global.fontSemiBold
+        try {
+            txtCelebrityOfWeek.typeface = Global.fontSemiBold
+            txtCelebrity.typeface = Global.fontSemiBold
+            txtCelebrityView.typeface = Global.fontSemiBold
+            txtTopSeller.typeface = Global.fontSemiBold
+            txtTopSellerView.typeface = Global.fontSemiBold
+            txtBrands.typeface = Global.fontSemiBold
+            txtBrandsView.typeface = Global.fontSemiBold
+        } catch (e: Exception) {
+        }
     }
 
     ////getting home page data
     @SuppressLint("CheckResult")
     private fun getHomePageData() {
-        if (NetworkUtil.getConnectivityStatus(mActivity) != 0) {
-            //loading
-            if (!isFromRefresh)
-                showProgressDialog(mActivity)
+        try {
+            if (NetworkUtil.getConnectivityStatus(mActivity) != 0) {
+                //loading
+                if (!isFromRefresh)
+                    showProgressDialog(mActivity)
 
-            Global.apiService.getHomeData(
-                com.app.blockaat.apimanager.WebServices.HomeWs + Global.getLanguage(mActivity) + "&store=" + Global.getStoreCode(
-                    mActivity
+                Global.apiService.getHomeData(
+                    com.app.blockaat.apimanager.WebServices.HomeWs + Global.getLanguage(mActivity) + "&store=" + Global.getStoreCode(
+                        mActivity
+                    )
+                            + "&user_id=" + Global.getUserId(mActivity) + "&category_id=" + param1
                 )
-                        + "&user_id=" + Global.getUserId(mActivity) + "&category_id=" + param1
-            )
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(this::handleResponse, this::handleError)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(this::handleResponse, this::handleError)
+            }
+        } catch (e: Exception) {
         }
     }
     ////
@@ -304,256 +316,259 @@ class HomeDataFragment : Fragment(), HomeItemClickInterface {
     ///handling success response for home
     private fun handleResponse(model: HomeResponseModel?) {
 
-        if (!isFromRefresh)
-            dismissProgressDialog()
+        try {
+            if (!isFromRefresh)
+                dismissProgressDialog()
 
-       // println("Success : " + model?.status)
+            // println("Success : " + model?.status)
 
-        if (model != null && model.status == 200) {
+            if (model != null && model.status == 200) {
 
-            lnrMain?.visibility = View.VISIBLE
-            if (!model.data?.support_email.isNullOrEmpty()) {
-                Global.strSupportEmail = model.data?.support_email.toString()
-            }
-            if (!model.data?.support_phone.isNullOrEmpty()) {
-                Global.strSupportPhone = model.data?.support_phone.toString()
-            }
-
-            val params = RelativeLayout.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                Global.getDimenVallue(mActivity!!, 170.0).toInt()
-            )
-            val arrListTopBanner = ArrayList<Banner>()
-            val arrListBottomBanner = ArrayList<Banner>()
-
-            for (banner in model.data?.banners!!) {
-                if (banner.position == "B") {
-                    arrListBottomBanner.add(banner)
-                } else {
-                    arrListTopBanner.add(banner)
+                lnrMain?.visibility = View.VISIBLE
+                if (!model.data?.support_email.isNullOrEmpty()) {
+                    Global.strSupportEmail = model.data?.support_email.toString()
                 }
-            }
-            if (arrListBottomBanner.isNullOrEmpty()) {
-                relPagerBottom.visibility = View.GONE
-            } else {
-                relPagerBottom.visibility = View.VISIBLE
-            }
-            if (arrListTopBanner.isNullOrEmpty()) {
-                relPager1.visibility = View.GONE
-            } else {
-                relPager1.visibility = View.VISIBLE
-            }
-
-            autoPagerBottom?.layoutParams = params
-            autoPagerBottom?.adapter =
-                BannerAdapter(mActivity!!, arrListBottomBanner, this)
-
-            autoPager?.layoutParams = params
-            val bannerAdapter = BannerAdapter(
-                mActivity,
-                arrListTopBanner,
-                this
-            )
-            autoPager?.adapter = bannerAdapter
-
-            autoPager?.startAutoScroll()
-            autoPager?.startAutoScroll(6000)
-            autoPager?.isCycle = true
-            autoPager?.isStopWhenTouch = false
-
-         /*   viewPagerIndicator?.noOfPages = arrListTopBanner.size
-            viewPagerIndicator?.visibleDotCounts = 7
-            viewPagerIndicator?.onPageChange(0)*/
-
-            var indicatorPosition = 0
-
-
-            if (!Global.isEnglishLanguage(mActivity)) {
-           /*     arrListTopBanner.reverse()
-                indicatorPosition = arrListTopBanner.size?.minus(1) ?: 0*/
-
-              //  arrListTopBanner.reverse()
-                bannerAdapter?.notifyDataSetChanged()
-               // autoPager?.currentItem = bannerAdapter.count - 1
-                autoPager?.direction = AutoScrollViewPager.DIRECTION_LEFT
-                indicatorPosition = arrListTopBanner.size?.minus(1) ?: 0
-            }
-
-            autoPager?.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
-                override fun onPageScrollStateChanged(state: Int) {
+                if (!model.data?.support_phone.isNullOrEmpty()) {
+                    Global.strSupportPhone = model.data?.support_phone.toString()
                 }
 
-                override fun onPageScrolled(
-                    position: Int,
-                    positionOffset: Float,
-                    positionOffsetPixels: Int
-                ) {
-                }
+                val params = RelativeLayout.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    Global.getDimenVallue(mActivity!!, 170.0).toInt()
+                )
+                val arrListTopBanner = ArrayList<Banner>()
+                val arrListBottomBanner = ArrayList<Banner>()
 
-                override fun onPageSelected(position: Int) {
-                    for (m in 0 until linViewPagerIndicator1?.childCount) {
-                        linViewPagerIndicator1?.getChildAt(m)
-                            ?.findViewById<ImageView>(R.id.imgBtnIndicator)?.isSelected =
-                            position == m
-                    }
-
-                    // Analytics event
-//                    if (Global.isUserLoggedIn(mActivity)){
-//                        CustomEvents.contentViewed(mActivity,
-//                            Global.getUserId(mActivity),model.data.banners[position].id,model.data.banners[position].name)
-//                    }
-                }
-            })
-
-            //set banner indicator
-            linViewPagerIndicator1?.removeAllViews()
-            if (arrListTopBanner.isNotEmpty() && arrListTopBanner.size ?: 0 > 1) {
-                //if more than one image show indicator
-                for (m in 0 until (arrListTopBanner.size ?: 0)) {
-                    val v = LayoutInflater.from(mActivity)
-                        .inflate(R.layout.viewpager_indicator_home, null)
-                    val imgBtnIndicator = v.findViewById(R.id.imgBtnIndicator) as ImageButton
-
-                    if (m == 0) {
-                        //if more than one image then showing first one as selected
-                        imgBtnIndicator.isSelected = true
-                    }
-                    linViewPagerIndicator1?.addView(v)
-                }
-            }
-
-            if (!Global.isEnglishLanguage(mActivity)) {
-                arrListTopBanner.reverse()
-                bannerAdapter?.notifyDataSetChanged()
-                autoPager?.currentItem = bannerAdapter.count - 1
-                autoPager?.direction = AutoScrollViewPager.DIRECTION_LEFT
-  //              linViewPagerIndicator1.onPageChange(arrListTopBanner?.size - 1)
-                linViewPagerIndicator1?.rotation = 180f
-
-            }
-            autoPager?.currentItem = indicatorPosition
-
-            /* autoPager?.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
-
-                 override fun onPageScrollStateChanged(state: Int) {
-                 }
-
-                 override fun onPageScrolled(
-                     position: Int,
-                     positionOffset: Float,
-                     positionOffsetPixels: Int
-                 ) {
-                 }
-
-                *//* override fun onPageSelected(position: Int) {
-
-                    if (position > viewPagerIndicator?.noOfPages ?: 1 - 1) {
-                        viewPagerIndicator?.onPageChange(viewPagerIndicator?.noOfPages ?: 1 - 1)
+                for (banner in model.data?.banners!!) {
+                    if (banner.position == "B") {
+                        arrListBottomBanner.add(banner)
                     } else {
-                        viewPagerIndicator?.onPageChange(position)
+                        arrListTopBanner.add(banner)
                     }
-                }*//*
-            })*/
+                }
+                if (arrListBottomBanner.isNullOrEmpty()) {
+                    relPagerBottom.visibility = View.GONE
+                } else {
+                    relPagerBottom.visibility = View.VISIBLE
+                }
+                if (arrListTopBanner.isNullOrEmpty()) {
+                    relPager1.visibility = View.GONE
+                } else {
+                    relPager1.visibility = View.VISIBLE
+                }
 
-            //Celebrity of weeek
-            if (model.data.influencers_of_the_week?.size!! > 0) {
-                arrListCelebrityOfWeek?.clear()
-                lnrCelebrityOfWeek?.visibility = View.VISIBLE
-                arrListCelebrityOfWeek?.addAll(model.data.influencers_of_the_week)
-                adapterCelebrityOfWeek?.notifyDataSetChanged()
-            } else {
-                lnrCelebrityOfWeek?.visibility = View.GONE
-            }
+                autoPagerBottom?.layoutParams = params
+                autoPagerBottom?.adapter =
+                    BannerAdapter(mActivity!!, arrListBottomBanner, this)
 
-            //BestSellers
-            /*     if (model.data.best_seller.size > 0) {
-                     lnrTopSeller?.visibility = View.VISIBLE
-                     arrListBestSellers?.clear()
-                     arrListBestSellers?.addAll(model.data.best_seller)
-                     adapterTopSeller?.notifyDataSetChanged()
-                 } else {
-                     lnrTopSeller?.visibility = View.GONE
-                 }*/
+                autoPager?.layoutParams = params
+                val bannerAdapter = BannerAdapter(
+                    mActivity,
+                    arrListTopBanner,
+                    this
+                )
+                autoPager?.adapter = bannerAdapter
 
-            ///Influencers
-            if (model.data.influencers?.size!! > 0) {
-                lnrCelebrity?.visibility = View.VISIBLE
-                arrListCelebrity?.clear()
-                arrListCelebrity2?.clear()
-                if (model.data.influencers.size > 6) {
-                    rcyCelebrity2.visibility = VISIBLE
-                    rcyCelebrity3.visibility = VISIBLE
+                autoPager?.startAutoScroll()
+                autoPager?.startAutoScroll(6000)
+                autoPager?.isCycle = true
+                autoPager?.isStopWhenTouch = false
 
-                    val influencers = model.data.influencers
-                    if (influencers.size % 2==0){
-                        // for even number
-                       for (i in 0 until (influencers.size/2)-1){
-                           arrListCelebrity?.add(influencers[i])
-                       }
-                        for (i in (influencers?.size)/2 until influencers?.size){
-                            arrListCelebrity2?.add(influencers[i])
-                        }
+             /*   viewPagerIndicator?.noOfPages = arrListTopBanner.size
+                viewPagerIndicator?.visibleDotCounts = 7
+                viewPagerIndicator?.onPageChange(0)*/
 
-                    }else{
-                        // for odd number
-                        for (i in 0 until (influencers.size-1)/2){
-                            arrListCelebrity?.add(influencers[i])
-                        }
-                        for (i in ((influencers?.size)/2)+1 until influencers?.size){
-                            arrListCelebrity2?.add(influencers[i])
-                        }
+                var indicatorPosition = 0
+
+
+                if (!Global.isEnglishLanguage(mActivity)) {
+               /*     arrListTopBanner.reverse()
+                    indicatorPosition = arrListTopBanner.size?.minus(1) ?: 0*/
+
+                  //  arrListTopBanner.reverse()
+                    bannerAdapter?.notifyDataSetChanged()
+                   // autoPager?.currentItem = bannerAdapter.count - 1
+                    autoPager?.direction = AutoScrollViewPager.DIRECTION_LEFT
+                    indicatorPosition = arrListTopBanner.size?.minus(1) ?: 0
+                }
+
+                autoPager?.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+                    override fun onPageScrollStateChanged(state: Int) {
                     }
 
-                    rcyCelebrity1.layoutManager = GridLayoutManager(
+                    override fun onPageScrolled(
+                        position: Int,
+                        positionOffset: Float,
+                        positionOffsetPixels: Int
+                    ) {
+                    }
+
+                    override fun onPageSelected(position: Int) {
+                        for (m in 0 until linViewPagerIndicator1?.childCount) {
+                            linViewPagerIndicator1?.getChildAt(m)
+                                ?.findViewById<ImageView>(R.id.imgBtnIndicator)?.isSelected =
+                                position == m
+                        }
+
+                        // Analytics event
+    //                    if (Global.isUserLoggedIn(mActivity)){
+    //                        CustomEvents.contentViewed(mActivity,
+    //                            Global.getUserId(mActivity),model.data.banners[position].id,model.data.banners[position].name)
+    //                    }
+                    }
+                })
+
+                //set banner indicator
+                linViewPagerIndicator1?.removeAllViews()
+                if (arrListTopBanner.isNotEmpty() && arrListTopBanner.size ?: 0 > 1) {
+                    //if more than one image show indicator
+                    for (m in 0 until (arrListTopBanner.size ?: 0)) {
+                        val v = LayoutInflater.from(mActivity)
+                            .inflate(R.layout.viewpager_indicator_home, null)
+                        val imgBtnIndicator = v.findViewById(R.id.imgBtnIndicator) as ImageButton
+
+                        if (m == 0) {
+                            //if more than one image then showing first one as selected
+                            imgBtnIndicator.isSelected = true
+                        }
+                        linViewPagerIndicator1?.addView(v)
+                    }
+                }
+
+                if (!Global.isEnglishLanguage(mActivity)) {
+                    arrListTopBanner.reverse()
+                    bannerAdapter?.notifyDataSetChanged()
+                    autoPager?.currentItem = bannerAdapter.count - 1
+                    autoPager?.direction = AutoScrollViewPager.DIRECTION_LEFT
+      //              linViewPagerIndicator1.onPageChange(arrListTopBanner?.size - 1)
+                    linViewPagerIndicator1?.rotation = 180f
+
+                }
+                autoPager?.currentItem = indicatorPosition
+
+                /* autoPager?.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+
+                     override fun onPageScrollStateChanged(state: Int) {
+                     }
+
+                     override fun onPageScrolled(
+                         position: Int,
+                         positionOffset: Float,
+                         positionOffsetPixels: Int
+                     ) {
+                     }
+
+                    *//* override fun onPageSelected(position: Int) {
+
+                        if (position > viewPagerIndicator?.noOfPages ?: 1 - 1) {
+                            viewPagerIndicator?.onPageChange(viewPagerIndicator?.noOfPages ?: 1 - 1)
+                        } else {
+                            viewPagerIndicator?.onPageChange(position)
+                        }
+                    }*//*
+                })*/
+
+                //Celebrity of weeek
+                if (model.data.influencers_of_the_week?.size!! > 0) {
+                    arrListCelebrityOfWeek?.clear()
+                    lnrCelebrityOfWeek?.visibility = View.VISIBLE
+                    arrListCelebrityOfWeek?.addAll(model.data.influencers_of_the_week)
+                    adapterCelebrityOfWeek?.notifyDataSetChanged()
+                } else {
+                    lnrCelebrityOfWeek?.visibility = View.GONE
+                }
+
+                //BestSellers
+                /*     if (model.data.best_seller.size > 0) {
+                         lnrTopSeller?.visibility = View.VISIBLE
+                         arrListBestSellers?.clear()
+                         arrListBestSellers?.addAll(model.data.best_seller)
+                         adapterTopSeller?.notifyDataSetChanged()
+                     } else {
+                         lnrTopSeller?.visibility = View.GONE
+                     }*/
+
+                ///Influencers
+                if (model.data.influencers?.size!! > 0) {
+                    lnrCelebrity?.visibility = View.VISIBLE
+                    arrListCelebrity?.clear()
+                    arrListCelebrity2?.clear()
+                    if (model.data.influencers.size > 6) {
+                        rcyCelebrity2.visibility = VISIBLE
+                        rcyCelebrity3.visibility = VISIBLE
+
+                        val influencers = model.data.influencers
+                        if (influencers.size % 2==0){
+                            // for even number
+                           for (i in 0 until (influencers.size/2)-1){
+                               arrListCelebrity?.add(influencers[i])
+                           }
+                            for (i in (influencers?.size)/2 until influencers?.size){
+                                arrListCelebrity2?.add(influencers[i])
+                            }
+
+                        }else{
+                            // for odd number
+                            for (i in 0 until (influencers.size-1)/2){
+                                arrListCelebrity?.add(influencers[i])
+                            }
+                            for (i in ((influencers?.size)/2)+1 until influencers?.size){
+                                arrListCelebrity2?.add(influencers[i])
+                            }
+                        }
+
+                        rcyCelebrity1.layoutManager = GridLayoutManager(
+                                mActivity,
+                                1,
+                                GridLayoutManager.HORIZONTAL,
+                                false
+                        )
+                        rcyCelebrity2.layoutManager = GridLayoutManager(
+                                mActivity,1,GridLayoutManager.HORIZONTAL,false
+                        )
+
+                    } else if (model.data.influencers.size <= 6) {
+                        rcyCelebrity2.visibility = GONE
+                        rcyCelebrity3.visibility = GONE
+                        rcyCelebrity1.layoutManager = GridLayoutManager(
                             mActivity,
-                            1,
+                            2,
                             GridLayoutManager.HORIZONTAL,
                             false
-                    )
-                    rcyCelebrity2.layoutManager = GridLayoutManager(
-                            mActivity,1,GridLayoutManager.HORIZONTAL,false
-                    )
+                        )
+                        arrListCelebrity2?.clear()
+                        arrListCelebrity?.addAll(model.data.influencers)
+                    }
 
-                } else if (model.data.influencers.size <= 6) {
-                    rcyCelebrity2.visibility = GONE
-                    rcyCelebrity3.visibility = GONE
-                    rcyCelebrity1.layoutManager = GridLayoutManager(
-                        mActivity,
-                        2,
-                        GridLayoutManager.HORIZONTAL,
-                        false
-                    )
-                    arrListCelebrity2?.clear()
-                    arrListCelebrity?.addAll(model.data.influencers)
+                    adapterCelebrity1?.notifyDataSetChanged()
+                    adapterCelebrity2?.notifyDataSetChanged()
+                    adapterCelebrity3?.notifyDataSetChanged()
+                } else {
+                    lnrCelebrity?.visibility = View.GONE
                 }
 
-                adapterCelebrity1?.notifyDataSetChanged()
-                adapterCelebrity2?.notifyDataSetChanged()
-                adapterCelebrity3?.notifyDataSetChanged()
+                if (model.data.collectionGroups?.size!! > 0) {
+                    arrListGroup?.clear()
+                    arrListGroup?.addAll(model.data.collectionGroups as Collection<CollectionGroup>)
+                    adapterGroupAdapter?.notifyDataSetChanged()
+                }
+
+                //Brands
+               /*  if (model.data.brands?.size!! > 0) {
+                     lnrBrands?.visibility = View.VISIBLE
+                     arrListBrands?.clear()
+                     arrListBrands?.addAll(model.data.brands)
+                     Log.e("arrListBrands",""+arrListBrands)
+                     adapterBrands?.notifyDataSetChanged()
+
+                      } else {
+                     lnrBrands?.visibility = View.GONE
+                 }*/
+
             } else {
-                lnrCelebrity?.visibility = View.GONE
+                lnrMain?.visibility = View.GONE
             }
-
-            if (model.data.collectionGroups?.size!! > 0) {
-                arrListGroup?.clear()
-                arrListGroup?.addAll(model.data.collectionGroups as Collection<CollectionGroup>)
-                adapterGroupAdapter?.notifyDataSetChanged()
-            }
-
-            //Brands
-           /*  if (model.data.brands?.size!! > 0) {
-                 lnrBrands?.visibility = View.VISIBLE
-                 arrListBrands?.clear()
-                 arrListBrands?.addAll(model.data.brands)
-                 Log.e("arrListBrands",""+arrListBrands)
-                 adapterBrands?.notifyDataSetChanged()
-
-                  } else {
-                 lnrBrands?.visibility = View.GONE
-             }*/
-
-        } else {
-            lnrMain?.visibility = View.GONE
+        } catch (e: Exception) {
         }
     }
     ////
@@ -577,23 +592,26 @@ class HomeDataFragment : Fragment(), HomeItemClickInterface {
     }
 
     override fun onResume() {
-        super.onResume()
-        if (influencerAdapter != null) {
-            influencerAdapter?.notifyDataSetChanged()
-        }
+        try {
+            super.onResume()
+            if (influencerAdapter != null) {
+                influencerAdapter?.notifyDataSetChanged()
+            }
 
-        if (adaptArrival != null) {
-            adaptArrival?.notifyDataSetChanged()
-        }
+            if (adaptArrival != null) {
+                adaptArrival?.notifyDataSetChanged()
+            }
 
-        if (adaptFeaturd != null) {
-            adaptFeaturd?.notifyDataSetChanged()
-        }
+            if (adaptFeaturd != null) {
+                adaptFeaturd?.notifyDataSetChanged()
+            }
 
-        if (adapterPicks != null) {
-            adapterPicks?.notifyDataSetChanged()
+            if (adapterPicks != null) {
+                adapterPicks?.notifyDataSetChanged()
+            }
+            updateCollection()
+        } catch (e: Exception) {
         }
-        updateCollection()
     }
 
     private val groupItemClickListener = object : GroupItemClickListener {
@@ -609,9 +627,12 @@ class HomeDataFragment : Fragment(), HomeItemClickInterface {
     }
 
     override fun onHiddenChanged(hidden: Boolean) {
-        super.onHiddenChanged(hidden)
-        if (!hidden) {
-            updateCollection()
+        try {
+            super.onHiddenChanged(hidden)
+            if (!hidden) {
+                updateCollection()
+            }
+        } catch (e: Exception) {
         }
     }
 
@@ -642,42 +663,48 @@ class HomeDataFragment : Fragment(), HomeItemClickInterface {
         link_id: String,
         header: String
     ) {
-        if (type == "openItem") {
-            val homeLinkModel = HomeLinkModel(
-                link_id = link_id ?: "",
-                link_type = link_type ?: "",
-                type_name = header ?: "",
-                url = "",
-                categoryId = param1.toString()
-            )
+        try {
+            if (type == "openItem") {
+                val homeLinkModel = HomeLinkModel(
+                    link_id = link_id ?: "",
+                    link_type = link_type ?: "",
+                    type_name = header ?: "",
+                    url = "",
+                    categoryId = param1.toString()
+                )
 
-            EventBus.getDefault().post(homeLinkModel)
-        } else if (type == "homeWishlist") {
-            println("update collectioon")
-            updateCollection()
+                EventBus.getDefault().post(homeLinkModel)
+            } else if (type == "homeWishlist") {
+                println("update collectioon")
+                updateCollection()
+            }
+        } catch (e: Exception) {
         }
 
     }
 
 
     private fun updateCollection() {
-        for (i in 0 until arrListGroup?.size) {
-            if (arrListGroup[i].group_type.toString().toLowerCase() == "c") {
-                for (j in 0 until arrListGroup[i].collection_list?.size!!) {
-                    arrListGroup[i].collection_list?.get(j)?.item_in_wishlist = 0
-                    if (productsDBHelper?.isProductPresentInWishlist(
-                            arrListGroup[i].collection_list?.get(
-                                j
-                            )?.id.toString()
-                        )
-                    ) {
-                        println("product id match:" + arrListGroup[i].collection_list?.get(j)?.id)
-                        arrListGroup[i].collection_list?.get(j)?.item_in_wishlist = 1
+        try {
+            for (i in 0 until arrListGroup?.size) {
+                if (arrListGroup[i].group_type.toString().toLowerCase() == "c") {
+                    for (j in 0 until arrListGroup[i].collection_list?.size!!) {
+                        arrListGroup[i].collection_list?.get(j)?.item_in_wishlist = 0
+                        if (productsDBHelper?.isProductPresentInWishlist(
+                                arrListGroup[i].collection_list?.get(
+                                    j
+                                )?.id.toString()
+                            )
+                        ) {
+                            println("product id match:" + arrListGroup[i].collection_list?.get(j)?.id)
+                            arrListGroup[i].collection_list?.get(j)?.item_in_wishlist = 1
+                        }
                     }
                 }
             }
+            adapterGroupAdapter?.notifyDataSetChanged()
+        } catch (e: Exception) {
         }
-        adapterGroupAdapter?.notifyDataSetChanged()
     }
 
 }
