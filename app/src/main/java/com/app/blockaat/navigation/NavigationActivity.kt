@@ -107,7 +107,7 @@ class NavigationActivity : BaseActivity(), NavigationView.OnNavigationItemSelect
     private var isViewAll: Boolean = false
     private var introModel: IntroResponseModelItem? = null
     private var backPressed: Long = 0
-    private var selectedTabPosition: Int = -1
+    var selectedTabPosition: Int = -1
     private var isHomeLoaded: Boolean = false
     private var isBrandLoaded: Boolean = false
     private var isCatLoaded: Boolean = false
@@ -892,6 +892,12 @@ class NavigationActivity : BaseActivity(), NavigationView.OnNavigationItemSelect
             0 -> {
                 if (selectedTabPosition != 0) {
 
+//                    if (isCatLoaded){
+//                      if((categoriesFragment as CategoryFragment).childFragmentManager.backStackEntryCount>=1){
+//                      (categoriesFragment as CategoryFragment).childFragmentManager.popBackStackImmediate()
+//                  }
+//                    }
+
                     if (!isHomeLoaded) {
                         fm.beginTransaction().add(R.id.content_frame, homeFragment, "0")
                             .show(homeFragment).commit()
@@ -905,10 +911,12 @@ class NavigationActivity : BaseActivity(), NavigationView.OnNavigationItemSelect
 
                     activeFragment = HomeFragment()
                     selectedTabPosition = 0
+
                     fm.beginTransaction().hide(categoriesFragment).remove(cartFragment)
                         .hide(brandsFragment)
                         .hide(tvFragment).hide(faqFragment).hide(contactUsFragment)
-                        .hide(celebrityFragment).hide(accountFragment).commit()
+                        .hide(celebrityFragment).hide(accountFragment)
+                            .commit()
 
                     activeFragment = homeFragment
                     isCartLoaded = false
@@ -979,7 +987,14 @@ class NavigationActivity : BaseActivity(), NavigationView.OnNavigationItemSelect
             }
 
             2 -> {
-                if (selectedTabPosition != 2) {
+                if (selectedTabPosition != 2 || isMusicianLoaded) {
+                    if (isMusicianLoaded){
+                        if (isMusicianLoaded){
+                            if((celebrityFragment as CelebrityFragment).childFragmentManager.backStackEntryCount>=1){
+                                (celebrityFragment as CelebrityFragment).childFragmentManager.popBackStackImmediate()
+                            }
+                        }
+                    }
 
                     val bundle = Bundle()
                     bundle.putString("categoryID", categoryId.toString())
@@ -1027,8 +1042,12 @@ class NavigationActivity : BaseActivity(), NavigationView.OnNavigationItemSelect
 
             }
             3 -> {
-                if (selectedTabPosition != 3) {
-
+                if (selectedTabPosition != 3 || isCatLoaded) {
+                    if (isCatLoaded){
+                      if((categoriesFragment as CategoryFragment).childFragmentManager.backStackEntryCount>=1){
+                      (categoriesFragment as CategoryFragment).childFragmentManager.popBackStackImmediate()
+                  }
+                    }
 
                     if (!isCatLoaded) {
                         fm.beginTransaction().add(R.id.content_frame, categoriesFragment, "2")
@@ -1266,6 +1285,10 @@ class NavigationActivity : BaseActivity(), NavigationView.OnNavigationItemSelect
 
         val drawer = findViewById<View>(R.id.drawer_layout) as DrawerLayout
         drawer.closeDrawer(GravityCompat.START)
+    }
+
+    fun updateTabPosition(){
+        selectedTabPosition = -1
     }
 
     private fun loadAccountFragment() {

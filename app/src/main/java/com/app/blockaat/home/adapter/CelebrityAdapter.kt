@@ -51,14 +51,14 @@ class CelebrityAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         val params = LinearLayout.LayoutParams(
-            Global.getDimenVallue(context as Activity, 140.0).toInt(),
-            Global.getDimenVallue(context as Activity, 100.0).toInt()
+            Global.getDimenVallue(context as Activity, 86.0).toInt(),
+            Global.getDimenVallue(context as Activity, 70.0).toInt()
         )
         holder.itemView.imgInfluence.layoutParams = params
         holder.itemView.txtName.typeface = Global.fontRegular
         holder.itemView.txtName.text = dataList[position]?.title
         (holder.itemView.lnrMain.layoutParams as RecyclerView.LayoutParams).marginEnd =
-            context?.resources?.getDimension(R.dimen.ten_dp)?.toInt() as Int
+            context?.resources?.getDimension(R.dimen.five_dp)?.toInt() as Int
 
 
         if (context != null) {

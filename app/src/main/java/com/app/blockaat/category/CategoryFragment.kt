@@ -84,6 +84,7 @@ class CategoryFragment : Fragment() {
             transaction.commitAllowingStateLoss()
             activeFragment = productListFragment
             (mActivity).displaySubCategoryInCategory(subCategory.name.toString())
+//            (mActivity).updateTabPosition()
             catTagNumber++
 
         } else {
@@ -104,6 +105,7 @@ class CategoryFragment : Fragment() {
             transaction.commitAllowingStateLoss()
             activeFragment = productListFragment
             (mActivity).displayProductListInCategory(subCategory.name.toString())
+//            (mActivity).updateTabPosition()
             tagNumber++
         }
 

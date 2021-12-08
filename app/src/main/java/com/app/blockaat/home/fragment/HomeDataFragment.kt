@@ -70,8 +70,10 @@ class HomeDataFragment : Fragment(), HomeItemClickInterface {
     private var adapterCelebrityOfWeek: CelebrityOfWeekAdapter? = null
     private var arrListCelebrity: ArrayList<Influencer?>? = null
     private var arrListCelebrity2: ArrayList<Influencer?>? = null
+    private var arrListCelebrity3: ArrayList<Influencer?>? = null
     private var adapterCelebrity1: CelebrityAdapter? = null
     private var adapterCelebrity2: CelebrityAdapter? = null
+    private var adapterCelebrity3: CelebrityAdapter? = null
     private var arrListBrands: ArrayList<Brands?>? = null
     private var arrListCollectionList: ArrayList<CollectionList?>? = null
     private var arrListCollectionSting: String?= null
@@ -140,6 +142,7 @@ class HomeDataFragment : Fragment(), HomeItemClickInterface {
         //Celebrity
         arrListCelebrity = ArrayList()
         arrListCelebrity2 = ArrayList()
+        arrListCelebrity3 = ArrayList()
             adapterCelebrity1 = CelebrityAdapter(
             arrListCelebrity as ArrayList<Influencer?>,
             mActivity,
@@ -154,6 +157,7 @@ class HomeDataFragment : Fragment(), HomeItemClickInterface {
         rcyCelebrity1.adapter = adapterCelebrity1
         rcyCelebrity1.isNestedScrollingEnabled = false
         rcyCelebrity2.isNestedScrollingEnabled = false
+        rcyCelebrity3.isNestedScrollingEnabled = false
         rcyCelebrity2.layoutManager = GridLayoutManager(
             mActivity,
             1,
@@ -166,6 +170,19 @@ class HomeDataFragment : Fragment(), HomeItemClickInterface {
             param1.toString()
         )
         rcyCelebrity2.adapter = adapterCelebrity2
+
+        rcyCelebrity3.layoutManager = GridLayoutManager(
+                mActivity,
+                1,
+                GridLayoutManager.HORIZONTAL,
+                false
+        )
+        adapterCelebrity3 = CelebrityAdapter(
+                arrListCelebrity3 as ArrayList<Influencer?>,
+                mActivity,
+                param1.toString()
+        )
+        rcyCelebrity3.adapter = adapterCelebrity3
 
 
         //Brand
@@ -465,26 +482,41 @@ class HomeDataFragment : Fragment(), HomeItemClickInterface {
                 arrListCelebrity2?.clear()
                 if (model.data.influencers.size > 6) {
                     rcyCelebrity2.visibility = VISIBLE
-                    for (i in 0 until model.data.influencers.size) {
+                    rcyCelebrity3.visibility = VISIBLE
 
-                        arrListCelebrity?.add(model.data.influencers[i])
-
-/*
-                        if (i % 2 == 0) {
-                            arrListCelebrity?.add(model.data.influencers[i])
-                        } else {
-                            arrListCelebrity2?.add(model.data.influencers[i])
+                    val influencers = model.data.influencers
+                    if (influencers.size % 2==0){
+                        // for even number
+                       for (i in 0 until (influencers.size/2)-1){
+                           arrListCelebrity?.add(influencers[i])
+                       }
+                        for (i in (influencers?.size)/2 until influencers?.size){
+                            arrListCelebrity2?.add(influencers[i])
                         }
-*/
+
+                    }else{
+                        // for odd number
+                        for (i in 0 until (influencers.size-1)/2){
+                            arrListCelebrity?.add(influencers[i])
+                        }
+                        for (i in ((influencers?.size)/2)+1 until influencers?.size){
+                            arrListCelebrity2?.add(influencers[i])
+                        }
                     }
+
                     rcyCelebrity1.layoutManager = GridLayoutManager(
-                        mActivity,
-                        1,
-                        GridLayoutManager.HORIZONTAL,
-                        false
+                            mActivity,
+                            1,
+                            GridLayoutManager.HORIZONTAL,
+                            false
                     )
+                    rcyCelebrity2.layoutManager = GridLayoutManager(
+                            mActivity,1,GridLayoutManager.HORIZONTAL,false
+                    )
+
                 } else if (model.data.influencers.size <= 6) {
                     rcyCelebrity2.visibility = GONE
+                    rcyCelebrity3.visibility = GONE
                     rcyCelebrity1.layoutManager = GridLayoutManager(
                         mActivity,
                         2,
@@ -497,6 +529,7 @@ class HomeDataFragment : Fragment(), HomeItemClickInterface {
 
                 adapterCelebrity1?.notifyDataSetChanged()
                 adapterCelebrity2?.notifyDataSetChanged()
+                adapterCelebrity3?.notifyDataSetChanged()
             } else {
                 lnrCelebrity?.visibility = View.GONE
             }
