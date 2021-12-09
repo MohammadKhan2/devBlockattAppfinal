@@ -43,51 +43,60 @@ class AppController : Application() {
     }
 
     override fun onCreate() {
-        super.onCreate()
-        instance = this
+        try {
+            super.onCreate()
+            instance = this
 
-        // get analytics instance
-        sAnalytics = GoogleAnalytics.getInstance(this);
-        //updated by azim
-        fAnalytics = FirebaseAnalytics.getInstance(this)
+            // get analytics instance
+            sAnalytics = GoogleAnalytics.getInstance(this);
+            //updated by azim
+            fAnalytics = FirebaseAnalytics.getInstance(this)
 
 //      FacebookSdk.sdkInitialize(applicationContext)
-        FacebookSdk.sdkInitialize(this)
-        Branch.getAutoInstance(this)// Branch object initialization
+            FacebookSdk.sdkInitialize(this)
+            Branch.getAutoInstance(this)// Branch object initialization
 //        Branch.enableTestMode() // Branch logging for debugging
-        Branch.disableDebugMode()
-        Branch.disableLogging()
+            Branch.disableDebugMode()
+            Branch.disableLogging()
 
-        // Adjust config
-        val appToken = "2esby2kb8bgg"
-        val environment = AdjustConfig.ENVIRONMENT_PRODUCTION
-        val config = AdjustConfig(this, appToken, environment)
-        config.setLogLevel(LogLevel.VERBOSE);
-        Adjust.onCreate(config)
+            // Adjust config
+            val appToken = "2esby2kb8bgg"
+            val environment = AdjustConfig.ENVIRONMENT_PRODUCTION
+            val config = AdjustConfig(this, appToken, environment)
+            config.setLogLevel(LogLevel.VERBOSE);
+            Adjust.onCreate(config)
 
 
-        registerActivityLifecycleCallbacks(AdjustLifecycleCallbacks())
+            registerActivityLifecycleCallbacks(AdjustLifecycleCallbacks())
 
-        //it means -if no language set then it will check device language and set device language as default
-        if (Global.getStringFromSharedPref(this, Constants.PREFS_LANGUAGE).isNullOrEmpty()) {
-            if (Locale.getDefault().displayLanguage.equals("English", true)) {
-                //this will set english language
-                Global.saveStringInSharedPref(this, Constants.PREFS_LANGUAGE, "ar")
-                changeLanguage()
+            //it means -if no language set then it will check device language and set device language as default
+            if (Global.getStringFromSharedPref(this, Constants.PREFS_LANGUAGE).isNullOrEmpty()) {
+                if (Locale.getDefault().displayLanguage.equals("English", true)) {
+                    //this will set english language
+                    Global.saveStringInSharedPref(this, Constants.PREFS_LANGUAGE, "ar")
+                    changeLanguage()
+                } else {
+                    //this will set arabic language
+                    Global.saveStringInSharedPref(this, Constants.PREFS_LANGUAGE, "en")
+                    changeLanguage()
+                }
             } else {
-                //this will set arabic language
-                Global.saveStringInSharedPref(this, Constants.PREFS_LANGUAGE, "en")
-                changeLanguage()
+                setLocale()
+                Global.setFont(Global.getStringFromSharedPref(this, Constants.PREFS_LANGUAGE), this)
             }
-        } else {
-            setLocale()
-            Global.setFont(Global.getStringFromSharedPref(this, Constants.PREFS_LANGUAGE), this)
-        }
-      //  initInstaBug()
+            //  initInstaBug()
 //      initParse()
-        CustomEvents.setFirebaseAnalytics(this) // firebase analytics
-        Pushwoosh.getInstance().registerForPushNotifications()
-        initTracking()
+            CustomEvents.setFirebaseAnalytics(this) // firebase analytics
+
+            if(Pushwoosh.getInstance()!=null  ){
+
+                Pushwoosh.getInstance().registerForPushNotifications()
+            }
+
+
+            initTracking()
+        } catch (e: Exception) {
+        }
     }
 
     fun changeLanguage() {
@@ -209,29 +218,35 @@ class AppController : Application() {
     }
 
     private fun initTracking() {
-        referrerClient = InstallReferrerClient.newBuilder(this).build()
-        referrerClient.startConnection(object : InstallReferrerStateListener {
 
-            override fun onInstallReferrerSetupFinished(responseCode: Int) {
-                when (responseCode) {
-                    InstallReferrerClient.InstallReferrerResponse.OK -> {
-                        // Connection established.
-                        obtainReferrerDetails()
-                    }
-                    InstallReferrerClient.InstallReferrerResponse.FEATURE_NOT_SUPPORTED -> {
-                        // API not available on the current Play Store app.
-                    }
-                    InstallReferrerClient.InstallReferrerResponse.SERVICE_UNAVAILABLE -> {
-                        // Connection couldn't be established.
+        try {
+            referrerClient = InstallReferrerClient.newBuilder(this).build()
+            referrerClient.startConnection(object : InstallReferrerStateListener {
+
+                override fun onInstallReferrerSetupFinished(responseCode: Int) {
+                    when (responseCode) {
+                        InstallReferrerClient.InstallReferrerResponse.OK -> {
+                            // Connection established.
+                            obtainReferrerDetails()
+                        }
+                        InstallReferrerClient.InstallReferrerResponse.FEATURE_NOT_SUPPORTED -> {
+                            // API not available on the current Play Store app.
+                        }
+                        InstallReferrerClient.InstallReferrerResponse.SERVICE_UNAVAILABLE -> {
+                            // Connection couldn't be established.
+                        }
                     }
                 }
-            }
 
-            override fun onInstallReferrerServiceDisconnected() {
-                // Try to restart the connection on the next request to
-                // Google Play by calling the startConnection() method.
-            }
-        })
+                override fun onInstallReferrerServiceDisconnected() {
+                    // Try to restart the connection on the next request to
+                    // Google Play by calling the startConnection() method.
+                }
+            })
+        } catch (e: Exception) {
+        }
+
+
     }
 
     private fun obtainReferrerDetails(){

@@ -634,24 +634,28 @@ class NavigationActivity : BaseActivity(), NavigationView.OnNavigationItemSelect
             var target_id = ""
             var title = ""
 
-            val jsonObject =
-                JSONObject(intent.getStringExtra(Pushwoosh.PUSH_RECEIVE_EVENT).toString())
-            println("HERE IS PUSHWOOSH DATA ::: " + jsonObject)
+            if(intent.hasExtra(Pushwoosh.PUSH_RECEIVE_EVENT)){
 
-            if (jsonObject.has("target_id") && !jsonObject.getString("target_id")
-                    .isNullOrEmpty()
-            ) {
-                target_id = jsonObject.getString("target_id")
+                val jsonObject =
+                    JSONObject(intent.getStringExtra(Pushwoosh.PUSH_RECEIVE_EVENT).toString())
+                println("HERE IS PUSHWOOSH DATA ::: " + jsonObject)
 
-                if (Global.isEnglishLanguage(this)) {
-                    if (jsonObject.has("name_en")) {
-                        title = jsonObject.getString("name_en") ?: ""
-                    }
-                } else {
-                    if (jsonObject.has("name_ar")) {
-                        title = jsonObject.getString("name_ar") ?: ""
+                if (jsonObject.has("target_id") && !jsonObject.getString("target_id")
+                        .isNullOrEmpty()
+                ) {
+                    target_id = jsonObject.getString("target_id")
+
+                    if (Global.isEnglishLanguage(this)) {
+                        if (jsonObject.has("name_en")) {
+                            title = jsonObject.getString("name_en") ?: ""
+                        }
+                    } else {
+                        if (jsonObject.has("name_ar")) {
+                            title = jsonObject.getString("name_ar") ?: ""
+                        }
                     }
                 }
+
             }
 
             //TODO:navigation is to be handled here

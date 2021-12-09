@@ -17,9 +17,16 @@ public class PushWooshNotificationService extends NotificationServiceExtension {
 
     @MainThread
     private void handlePush(PushMessage message) {
-        Intent launchIntent = new Intent(getApplicationContext(), NavigationActivity.class);
-        launchIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        launchIntent.putExtra(Pushwoosh.PUSH_RECEIVE_EVENT, message.toJson().toString());
-        getApplicationContext().startActivity(launchIntent);
+
+        try {
+            Intent launchIntent = new Intent(getApplicationContext(), NavigationActivity.class);
+            launchIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            if(message!=null){
+                launchIntent.putExtra(Pushwoosh.PUSH_RECEIVE_EVENT, message.toJson().toString());
+                getApplicationContext().startActivity(launchIntent);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

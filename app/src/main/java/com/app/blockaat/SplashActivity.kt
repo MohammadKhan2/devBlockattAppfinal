@@ -68,7 +68,12 @@ class SplashActivity : BaseActivity() {
             setUpStore()
             /*   setFonts()*/
             init()
-            Constants.DEVICE_TOKEN = Pushwoosh.getInstance().pushToken ?: ""
+            if(Pushwoosh.getInstance()!=null && Pushwoosh.getInstance().pushToken!=null){
+                Constants.DEVICE_TOKEN = Pushwoosh.getInstance().pushToken ?: ""
+            }else{
+                Constants.DEVICE_TOKEN="";
+            }
+
             println("T : " + Constants.DEVICE_TOKEN)
         } catch (e: Exception) {
         }
